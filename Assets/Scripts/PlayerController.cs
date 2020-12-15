@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speed;
 
     //getting the input control maps
-    private PlayerInputControls playerInputControls;
+    public PlayerInputControls playerInputControls;
 
     //called before start
     private void Awake()

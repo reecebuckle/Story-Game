@@ -30,10 +30,9 @@ public float parallaxEffect; // how much parallax effect we wanna apply
         transform.position = new Vector3(startpos + distance, transform.position.y, transform.position.z);
 
         // handles the repeating of parallax effect if nearing out of bounds
-        if (temp > startpos + length) {
+        if (temp > startpos + length) 
             startpos += length;
-        } else if (temp < startpos - length) {
+        else if (temp < startpos - length) 
             startpos -= length;
-        }
     }
 }

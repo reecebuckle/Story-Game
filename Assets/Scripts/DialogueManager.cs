@@ -10,18 +10,30 @@ using UnityEngine;
 */
 public class DialogueManager : MonoBehaviour {
 
-	public TextMeshProUGUI nameText;
+    public TextMeshProUGUI nameText;
 	public TextMeshProUGUI dialogueText;
+
+    public GameObject nextButton;
+
+    public ActionSystem ASystem;
 
 	public Animator animator;
 
 	private Queue<string> sentences;
 
-	public float textSpeed = 0.5f;
+	public float textSpeed = 0.01f; //0.5
 
 	public AudioSource source;
-	// Use this for initialization
-	void Start () {
+    
+    public string spendActionPointMsg = "Would you like to spend your action talking to this character ";
+
+    private void Awake()
+    {
+        nextButton.SetActive(false);
+    }
+
+    // Use this for initialization
+    void Start () {
 		sentences = new Queue<string>();
 	}
 
@@ -33,6 +45,9 @@ public class DialogueManager : MonoBehaviour {
 
 		sentences.Clear();
 
+        //spend point text displays regardless of whom you talk to
+        sentences.Enqueue(spendActionPointMsg);
+
 		foreach (string sentence in dialogue.sentences)
 		{
 			sentences.Enqueue(sentence);
@@ -43,7 +58,9 @@ public class DialogueManager : MonoBehaviour {
 
 	public void DisplayNextSentence ()
 	{
-		source.Play();
+        nextButton.SetActive(true);
+
+		//source.Play();
 		if (sentences.Count == 0)
 		{
 			EndDialogue();
@@ -62,12 +79,15 @@ public class DialogueManager : MonoBehaviour {
 		{
 			dialogueText.text += letter;
 			yield return new WaitForSeconds(textSpeed);
+			//yield return null;
 		}
 	}
 
 	public void EndDialogue()
 	{
 		animator.SetBool("IsOpen", false);
-	}
+        nextButton.SetActive(false);
+    }
+
 
 }

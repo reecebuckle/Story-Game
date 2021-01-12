@@ -17,18 +17,18 @@ public class Interacted : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void interactionOccured()
     {
-        if(interaction == false)
+        if (interaction == false)
         {
             interaction = true;
             actionSystem.useUpAction();
         }
 
-        
+
     }
 
     public void resetInteraction()

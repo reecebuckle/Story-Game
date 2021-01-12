@@ -4,12 +4,13 @@
 */
 using UnityEngine;
 
-public class Parallax : MonoBehaviour {
+public class Parallax : MonoBehaviour
+{
 
-private float length;
-private float startpos;
-public GameObject cam;
-public float parallaxEffect; // how much parallax effect we wanna apply
+    private float length;
+    private float startpos;
+    public GameObject cam;
+    public float parallaxEffect; // how much parallax effect we wanna apply
 
 
     // Start is called before the first frame update
@@ -23,16 +24,16 @@ public float parallaxEffect; // how much parallax effect we wanna apply
     void Update()
     {
         //if player goes out of bounds, parallax effect repeats itself
-        float temp = (cam.transform.position.x * (1-parallaxEffect));
+        float temp = (cam.transform.position.x * (1 - parallaxEffect));
         //get a temporary distance 
         float distance = (cam.transform.position.x * parallaxEffect);
         //transform position of backgrounds
         transform.position = new Vector3(startpos + distance, transform.position.y, transform.position.z);
 
         // handles the repeating of parallax effect if nearing out of bounds
-        if (temp > startpos + length) 
+        if (temp > startpos + length)
             startpos += length;
-        else if (temp < startpos - length) 
+        else if (temp < startpos - length)
             startpos -= length;
     }
 }

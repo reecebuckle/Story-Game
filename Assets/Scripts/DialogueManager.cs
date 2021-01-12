@@ -8,23 +8,24 @@ using UnityEngine;
 *from a Brackey's dialogue tutorial for the purpose of this game
 *https://www.youtube.com/watch?v=_nRzoTzeyxU&t=5s&ab_channel=Brackeys
 */
-public class DialogueManager : MonoBehaviour {
+public class DialogueManager : MonoBehaviour
+{
 
     public TextMeshProUGUI nameText;
-	public TextMeshProUGUI dialogueText;
+    public TextMeshProUGUI dialogueText;
 
     public GameObject nextButton;
 
     public ActionSystem ASystem;
 
-	public Animator animator;
+    public Animator animator;
 
-	private Queue<string> sentences;
+    private Queue<string> sentences;
 
-	public float textSpeed = 0.01f; //0.5
+    public float textSpeed = 0.01f; //0.5
 
-	public AudioSource source;
-    
+    public AudioSource source;
+
 
     private void Awake()
     {
@@ -32,16 +33,17 @@ public class DialogueManager : MonoBehaviour {
     }
 
     // Use this for initialization
-    void Start () {
-		sentences = new Queue<string>();
-	}
+    void Start()
+    {
+        sentences = new Queue<string>();
+    }
 
-	public void StartDialogue (Dialogue dialogue)
-	{
+    public void StartDialogue(Dialogue dialogue)
+    {
         Debug.Log("Talking to " + dialogue.name);
-		animator.SetBool("IsOpen", true);
+        animator.SetBool("IsOpen", true);
 
-		nameText.text = dialogue.name;
+        nameText.text = dialogue.name;
         string spendActionPointMsg = "Would you like to spend your action talking " + dialogue.name;
 
         sentences.Clear();
@@ -49,44 +51,44 @@ public class DialogueManager : MonoBehaviour {
         //spend point text displays regardless of whom you talk to
         sentences.Enqueue(spendActionPointMsg);
 
-		foreach (string sentence in dialogue.sentences)
-		{
-			sentences.Enqueue(sentence);
-		}
+        foreach (string sentence in dialogue.sentences)
+        {
+            sentences.Enqueue(sentence);
+        }
 
-		DisplayNextSentence();
-	}
+        DisplayNextSentence();
+    }
 
-	public void DisplayNextSentence ()
-	{
+    public void DisplayNextSentence()
+    {
         nextButton.SetActive(true);
 
-		//source.Play();
-		if (sentences.Count == 0)
-		{
-			EndDialogue();
-			return;
-		}
+        //source.Play();
+        if (sentences.Count == 0)
+        {
+            EndDialogue();
+            return;
+        }
 
-		string sentence = sentences.Dequeue();
-		StopAllCoroutines();
-		StartCoroutine(TypeSentence(sentence));
-	}
+        string sentence = sentences.Dequeue();
+        StopAllCoroutines();
+        StartCoroutine(TypeSentence(sentence));
+    }
 
-	IEnumerator TypeSentence (string sentence)
-	{
-		dialogueText.text = "";
-		foreach (char letter in sentence.ToCharArray())
-		{
-			dialogueText.text += letter;
-			//yield return new WaitForSeconds(textSpeed);
-			yield return null;
-		}
-	}
+    IEnumerator TypeSentence(string sentence)
+    {
+        dialogueText.text = "";
+        foreach (char letter in sentence.ToCharArray())
+        {
+            dialogueText.text += letter;
+            //yield return new WaitForSeconds(textSpeed);
+            yield return null;
+        }
+    }
 
-	public void EndDialogue()
-	{
-		animator.SetBool("IsOpen", false);
+    public void EndDialogue()
+    {
+        animator.SetBool("IsOpen", false);
         nextButton.SetActive(false);
     }
 

@@ -7,45 +7,55 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour {
+public class PlayerMovement : MonoBehaviour
+{
 
-	public CharacterController2D controller;
-	public Animator animator;
-
-	public float runSpeed = 40f;
-
-	float horizontalMove = 0f;
-	bool jump = false;
-
+    public CharacterController2D controller;
+    public Animator animator;
+    public float runSpeed = 40f;
+    float horizontalMove = 0f;
+    bool jump = false;
     private bool inInteractionZone = false;
     private GameObject currentlyInteractingTo;
-	
-	// Update is called once per frame
-	void Update () {
+    private bool touchingChair = false;
 
-		horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+    // Update is called once per frame
+    void Update()
+    {
 
-		animator.SetFloat("Player Speed", Mathf.Abs(horizontalMove));
+        horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
 
-		if (Input.GetButtonDown("Jump")) 
-		{
-			jump = true;
-			Debug.Log("jumping");
-			animator.SetBool("IsJumping", true);
-		}
-	}
+        animator.SetFloat("Player Speed", Mathf.Abs(horizontalMove));
 
-	public void OnLanding() {
-		Debug.Log("landing");
-		animator.SetBool("IsJumping", false);
-	}
+        if (Input.GetButtonDown("Jump"))
+        {
+            jump = true;
+            Debug.Log("jumping");
+            animator.SetBool("IsJumping", true);
+        }
 
-	void FixedUpdate ()
-	{
-		// Move our character
-		controller.Move(horizontalMove * Time.fixedDeltaTime, jump);
-		jump = false;
-	}
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (touchingChair) {
+                Debug.Log("Touching bed and pressed E, time to go sleep");
+                //TODO: Implement loading next scene/day etc
+                //probably wise to start new coroutine with a cool down here to prevent spammage of E
+            }
+        }
+    }
+
+    public void OnLanding()
+    {
+        Debug.Log("landing");
+        animator.SetBool("IsJumping", false);
+    }
+
+    void FixedUpdate()
+    {
+        // Move our character
+        controller.Move(horizontalMove * Time.fixedDeltaTime, jump);
+        jump = false;
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -54,28 +64,31 @@ public class PlayerMovement : MonoBehaviour {
             inInteractionZone = true;
             currentlyInteractingTo = other.gameObject;
         }
-            
 
-    }
-
-    void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag("NPC"))
-        {
-            inInteractionZone = false;
-            currentlyInteractingTo = null;
+        //if player collides with chair, set as true so they can press E..
+        if (other.tag == "Sleep Chair")
+            touchingChair = true;
 
         }
-            
-        
-    }
 
-    public void interactionHasOccured()
-    {
-        if (inInteractionZone)
+        void OnTriggerExit2D(Collider2D other)
         {
-            currentlyInteractingTo.GetComponent<Interacted>().interactionOccured();
-            Debug.Log("interacting with " + currentlyInteractingTo.GetComponent<DialogueTrigger>().dialogue.name);
+            if (other.CompareTag("NPC"))
+            {
+                inInteractionZone = false;
+                currentlyInteractingTo = null;
+            }
+
+            if (other.tag == "Sleep Chair")
+                touchingChair = false;
+        }
+
+        public void interactionHasOccured()
+        {
+            if (inInteractionZone)
+            {
+                currentlyInteractingTo.GetComponent<Interacted>().interactionOccured();
+                Debug.Log("interacting with " + currentlyInteractingTo.GetComponent<DialogueTrigger>().dialogue.name);
+            }
         }
     }
-}

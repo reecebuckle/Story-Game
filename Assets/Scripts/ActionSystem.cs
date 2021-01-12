@@ -44,7 +44,7 @@ public class ActionSystem : MonoBehaviour
         {
             resetActions();
             //resetInteractions();
-            Debug.Log("Has Romeo been interacted with? " +romeoInteraction.hasBeenInteracted());
+            Debug.Log("Has Romeo been interacted with? " + romeoInteraction.hasBeenInteracted());
             Debug.Log("Has Juliet been interacted with? " + julietInteraction.hasBeenInteracted());
             Debug.Log("Has Owl been interacted with? " + owlInteraction.hasBeenInteracted());
             Debug.Log("Has random member been interacted with? " + publicMemberInteraction.hasBeenInteracted());
@@ -55,7 +55,7 @@ public class ActionSystem : MonoBehaviour
 
     public void useUpAction()
     {
-        numberOfActions --;
+        numberOfActions--;
     }
 
     //call this when new day starts, resets action points

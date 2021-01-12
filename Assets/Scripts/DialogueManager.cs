@@ -25,7 +25,6 @@ public class DialogueManager : MonoBehaviour {
 
 	public AudioSource source;
     
-    public string spendActionPointMsg = "Would you like to spend your action talking to this character ";
 
     private void Awake()
     {
@@ -39,11 +38,13 @@ public class DialogueManager : MonoBehaviour {
 
 	public void StartDialogue (Dialogue dialogue)
 	{
+        Debug.Log("Talking to " + dialogue.name);
 		animator.SetBool("IsOpen", true);
 
 		nameText.text = dialogue.name;
+        string spendActionPointMsg = "Would you like to spend your action talking " + dialogue.name;
 
-		sentences.Clear();
+        sentences.Clear();
 
         //spend point text displays regardless of whom you talk to
         sentences.Enqueue(spendActionPointMsg);
@@ -78,8 +79,8 @@ public class DialogueManager : MonoBehaviour {
 		foreach (char letter in sentence.ToCharArray())
 		{
 			dialogueText.text += letter;
-			yield return new WaitForSeconds(textSpeed);
-			//yield return null;
+			//yield return new WaitForSeconds(textSpeed);
+			yield return null;
 		}
 	}
 
@@ -87,6 +88,11 @@ public class DialogueManager : MonoBehaviour {
 	{
 		animator.SetBool("IsOpen", false);
         nextButton.SetActive(false);
+    }
+
+    public string getCurrentDialoguePartner()
+    {
+        return nameText.text;
     }
 
 

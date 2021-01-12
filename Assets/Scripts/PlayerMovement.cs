@@ -16,6 +16,9 @@ public class PlayerMovement : MonoBehaviour {
 
 	float horizontalMove = 0f;
 	bool jump = false;
+
+    private bool inInteractionZone = false;
+    private GameObject currentlyInteractingTo;
 	
 	// Update is called once per frame
 	void Update () {
@@ -43,4 +46,36 @@ public class PlayerMovement : MonoBehaviour {
 		controller.Move(horizontalMove * Time.fixedDeltaTime, jump);
 		jump = false;
 	}
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("NPC"))
+        {
+            inInteractionZone = true;
+            currentlyInteractingTo = other.gameObject;
+        }
+            
+
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("NPC"))
+        {
+            inInteractionZone = false;
+            currentlyInteractingTo = null;
+
+        }
+            
+        
+    }
+
+    public void interactionHasOccured()
+    {
+        if (inInteractionZone)
+        {
+            currentlyInteractingTo.GetComponent<Interacted>().interactionOccured();
+            Debug.Log("interacting with " + currentlyInteractingTo.GetComponent<DialogueTrigger>().dialogue.name);
+        }
+    }
 }

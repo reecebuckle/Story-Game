@@ -6,6 +6,10 @@ TagManager:
   tags:
   - NPC
   - Sleep Chair
+  - Enter House
+  - Exit House
+  - Enter Church
+  - Exit Church
   layers:
   - Default
   - TransparentFX

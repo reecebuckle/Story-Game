@@ -6,18 +6,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
 
     public CharacterController2D controller;
     public Animator animator;
+
+    [Header("Movement parameters")]
     public float runSpeed = 40f;
     float horizontalMove = 0f;
-    bool jump = false;
-    private bool inInteractionZone = false;
+    private bool jump = false;
     private GameObject currentlyInteractingTo;
+
+    //Collision detection bools
+    private bool inInteractionZone = false;
     private bool touchingChair = false;
+    private bool exitHouse = false;
+    private bool enterHouse = false;
+    private bool enterChurch = false;
+    private bool exitChurch = false;
 
     // Update is called once per frame
     void Update()
@@ -34,13 +43,28 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("IsJumping", true);
         }
 
+        //these control player options when touching a collider
         if (Input.GetKeyDown(KeyCode.E))
         {
+
             if (touchingChair) {
                 Debug.Log("Touching bed and pressed E, time to go sleep");
                 //TODO: Implement loading next scene/day etc
                 //probably wise to start new coroutine with a cool down here to prevent spammage of E
-            }
+            } 
+
+            if (exitHouse) 
+               FindObjectOfType<GameManager>().LeaveHouse();
+            
+            if (enterHouse) 
+                FindObjectOfType<GameManager>().EnterHouse();
+
+            if (exitChurch) 
+                FindObjectOfType<GameManager>().LeaveChurch();
+            
+            if (enterChurch) 
+                FindObjectOfType<GameManager>().EnterChurch();
+            
         }
     }
 
@@ -69,6 +93,19 @@ public class PlayerMovement : MonoBehaviour
         if (other.tag == "Sleep Chair")
             touchingChair = true;
 
+        if (other.tag == "Exit House")
+            exitHouse = true;
+
+        if (other.tag == "Enter House")
+            enterHouse = true;   
+
+        if (other.tag == "Exit Church")
+            exitChurch = true;
+
+        if (other.tag == "Enter Church")
+            enterChurch = true;     
+            
+
         }
 
         void OnTriggerExit2D(Collider2D other)
@@ -81,6 +118,18 @@ public class PlayerMovement : MonoBehaviour
 
             if (other.tag == "Sleep Chair")
                 touchingChair = false;
+
+            if (other.tag == "Exit House")
+                exitHouse = false;
+
+            if (other.tag == "Enter House")
+                enterHouse = false;
+
+            if (other.tag == "Exit Church")
+                exitChurch = false;
+
+            if (other.tag == "Enter Church")
+                enterChurch = false;
         }
 
         public void interactionHasOccured()

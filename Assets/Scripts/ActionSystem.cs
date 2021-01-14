@@ -10,6 +10,8 @@ public class ActionSystem : MonoBehaviour
 
     public DialogueManager dialogueManager;
 
+    public TextMeshProUGUI journalText;
+
     public Interacted romeoInteraction;
     public Interacted julietInteraction;
     public Interacted owlInteraction;
@@ -17,23 +19,25 @@ public class ActionSystem : MonoBehaviour
 
     private int numberOfActions;
 
-    private Interacted[] day1Actions = new Interacted[10];
+    private Interacted[] day1Actions;
 
 
     // Start is called before the first frame update
     private void Start()
     {
         numberOfActions = 2;
-        //Interacted[] day1Actions = {romeoInteraction, julietInteraction, owlInteraction, publicMemberInteraction};
-        //day1Actions[0] = romeoInteraction;
-        //day1Actions[1] = julietInteraction;
-        //day1Actions[2] = OwlInteraction;
-        //day1Actions[3] = publicMemberInteraction;
+        
         romeoInteraction = GameObject.Find("hat-man-idle-1").GetComponent<Interacted>();
-        julietInteraction = GameObject.Find("woman-idle1").GetComponent<Interacted>();
-        owlInteraction = GameObject.Find("bearded-idle-1").GetComponent<Interacted>();
-        publicMemberInteraction = GameObject.Find("wizard-idle-1").GetComponent<Interacted>();
+        julietInteraction = GameObject.Find("woman-idle-1").GetComponent<Interacted>();
+        owlInteraction = GameObject.Find("wizard-idle-1").GetComponent<Interacted>();
+        publicMemberInteraction = GameObject.Find("bearded-idle-1").GetComponent<Interacted>();
 
+        
+        journalText.gameObject.SetActive(false);
+        journalText.text = "";
+
+        Interacted[] day1Actions = {romeoInteraction, julietInteraction, owlInteraction, publicMemberInteraction};
+        setDay1Array(day1Actions);
     }
 
     // Update is called once per frame
@@ -42,14 +46,18 @@ public class ActionSystem : MonoBehaviour
         displayNumberOfActions(numberOfActions);
         if (hasGotNoActions())
         {
-            resetActions();
-            //resetInteractions();
             Debug.Log("Has Romeo been interacted with? " +romeoInteraction.hasBeenInteracted());
             Debug.Log("Has Juliet been interacted with? " + julietInteraction.hasBeenInteracted());
             Debug.Log("Has Owl been interacted with? " + owlInteraction.hasBeenInteracted());
             Debug.Log("Has random member been interacted with? " + publicMemberInteraction.hasBeenInteracted());
-            SceneManager.LoadScene("House");
+            
+            
+            //whatHasBeenActivatedInDay1();
+            //resetInteractions(day1Actions);
+            //resetActions();
+            //SceneManager.LoadScene("House");
         }
+
 
     }
 
@@ -77,12 +85,52 @@ public class ActionSystem : MonoBehaviour
             return false;
     }
 
-    public void resetInteractions()
+    public void resetInteractions(Interacted[] dayBools)
     {
-        foreach (Interacted action in day1Actions)
+        Debug.Log(dayBools.Length);
+        foreach (Interacted action in dayBools)
         {
             action.resetInteraction();
         }
     }
+
+    public void setDay1Array(Interacted[] newArray)
+    {
+        day1Actions = newArray;
+    }
+
+    public Interacted[] getDay1Array()
+    {
+        return day1Actions;
+    }
+
+    public void whatHasBeenActivatedInDay1()
+    {
+        journalText.text = "";
+        Interacted[] temp = getDay1Array();
+        foreach (Interacted action in temp)
+        {
+            if (action.hasBeenInteracted())
+            {
+                journalText.text += action.getKeyInformation();
+            }
+        }
+
+        //journalText.gameObject.SetActive(true);
+    }
+
+    public void displayJournal()
+    {
+        whatHasBeenActivatedInDay1();
+        journalText.gameObject.SetActive(true);
+        
+    }
+
+    public void closeJournal()
+    {
+        journalText.gameObject.SetActive(false);
+    }
+
+
 
 }

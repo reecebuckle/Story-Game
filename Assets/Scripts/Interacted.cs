@@ -5,8 +5,12 @@ using UnityEngine;
 public class Interacted : MonoBehaviour
 {
     private bool interaction;
+
     public ActionSystem actionSystem;
+
     public string name;
+
+    public string keyInformation;
 
     // Start is called before the first frame update
     void Start()
@@ -39,5 +43,10 @@ public class Interacted : MonoBehaviour
     public bool hasBeenInteracted()
     {
         return interaction;
+    }
+
+    public string getKeyInformation()
+    {
+        return name + ": " + keyInformation + "\n";
     }
 }

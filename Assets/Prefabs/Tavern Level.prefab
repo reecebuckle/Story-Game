@@ -671,15 +671,7 @@ CompositeCollider2D:
   m_ColliderPaths:
   - m_Collider: {fileID: 8877348879327837914}
     m_ColliderPaths:
-    - - X: 149999900
-        Y: -31250000
-      - X: 140624992
-        Y: -31250000
-      - X: 140000000
-        Y: -31875000
-      - X: 140000000
-        Y: -31250000
-      - X: 133750000
+    - - X: 133750000
         Y: -31250000
       - X: 130000000
         Y: -31875000
@@ -797,12 +789,20 @@ CompositeCollider2D:
         Y: -31250000
       - X: -100000000
         Y: -35000000
-      - X: 149999900
+      - X: 150000000
         Y: -35000000
+      - X: 150000000
+        Y: -31250000
+      - X: 140624992
+        Y: -31250000
+      - X: 140000000
+        Y: -31875000
+      - X: 140000000
+        Y: -31250000
   m_CompositePaths:
     m_Paths:
-    - - {x: 14.99996, y: -3.5}
-      - {x: 14.99996, y: -3.125}
+    - - {x: 14.999971, y: -3.5}
+      - {x: 14.999971, y: -3.125}
       - {x: 14.062491, y: -3.1250076}
       - {x: 14, y: -3.1874127}
       - {x: 13.999971, y: -3.125}
@@ -2635,7 +2635,7 @@ GameObject:
   - component: {fileID: 8877348879995064345}
   m_Layer: 0
   m_Name: Tavern Level
-  m_TagString: Untagged
+  m_TagString: Exit Tavern
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

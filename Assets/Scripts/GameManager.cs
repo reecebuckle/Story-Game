@@ -110,12 +110,13 @@ public class GameManager : MonoBehaviour
         soundManager.clip = sceneMusic;
         soundManager.Play();
 
+        //TESTING PURPOSES
         deleteDayNPC(day0NPCS);
         deleteDayNPC(day1NPCS);
         deleteDayNPC(day2NPCS);
         deleteDayNPC(day3NPCS);
 
-
+        //TESTING PURPOSES
         loadDayNPC(day2NPCS);
         loadDayNPC(day3NPCS);
     }

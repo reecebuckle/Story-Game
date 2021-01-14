@@ -14,7 +14,6 @@ public class ActionSystem : MonoBehaviour
 
     public Interacted romeoInteraction;
     public Interacted julietInteraction;
-
     public Interacted bakerInteraction;
     public Interacted oldManInteraction;
 
@@ -26,12 +25,13 @@ public class ActionSystem : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        numberOfActions = 2;
+        numberOfActions = 4;
         
-        romeoInteraction = GameObject.Find("Robin Day 0").GetComponent<Interacted>();
-        julietInteraction = GameObject.Find("Scarlett Day 0").GetComponent<Interacted>();
-        bakerInteraction = GameObject.Find("Baker Day 0").GetComponent<Interacted>();
-        oldManInteraction = GameObject.Find("Old Man Day 0").GetComponent<Interacted>();
+        //Don't even need to do this, whoopsi
+        //romeoInteraction = GameObject.Find("Robin Day 0").GetComponent<Interacted>();
+        //julietInteraction = GameObject.Find("Scarlett Day 0").GetComponent<Interacted>();
+        //bakerInteraction = GameObject.Find("Baker Day 0").GetComponent<Interacted>();
+        //oldManInteraction = GameObject.Find("Old Man Day 0").GetComponent<Interacted>();
         
 
         journalText.text = "";

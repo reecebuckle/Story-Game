@@ -47,33 +47,33 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
 
-            if (touchingChair) {
+            if (touchingChair)
+            {
                 Debug.Log("Touching bed and pressed E, time to go sleep");
                 //TODO: Implement loading next scene/day etc
                 //probably wise to start new coroutine with a cool down here to prevent spammage of E
-            } 
+            }
 
-            if (exitHouse) 
-               FindObjectOfType<GameManager>().LeaveHouse();
-            
-            if (enterHouse) 
+            if (exitHouse)
+                FindObjectOfType<GameManager>().LeaveHouse();
+
+            if (enterHouse)
                 FindObjectOfType<GameManager>().EnterHouse();
 
-            if (exitChurch) 
+            if (exitChurch)
                 FindObjectOfType<GameManager>().LeaveChurch();
-            
-            if (enterChurch) 
+
+            if (enterChurch)
                 FindObjectOfType<GameManager>().EnterChurch();
-            
+
         }
     }
 
-    public void OnLanding()
-    {
-        Debug.Log("landing");
-        animator.SetBool("IsJumping", false);
-    }
 
+
+    /*
+    * Handles player movement 
+    */
     void FixedUpdate()
     {
         // Move our character
@@ -81,6 +81,17 @@ public class PlayerMovement : MonoBehaviour
         jump = false;
     }
 
+    /*
+    * Invoked when player collides with ground to stop jumping animation
+    */
+    public void OnLanding()
+    {
+        animator.SetBool("IsJumping", false);
+    }
+
+    /*
+    * The following methods check if player has collided with a speicfic game object
+    */
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("NPC"))
@@ -89,7 +100,6 @@ public class PlayerMovement : MonoBehaviour
             currentlyInteractingTo = other.gameObject;
         }
 
-        //if player collides with chair, set as true so they can press E..
         if (other.tag == "Sleep Chair")
             touchingChair = true;
 
@@ -97,47 +107,51 @@ public class PlayerMovement : MonoBehaviour
             exitHouse = true;
 
         if (other.tag == "Enter House")
-            enterHouse = true;   
+            enterHouse = true;
 
         if (other.tag == "Exit Church")
             exitChurch = true;
 
         if (other.tag == "Enter Church")
-            enterChurch = true;     
-            
+            enterChurch = true;
 
+
+    }
+
+
+    /*
+    * The following methods check if player has left the 2D collider of a specific game object
+    */
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("NPC"))
+        {
+            inInteractionZone = false;
+            currentlyInteractingTo = null;
         }
 
-        void OnTriggerExit2D(Collider2D other)
+        if (other.tag == "Sleep Chair")
+            touchingChair = false;
+
+        if (other.tag == "Exit House")
+            exitHouse = false;
+
+        if (other.tag == "Enter House")
+            enterHouse = false;
+
+        if (other.tag == "Exit Church")
+            exitChurch = false;
+
+        if (other.tag == "Enter Church")
+            enterChurch = false;
+    }
+
+    public void interactionHasOccured()
+    {
+        if (inInteractionZone)
         {
-            if (other.CompareTag("NPC"))
-            {
-                inInteractionZone = false;
-                currentlyInteractingTo = null;
-            }
-
-            if (other.tag == "Sleep Chair")
-                touchingChair = false;
-
-            if (other.tag == "Exit House")
-                exitHouse = false;
-
-            if (other.tag == "Enter House")
-                enterHouse = false;
-
-            if (other.tag == "Exit Church")
-                exitChurch = false;
-
-            if (other.tag == "Enter Church")
-                enterChurch = false;
-        }
-
-        public void interactionHasOccured()
-        {
-            if (inInteractionZone)
-            {
-                currentlyInteractingTo.GetComponent<Interacted>().interactionOccured();
-                Debug.Log("interacting with " + currentlyInteractingTo.GetComponent<DialogueTrigger>().dialogue.name);
-            }
+            currentlyInteractingTo.GetComponent<Interacted>().interactionOccured();
+            Debug.Log("interacting with " + currentlyInteractingTo.GetComponent<DialogueTrigger>().dialogue.name);
         }
     }
+}

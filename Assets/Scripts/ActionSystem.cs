@@ -6,10 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class ActionSystem : MonoBehaviour
 {
+    [Header("Connected Managers")]
     public TextMeshProUGUI DisplayActions;
 
     public DialogueManager dialogueManager;
 
+    [Header("NPC Interactions")]
     public Interacted romeoInteraction;
     public Interacted julietInteraction;
     public Interacted owlInteraction;
@@ -29,10 +31,10 @@ public class ActionSystem : MonoBehaviour
         //day1Actions[1] = julietInteraction;
         //day1Actions[2] = OwlInteraction;
         //day1Actions[3] = publicMemberInteraction;
-        romeoInteraction = GameObject.Find("hat-man-idle-1").GetComponent<Interacted>();
-        julietInteraction = GameObject.Find("woman-idle1").GetComponent<Interacted>();
-        owlInteraction = GameObject.Find("bearded-idle-1").GetComponent<Interacted>();
-        publicMemberInteraction = GameObject.Find("wizard-idle-1").GetComponent<Interacted>();
+        romeoInteraction = GameObject.Find("Romeo").GetComponent<Interacted>();
+        //julietInteraction = GameObject.Find("Juliet").GetComponent<Interacted>();
+        //owlInteraction = GameObject.Find(").GetComponent<Interacted>();
+        //publicMemberInteraction = GameObject.Find("wizard-idle-1").GetComponent<Interacted>();
 
     }
 
@@ -80,9 +82,7 @@ public class ActionSystem : MonoBehaviour
     public void resetInteractions()
     {
         foreach (Interacted action in day1Actions)
-        {
             action.resetInteraction();
-        }
     }
 
 }

@@ -26,6 +26,7 @@ public class DialogueManager : MonoBehaviour
 
     private void Awake()
     {
+        //Doesn't need to be shown initially
         nextButton.SetActive(false);
     }
 
@@ -35,32 +36,32 @@ public class DialogueManager : MonoBehaviour
         sentences = new Queue<string>();
     }
 
+    /*
+    *  Used to initiate dialogue if user presses yes and decides to talk to NPC
+    */
     public void StartDialogue(Dialogue dialogue)
     {
         Debug.Log("Talking to " + dialogue.name);
         animator.SetBool("IsOpen", true);
 
         nameText.text = dialogue.name;
-        string spendActionPointMsg = "Would you like to spend your action talking " + dialogue.name;
+        string spendActionPointMsg = "Spend one action point talking to " + dialogue.name + " ?";
 
         sentences.Clear();
-
         //spend point text displays regardless of whom you talk to
         sentences.Enqueue(spendActionPointMsg);
 
         foreach (string sentence in dialogue.sentences)
-        {
             sentences.Enqueue(sentence);
-        }
 
-        DisplayNextSentence();
+        DisplayFirstSentence();
     }
 
-    public void DisplayNextSentence()
+    /*
+    *Used to display first sentence
+    */
+    public void DisplayFirstSentence()
     {
-        nextButton.SetActive(true);
-
-        //source.Play();
         if (sentences.Count == 0)
         {
             EndDialogue();
@@ -72,6 +73,30 @@ public class DialogueManager : MonoBehaviour
         StartCoroutine(TypeSentence(sentence));
     }
 
+
+
+
+    /*
+    * Used to load the next sentence 
+    */
+    public void DisplayNextSentence()
+    {
+        nextButton.SetActive(true);
+
+        if (sentences.Count == 0)
+        {
+            EndDialogue();
+            return;
+        }
+
+        string sentence = sentences.Dequeue();
+        StopAllCoroutines();
+        StartCoroutine(TypeSentence(sentence));
+    }
+
+    /*
+    * Used to type out the dialogue sentence at a set speed
+    */
     IEnumerator TypeSentence(string sentence)
     {
         dialogueText.text = "";
@@ -83,6 +108,9 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    /*
+    * Used to close dialogue box prematurely or if all options have been exhausted
+    */
     public void EndDialogue()
     {
         animator.SetBool("IsOpen", false);

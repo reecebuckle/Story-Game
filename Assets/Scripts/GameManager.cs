@@ -7,13 +7,15 @@ public class GameManager : MonoBehaviour
     [Header("Important Game Objects")]
     public GameObject player;
 
-
     [Header("Integrated Audio Manager")]
     public AudioClip sceneMusic;
     public AudioClip churchMusic;
     public AudioClip houseMusic;
 
     public AudioSource soundManager;
+
+    [Header("Add Crossfade Transitioner")]
+    public Animator transition;
 
 
     public void Awake()
@@ -24,8 +26,18 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public void EnterChurch()
+    /*
+    * IEnumerator is used to wait for 0.3 seconds before transitioning player (allowing animation to run)
+    * All the enter/exit methods are built the same way
+    */
+    public IEnumerator EnterChurch()
     {
+        //Play transition
+        transition.SetTrigger("Start");
+
+        //Wait for 0.2 seconds
+        yield return new WaitForSeconds(0.3f);
+        
         //Update player position
         player.transform.position = new Vector3(-20, 20, 0);
 
@@ -33,73 +45,68 @@ public class GameManager : MonoBehaviour
         soundManager.Stop();
         soundManager.clip = churchMusic;
         soundManager.Play();
-
     }
 
-    public void EnterHouse()
+    public IEnumerator EnterHouse()
     {
-        //Update player position
+        transition.SetTrigger("Start");
+        yield return new WaitForSeconds(0.4f);
         player.transform.position = new Vector3(69, -24, 0);
-
-        //Change audio clip
         soundManager.Stop();
         soundManager.clip = houseMusic;
         soundManager.Play();
     }
 
-    public void LeaveHouse()
+    public IEnumerator LeaveHouse()
     {
-        //Update player position
+        transition.SetTrigger("Start");
+        yield return new WaitForSeconds(0.4f);
         player.transform.position = new Vector3(-25, -3, 0);
-
-        //Change audio clip
         soundManager.Stop();
         soundManager.clip = sceneMusic;
         soundManager.Play();
     }
 
-    public void LeaveChurch()
+    public IEnumerator LeaveChurch()
     {
-        //Update player position
+        transition.SetTrigger("Start");
+        yield return new WaitForSeconds(0.4f);
         player.transform.position = new Vector3(-12, -3, 0);
-
-        //Change audio clip
         soundManager.Stop();
         soundManager.clip = sceneMusic;
         soundManager.Play();
     }
 
-    public void EnterOwlHouse()
+    public IEnumerator EnterOwlHouse()
     {
-        //Update player position
+        transition.SetTrigger("Start");
+        yield return new WaitForSeconds(0.4f);
         player.transform.position = new Vector3(-19, -24, 0);
-
         //TODO: Add new music? 
     }
 
-    public void LeaveOwlHouse()
+    public IEnumerator LeaveOwlHouse()
     {
-        //Update player position
+        transition.SetTrigger("Start");
+        yield return new WaitForSeconds(0.4f);
         player.transform.position = new Vector3(12, -3, 0);
-
         //TODO: Add new music? 
     }
 
-    public void EnterTavern()
+    public IEnumerator EnterTavern()
     {
-        //Update player position
+        transition.SetTrigger("Start");
+        yield return new WaitForSeconds(0.4f);
         player.transform.position = new Vector3(-21, -47, 0);
-
         //TODO: Add new music? 
 
     }
 
-    public void LeaveTavern()
+    public IEnumerator LeaveTavern()
     {
-        //Update player position
+        transition.SetTrigger("Start");
+        yield return new WaitForSeconds(0.4f);
         player.transform.position = new Vector3(6, -3, 0);
-
         //TODO: Add new Music
-
     }
 }

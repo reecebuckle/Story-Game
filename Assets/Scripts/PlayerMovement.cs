@@ -59,28 +59,28 @@ public class PlayerMovement : MonoBehaviour
             }
 
             if (exitHouse)
-                FindObjectOfType<GameManager>().LeaveHouse();
+                StartCoroutine(FindObjectOfType<GameManager>().LeaveHouse());
 
             if (enterHouse)
-                FindObjectOfType<GameManager>().EnterHouse();
+                StartCoroutine(FindObjectOfType<GameManager>().EnterHouse());
 
             if (exitChurch)
-                FindObjectOfType<GameManager>().LeaveChurch();
+                StartCoroutine(FindObjectOfType<GameManager>().LeaveChurch());
 
             if (enterChurch)
-                FindObjectOfType<GameManager>().EnterChurch();
+                StartCoroutine(FindObjectOfType<GameManager>().EnterChurch());
 
             if (enterOwlHouse)
-                FindObjectOfType<GameManager>().EnterOwlHouse();
+                StartCoroutine(FindObjectOfType<GameManager>().EnterOwlHouse());
 
             if (exitOwlHouse)
-                FindObjectOfType<GameManager>().LeaveOwlHouse();
+                StartCoroutine(FindObjectOfType<GameManager>().LeaveOwlHouse());
 
             if (enterTavern)
-                FindObjectOfType<GameManager>().EnterTavern();
+                StartCoroutine(FindObjectOfType<GameManager>().EnterTavern());
 
             if (exitTavern)
-                FindObjectOfType<GameManager>().LeaveTavern();
+                StartCoroutine(FindObjectOfType<GameManager>().LeaveTavern());
 
         }
     }

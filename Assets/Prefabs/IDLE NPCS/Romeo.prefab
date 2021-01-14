@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1217350961}
   - component: {fileID: 1217350962}
   m_Layer: 0
-  m_Name: hat-man-idle-1
+  m_Name: Romeo
   m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -143,7 +143,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actionSystem: {fileID: 0}
-  name: R
+  name: Robin
+  keyInformation: You learn that Robin plans to marry Juliet 3 days from now
 --- !u!114 &1217350962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,8 +158,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    name: R
+    name: Robin
     sentences:
-    - Hi there cunt
-    - i cant wait to play
-    - mon hun
+    - "Oh my dear brother, for I am in love with Scarlett of house Owl!\r"
+    - Should things go well, we will be wed three days from now
+    - If only our relationship with house Owl could be fixed sometime soon...

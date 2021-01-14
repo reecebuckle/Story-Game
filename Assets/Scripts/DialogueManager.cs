@@ -26,6 +26,7 @@ public class DialogueManager : MonoBehaviour
 
     private void Awake()
     {
+        //Doesn't need to be shown initially
         nextButton.SetActive(false);
     }
 
@@ -44,7 +45,7 @@ public class DialogueManager : MonoBehaviour
         animator.SetBool("IsOpen", true);
 
         nameText.text = dialogue.name;
-        string spendActionPointMsg = "Would you like to spend your action talking " + dialogue.name;
+        string spendActionPointMsg = "Spend one action point talking to " + dialogue.name + " ?";
 
         sentences.Clear();
         //spend point text displays regardless of whom you talk to
@@ -53,8 +54,26 @@ public class DialogueManager : MonoBehaviour
         foreach (string sentence in dialogue.sentences)
             sentences.Enqueue(sentence);
 
-        DisplayNextSentence();
+        DisplayFirstSentence();
     }
+
+    /*
+    *Used to display first sentence
+    */
+    public void DisplayFirstSentence()
+    {
+        if (sentences.Count == 0)
+        {
+            EndDialogue();
+            return;
+        }
+
+        string sentence = sentences.Dequeue();
+        StopAllCoroutines();
+        StartCoroutine(TypeSentence(sentence));
+    }
+
+
 
 
     /*
@@ -64,7 +83,6 @@ public class DialogueManager : MonoBehaviour
     {
         nextButton.SetActive(true);
 
-        //source.Play();
         if (sentences.Count == 0)
         {
             EndDialogue();

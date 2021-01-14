@@ -7,10 +7,10 @@ using UnityEngine.SceneManagement;
 public class ActionSystem : MonoBehaviour
 {
     public TextMeshProUGUI DisplayActions;
-    public TextMeshProUGUI journalText;
+
     public DialogueManager dialogueManager;
 
-    
+    public TextMeshProUGUI journalText;
 
     public Interacted romeoInteraction;
     public Interacted julietInteraction;
@@ -21,11 +21,11 @@ public class ActionSystem : MonoBehaviour
 
     private Interacted[] day1Actions;
 
+
     // Start is called before the first frame update
     private void Start()
     {
         numberOfActions = 2;
-        setNumberOfActions(numberOfActions);
         
         romeoInteraction = GameObject.Find("Robin Day 0").GetComponent<Interacted>();
         julietInteraction = GameObject.Find("Scarlett Day 0").GetComponent<Interacted>();
@@ -38,14 +38,12 @@ public class ActionSystem : MonoBehaviour
 
         Interacted[] day1Actions = {romeoInteraction, julietInteraction, owlInteraction, publicMemberInteraction};
         setDay1Array(day1Actions);
-
-        DisplayActions.gameObject.SetActive(true);
     }
 
     // Update is called once per frame
     void Update()
     {
-        displayNumberOfActions(getNumberOfActions());
+        displayNumberOfActions(numberOfActions);
         if (hasGotNoActions())
         {
             Debug.Log("Has Romeo been interacted with? " +romeoInteraction.hasBeenInteracted());
@@ -104,16 +102,6 @@ public class ActionSystem : MonoBehaviour
     public Interacted[] getDay1Array()
     {
         return day1Actions;
-    }
-
-    public void setNumberOfActions(int num)
-    {
-        numberOfActions = num;
-    }
-
-    public int getNumberOfActions()
-    {
-        return numberOfActions;
     }
 
     public void whatHasBeenActivatedInDay1()

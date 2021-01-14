@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
     public void EnterChurch()
     {
         //Update player position
-        player.transform.position = new Vector3(-13, 20, 0);
+        player.transform.position = new Vector3(-20, 20, 0);
 
         //Change audio clip
         soundManager.Stop();
@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
     public void EnterHouse()
     {
         //Update player position
-        player.transform.position = new Vector3(-5, -20, 0);
+        player.transform.position = new Vector3(69, -24, 0);
 
         //Change audio clip
         soundManager.Stop();
@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
     public void LeaveHouse()
     {
         //Update player position
-        player.transform.position = new Vector3(-14, -3, 0);
+        player.transform.position = new Vector3(-25, -3, 0);
 
         //Change audio clip
         soundManager.Stop();
@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
     public void LeaveChurch()
     {
         //Update player position
-        player.transform.position = new Vector3(6, -3, 0);
+        player.transform.position = new Vector3(-12, -3, 0);
 
         //Change audio clip
         soundManager.Stop();
@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
     public void EnterOwlHouse()
     {
         //Update player position
-        player.transform.position = new Vector3(-14, -3, 0);
+        player.transform.position = new Vector3(-19, -24, 0);
 
         //TODO: Add new music? 
     }
@@ -80,7 +80,7 @@ public class GameManager : MonoBehaviour
     public void LeaveOwlHouse()
     {
         //Update player position
-        player.transform.position = new Vector3(6, -3, 0);
+        player.transform.position = new Vector3(12, -3, 0);
 
         //TODO: Add new music? 
     }
@@ -88,7 +88,7 @@ public class GameManager : MonoBehaviour
     public void EnterTavern()
     {
         //Update player position
-        player.transform.position = new Vector3(-14, -3, 0);
+        player.transform.position = new Vector3(-21, -47, 0);
 
         //TODO: Add new music? 
 
@@ -98,7 +98,6 @@ public class GameManager : MonoBehaviour
     {
         //Update player position
         player.transform.position = new Vector3(6, -3, 0);
-
 
         //TODO: Add new Music
 

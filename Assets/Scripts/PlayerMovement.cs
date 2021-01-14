@@ -27,6 +27,10 @@ public class PlayerMovement : MonoBehaviour
     private bool enterHouse = false;
     private bool enterChurch = false;
     private bool exitChurch = false;
+    private bool enterTavern = false;
+    private bool exitTavern = false;
+    private bool enterOwlHouse = false;
+    private bool exitOwlHouse = false;
 
     // Update is called once per frame
     void Update()
@@ -66,6 +70,18 @@ public class PlayerMovement : MonoBehaviour
             if (enterChurch)
                 FindObjectOfType<GameManager>().EnterChurch();
 
+            if (enterOwlHouse)
+                FindObjectOfType<GameManager>().EnterOwlHouse();
+
+            if (exitOwlHouse)
+                FindObjectOfType<GameManager>().LeaveOwlHouse();
+
+            if (enterTavern)
+                FindObjectOfType<GameManager>().EnterTavern();
+
+            if (exitTavern)
+                FindObjectOfType<GameManager>().LeaveTavern();
+
         }
     }
 
@@ -103,21 +119,32 @@ public class PlayerMovement : MonoBehaviour
         if (other.tag == "Sleep Chair")
             touchingChair = true;
 
-        if (other.tag == "Exit House")
-            exitHouse = true;
-
         if (other.tag == "Enter House")
             enterHouse = true;
 
-        if (other.tag == "Exit Church")
-            exitChurch = true;
+        if (other.tag == "Exit House")
+            exitHouse = true;
 
         if (other.tag == "Enter Church")
             enterChurch = true;
 
+        if (other.tag == "Exit Church")
+            exitChurch = true;
+
+        if (other.tag == "Enter Owl House") 
+            enterOwlHouse = true;
+
+        if (other.tag == "Exit Owl House") 
+            exitOwlHouse = true;
+
+        if (other.tag == "Enter Tavern") 
+            enterTavern = true;
+
+        if (other.tag == "Exit Tavern") 
+            exitTavern = true;
+
 
     }
-
 
     /*
     * The following methods check if player has left the 2D collider of a specific game object
@@ -144,6 +171,18 @@ public class PlayerMovement : MonoBehaviour
 
         if (other.tag == "Enter Church")
             enterChurch = false;
+
+        if (other.tag == "Enter Owl House")
+            enterOwlHouse = false;
+
+        if (other.tag == "Exit Owl House") 
+            exitOwlHouse = false;
+
+        if (other.tag == "Enter Tavern") 
+            enterTavern = false;
+
+        if (other.tag == "Exit Tavern") 
+            exitTavern = false;
     }
 
     public void interactionHasOccured()

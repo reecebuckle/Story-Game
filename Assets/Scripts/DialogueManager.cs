@@ -1,0 +1,99 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using TMPro;
+using UnityEngine;
+
+/*
+*The following script (and Dialogue.cs / DialogueTriggrer.cs) was adapted and expanded upon 
+*from a Brackey's dialogue tutorial for the purpose of this game
+*https://www.youtube.com/watch?v=_nRzoTzeyxU&t=5s&ab_channel=Brackeys
+*/
+public class DialogueManager : MonoBehaviour {
+
+    public TextMeshProUGUI nameText;
+	public TextMeshProUGUI dialogueText;
+
+    public GameObject nextButton;
+
+    public ActionSystem ASystem;
+
+	public Animator animator;
+
+	private Queue<string> sentences;
+
+	public float textSpeed = 0.01f; //0.5
+
+	public AudioSource source;
+    
+
+    private void Awake()
+    {
+        nextButton.SetActive(false);
+    }
+
+    // Use this for initialization
+    void Start () {
+		sentences = new Queue<string>();
+	}
+
+	public void StartDialogue (Dialogue dialogue)
+	{
+        Debug.Log("Talking to " + dialogue.name);
+		animator.SetBool("IsOpen", true);
+
+		nameText.text = dialogue.name;
+        string spendActionPointMsg = "Would you like to spend your action talking " + dialogue.name;
+
+        sentences.Clear();
+
+        //spend point text displays regardless of whom you talk to
+        sentences.Enqueue(spendActionPointMsg);
+
+		foreach (string sentence in dialogue.sentences)
+		{
+			sentences.Enqueue(sentence);
+		}
+
+		DisplayNextSentence();
+	}
+
+	public void DisplayNextSentence ()
+	{
+        nextButton.SetActive(true);
+
+		//source.Play();
+		if (sentences.Count == 0)
+		{
+			EndDialogue();
+			return;
+		}
+
+		string sentence = sentences.Dequeue();
+		StopAllCoroutines();
+		StartCoroutine(TypeSentence(sentence));
+	}
+
+	IEnumerator TypeSentence (string sentence)
+	{
+		dialogueText.text = "";
+		foreach (char letter in sentence.ToCharArray())
+		{
+			dialogueText.text += letter;
+			//yield return new WaitForSeconds(textSpeed);
+			yield return null;
+		}
+	}
+
+	public void EndDialogue()
+	{
+		animator.SetBool("IsOpen", false);
+        nextButton.SetActive(false);
+    }
+
+    public string getCurrentDialoguePartner()
+    {
+        return nameText.text;
+    }
+
+
+}

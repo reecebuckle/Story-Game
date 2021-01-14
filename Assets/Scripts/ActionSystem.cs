@@ -27,14 +27,14 @@ public class ActionSystem : MonoBehaviour
     {
         numberOfActions = 2;
         
-        romeoInteraction = GameObject.Find("hat-man-idle-1").GetComponent<Interacted>();
-        julietInteraction = GameObject.Find("woman-idle-1").GetComponent<Interacted>();
-        owlInteraction = GameObject.Find("wizard-idle-1").GetComponent<Interacted>();
-        publicMemberInteraction = GameObject.Find("bearded-idle-1").GetComponent<Interacted>();
+        romeoInteraction = GameObject.Find("Robin Day 0").GetComponent<Interacted>();
+        julietInteraction = GameObject.Find("Scarlett Day 0").GetComponent<Interacted>();
+        owlInteraction = GameObject.Find("Old Man Day 0").GetComponent<Interacted>();
+        publicMemberInteraction = GameObject.Find("Baker Day 0").GetComponent<Interacted>();
 
-        
-        journalText.gameObject.SetActive(false);
         journalText.text = "";
+        journalText.gameObject.SetActive(false);
+        
 
         Interacted[] day1Actions = {romeoInteraction, julietInteraction, owlInteraction, publicMemberInteraction};
         setDay1Array(day1Actions);

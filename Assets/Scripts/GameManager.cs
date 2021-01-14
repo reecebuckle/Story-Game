@@ -1,12 +1,12 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     [Header("Important Game Objects")]
-
     public GameObject player;
+    
 
     [Header("Integrated Audio Manager")]
     public AudioClip sceneMusic;
@@ -35,7 +35,6 @@ public class GameManager : MonoBehaviour
         soundManager.Play();
 
     }
-
 
     public void EnterHouse()
     {

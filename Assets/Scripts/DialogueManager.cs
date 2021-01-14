@@ -35,6 +35,9 @@ public class DialogueManager : MonoBehaviour
         sentences = new Queue<string>();
     }
 
+    /*
+    *  Used to initiate dialogue if user presses yes and decides to talk to NPC
+    */
     public void StartDialogue(Dialogue dialogue)
     {
         Debug.Log("Talking to " + dialogue.name);
@@ -44,18 +47,19 @@ public class DialogueManager : MonoBehaviour
         string spendActionPointMsg = "Would you like to spend your action talking " + dialogue.name;
 
         sentences.Clear();
-
         //spend point text displays regardless of whom you talk to
         sentences.Enqueue(spendActionPointMsg);
 
         foreach (string sentence in dialogue.sentences)
-        {
             sentences.Enqueue(sentence);
-        }
 
         DisplayNextSentence();
     }
 
+
+    /*
+    * Used to load the next sentence 
+    */
     public void DisplayNextSentence()
     {
         nextButton.SetActive(true);
@@ -72,6 +76,9 @@ public class DialogueManager : MonoBehaviour
         StartCoroutine(TypeSentence(sentence));
     }
 
+    /*
+    * Used to type out the dialogue sentence at a set speed
+    */
     IEnumerator TypeSentence(string sentence)
     {
         dialogueText.text = "";
@@ -83,6 +90,9 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    /*
+    * Used to close dialogue box prematurely or if all options have been exhausted
+    */
     public void EndDialogue()
     {
         animator.SetBool("IsOpen", false);

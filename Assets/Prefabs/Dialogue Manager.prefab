@@ -49,4 +49,3 @@ MonoBehaviour:
   ASystem: {fileID: 0}
   animator: {fileID: 0}
   textSpeed: 0.5
-  source: {fileID: 0}

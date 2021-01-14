@@ -136,22 +136,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 
       objectReference: {fileID: 1883250285}
-    - target: {fileID: 1149086287, guid: 675c95b856371f8419dc23ae5cca62c5, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
-      value: DisplayNextSentence
-      objectReference: {fileID: 0}
-    - target: {fileID: 1149086287, guid: 675c95b856371f8419dc23ae5cca62c5, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1664613915, guid: 675c95b856371f8419dc23ae5cca62c5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1883250285}
-    - target: {fileID: 1664613915, guid: 675c95b856371f8419dc23ae5cca62c5, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: EndDialogue
-      objectReference: {fileID: 0}
     - target: {fileID: 1182862351017657904, guid: 675c95b856371f8419dc23ae5cca62c5,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2277,25 +2265,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1217350961, guid: eda52c2db0d4cda41a5469e82c98a18c, type: 3}
+      propertyPath: actionSystem
+      value: 
+      objectReference: {fileID: 719861128}
     - target: {fileID: 6994485053461583087, guid: eda52c2db0d4cda41a5469e82c98a18c,
         type: 3}
       propertyPath: m_Name
       value: Romeo
-      objectReference: {fileID: 0}
-    - target: {fileID: 6994485053461583087, guid: eda52c2db0d4cda41a5469e82c98a18c,
-        type: 3}
-      propertyPath: m_TagString
-      value: NPC
-      objectReference: {fileID: 0}
-    - target: {fileID: 6994485053461583089, guid: eda52c2db0d4cda41a5469e82c98a18c,
-        type: 3}
-      propertyPath: m_SortingLayerID
-      value: 273335407
-      objectReference: {fileID: 0}
-    - target: {fileID: 6994485053461583089, guid: eda52c2db0d4cda41a5469e82c98a18c,
-        type: 3}
-      propertyPath: m_SortingLayer
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6994485053461583090, guid: eda52c2db0d4cda41a5469e82c98a18c,
         type: 3}
@@ -2354,70 +2331,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eda52c2db0d4cda41a5469e82c98a18c, type: 3}
---- !u!1 &1217350960 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6994485053461583087, guid: eda52c2db0d4cda41a5469e82c98a18c,
+--- !u!114 &1217350961 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1217350961, guid: eda52c2db0d4cda41a5469e82c98a18c,
     type: 3}
   m_PrefabInstance: {fileID: 1217350959}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1217350961
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1217350960}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c52286a338e780146b1c0252d2b30456, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionSystem: {fileID: 719861128}
-  name: R
---- !u!114 &1217350962
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1217350960}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27a83b32925e34240b5b28c5430f53d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogue:
-    name: R
-    sentences:
-    - Hi there cunt
-    - i cant wait to play
-    - mon hun
---- !u!61 &1217350965
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1217350960}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.21875, y: 1.625}
-    newSize: {x: 1.21875, y: 1.625}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.21875, y: 1.625}
-  m_EdgeRadius: 0
 --- !u!1 &1220419973
 GameObject:
   m_ObjectHideFlags: 0
@@ -2512,21 +2437,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7330078670467698769, guid: 1e349976b2a91014e940d0faa576dc5c,
-        type: 3}
-      propertyPath: m_FlipX
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7330078670467698769, guid: 1e349976b2a91014e940d0faa576dc5c,
-        type: 3}
-      propertyPath: m_SortingLayerID
-      value: 273335407
-      objectReference: {fileID: 0}
-    - target: {fileID: 7330078670467698769, guid: 1e349976b2a91014e940d0faa576dc5c,
-        type: 3}
-      propertyPath: m_SortingLayer
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7330078670467698771, guid: 1e349976b2a91014e940d0faa576dc5c,
         type: 3}
       propertyPath: m_Name
@@ -3002,26 +2912,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1568684584971291208, guid: 28c2056e79c6690449eafcc0a185f3cb,
-        type: 3}
-      propertyPath: m_WhatIsGround.m_Bits
-      value: 567
-      objectReference: {fileID: 0}
-    - target: {fileID: 1568684584971291208, guid: 28c2056e79c6690449eafcc0a185f3cb,
-        type: 3}
-      propertyPath: m_AirControl
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1568684584971291210, guid: 28c2056e79c6690449eafcc0a185f3cb,
-        type: 3}
-      propertyPath: m_SortingLayerID
-      value: -797900885
-      objectReference: {fileID: 0}
-    - target: {fileID: 1568684584971291210, guid: 28c2056e79c6690449eafcc0a185f3cb,
-        type: 3}
-      propertyPath: m_SortingLayer
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1568684584971291211, guid: 28c2056e79c6690449eafcc0a185f3cb,
         type: 3}
       propertyPath: m_LocalPosition.x

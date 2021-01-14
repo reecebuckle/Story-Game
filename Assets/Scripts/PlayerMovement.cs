@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     private bool jump = false;
     private GameObject currentlyInteractingTo;
 
+
     //Collision detection bools
     private bool inInteractionZone = false;
     private bool touchingChair = false;

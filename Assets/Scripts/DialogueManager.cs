@@ -75,7 +75,6 @@ public class DialogueManager : MonoBehaviour
 
 
 
-
     /*
     * Used to load the next sentence 
     */

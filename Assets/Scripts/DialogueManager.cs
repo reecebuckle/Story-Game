@@ -24,9 +24,6 @@ public class DialogueManager : MonoBehaviour
 
     public float textSpeed = 0.01f; //0.5
 
-    public AudioSource source;
-
-
     private void Awake()
     {
         nextButton.SetActive(false);

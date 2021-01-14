@@ -15,6 +15,8 @@ public class DialogueManager : MonoBehaviour
     public TextMeshProUGUI dialogueText;
 
     public GameObject nextButton;
+    public GameObject yesButton;
+    public GameObject noButton;
 
     public ActionSystem ASystem;
 
@@ -114,6 +116,9 @@ public class DialogueManager : MonoBehaviour
     {
         animator.SetBool("IsOpen", false);
         nextButton.SetActive(false);
+        yesButton.SetActive(true);
+        noButton.SetActive(true);
+
     }
 
     public string getCurrentDialoguePartner()

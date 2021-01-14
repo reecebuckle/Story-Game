@@ -62,6 +62,7 @@ public class DialogueManager : MonoBehaviour
     */
     public void DisplayFirstSentence()
     {
+
         if (sentences.Count == 0)
         {
             EndDialogue();

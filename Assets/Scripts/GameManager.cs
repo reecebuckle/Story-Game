@@ -8,26 +8,66 @@ public class GameManager : MonoBehaviour
 
     public GameObject player;
 
-    public void EnterChurch() {
-        player.transform.position = new Vector3(-13,20,0);
-        //TODO CHANGE MUSIC
+    [Header("Integrated Audio Manager")]
+    public AudioClip sceneMusic;
+    public AudioClip churchMusic;
+    public AudioClip houseMusic;
+
+    public AudioSource soundManager;
+
+
+    public void Awake()
+    {
+        //initially spawn in house, so begin with playing house music
+        soundManager.clip = houseMusic;
+        soundManager.Play();
+    }
+
+
+    public void EnterChurch()
+    {
+        //Update player position
+        player.transform.position = new Vector3(-13, 20, 0);
+
+        //Change audio clip
+        soundManager.Stop();
+        soundManager.clip = churchMusic;
+        soundManager.Play();
+
+    }
+
+
+    public void EnterHouse()
+    {
+        //Update player position
+        player.transform.position = new Vector3(-5, -20, 0);
+
+        //Change audio clip
+        soundManager.Stop();
+        soundManager.clip = houseMusic;
+        soundManager.Play();
+    }
+
+    public void LeaveHouse()
+    {
+        //Update player position
+        player.transform.position = new Vector3(-14, -3, 0);
+
+        //Change audio clip
+        soundManager.Stop();
+        soundManager.clip = sceneMusic;
+        soundManager.Play();
+    }
+
+    public void LeaveChurch()
+    {
+        //Update player position
+        player.transform.position = new Vector3(6, -3, 0);
         
-    }
-
-    public void EnterHouse() {
-         player.transform.position = new Vector3(-5,-20,0);
-        //TODO CHANGE MUSIC
-        
-    }
-
-    public void LeaveHouse() {
-        player.transform.position = new Vector3(-14,-3,0);
-        //TODO CHANGE MUSIC
-    }
-
-    public void LeaveChurch() {
-         player.transform.position = new Vector3(6,-3,0);
-        //TODO CHANGE MUSIC
+        //Change audio clip
+        soundManager.Stop();
+        soundManager.clip = sceneMusic;
+        soundManager.Play();
 
     }
 }

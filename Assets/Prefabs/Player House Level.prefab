@@ -1783,7 +1783,7 @@ GameObject:
   - component: {fileID: 1241740490743129901}
   - component: {fileID: 1241740490743129898}
   m_Layer: 0
-  m_Name: House Level
+  m_Name: Player House Level
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4265,7 +4265,6 @@ GameObject:
   - component: {fileID: 1241740491401006661}
   - component: {fileID: 1241740491401006662}
   - component: {fileID: 1241740491401006663}
-  - component: {fileID: 1241740491401006660}
   - component: {fileID: 1241740491401006713}
   m_Layer: 0
   m_Name: End Day Chair
@@ -4579,19 +4578,6 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
---- !u!114 &1241740491401006660
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1241740491401006658}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c75e455ba53c0b4a99b6eebe357c3ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Text: {fileID: 0}
 --- !u!61 &1241740491401006713
 BoxCollider2D:
   m_ObjectHideFlags: 0

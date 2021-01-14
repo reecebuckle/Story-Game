@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
     [Header("Important Game Objects")]
     public GameObject player;
-    
+
 
     [Header("Integrated Audio Manager")]
     public AudioClip sceneMusic;
@@ -62,11 +62,45 @@ public class GameManager : MonoBehaviour
     {
         //Update player position
         player.transform.position = new Vector3(6, -3, 0);
-        
+
         //Change audio clip
         soundManager.Stop();
         soundManager.clip = sceneMusic;
         soundManager.Play();
+    }
+
+    public void EnterOwlHouse()
+    {
+        //Update player position
+        player.transform.position = new Vector3(-14, -3, 0);
+
+        //TODO: Add new music? 
+    }
+
+    public void LeaveOwlHouse()
+    {
+        //Update player position
+        player.transform.position = new Vector3(6, -3, 0);
+
+        //TODO: Add new music? 
+    }
+
+    public void EnterTavern()
+    {
+        //Update player position
+        player.transform.position = new Vector3(-14, -3, 0);
+
+        //TODO: Add new music? 
+
+    }
+
+    public void LeaveTavern()
+    {
+        //Update player position
+        player.transform.position = new Vector3(6, -3, 0);
+
+
+        //TODO: Add new Music
 
     }
 }

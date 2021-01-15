@@ -3213,9 +3213,7 @@ MonoBehaviour:
   churchMusic: {fileID: 8300000, guid: 4446260b52d256342956d349c889aee0, type: 3}
   houseMusic: {fileID: 8300000, guid: 18fa7f85faaee95408b6f749a5990a23, type: 3}
   soundManager: {fileID: 1211582957}
-<<<<<<< HEAD
   transition: {fileID: 1139601198}
-=======
   robinDay0: {fileID: 1953265213}
   scarlettDay0: {fileID: 891553073}
   bakerDay0: {fileID: 683560557}
@@ -3232,7 +3230,6 @@ MonoBehaviour:
   bakerDay3: {fileID: 1038173166}
   ibisDay3: {fileID: 1270104233}
   adventurerDay3: {fileID: 1832771175}
->>>>>>> e926c155dec4e3680619beeb656998423a65be8e
 --- !u!4 &1211582956
 Transform:
   m_ObjectHideFlags: 0

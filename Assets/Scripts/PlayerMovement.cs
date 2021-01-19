@@ -51,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (touchingChair)
                 StartCoroutine(gameManager.RestForDay());
-        
+
             if (exitHouse)
                 StartCoroutine(gameManager.LeaveHouse());
 
@@ -64,21 +64,27 @@ public class PlayerMovement : MonoBehaviour
             if (enterChurch)
                 StartCoroutine(gameManager.EnterChurch());
 
-            if (enterOwlHouse) {
-               
-                if (gameManager.CheckEntryCondition())
+            if (enterOwlHouse)
+            {
+
+                if (gameManager.CheckOwlEntryCondition())
                     StartCoroutine(gameManager.EnterOwlHouse());
-                else   
-                //TODO: display a message saying you don't have acess
+                else
+                    //TODO: display a message saying you don't have acess
                     Debug.Log("TODO cannot enter house currently!");
             }
-                
+
 
             if (exitOwlHouse)
                 StartCoroutine(gameManager.LeaveOwlHouse());
 
-            if (enterTavern)
-                StartCoroutine(gameManager.EnterTavern());
+            if (enterTavern) {
+                if (gameManager.CheckTavernEntryCondition())
+                    StartCoroutine(gameManager.EnterTavern());
+                else
+                    //TODO: display a message saying you don't have acess
+                    Debug.Log("TODO cannot enter house currently!");
+            }
 
             if (exitTavern)
                 StartCoroutine(gameManager.LeaveTavern());
@@ -123,16 +129,16 @@ public class PlayerMovement : MonoBehaviour
         if (other.tag == "Exit Church")
             exitChurch = true;
 
-        if (other.tag == "Enter Owl House") 
+        if (other.tag == "Enter Owl House")
             enterOwlHouse = true;
 
-        if (other.tag == "Exit Owl House") 
+        if (other.tag == "Exit Owl House")
             exitOwlHouse = true;
 
-        if (other.tag == "Enter Tavern") 
+        if (other.tag == "Enter Tavern")
             enterTavern = true;
 
-        if (other.tag == "Exit Tavern") 
+        if (other.tag == "Exit Tavern")
             exitTavern = true;
     }
 
@@ -159,13 +165,13 @@ public class PlayerMovement : MonoBehaviour
         if (other.tag == "Enter Owl House")
             enterOwlHouse = false;
 
-        if (other.tag == "Exit Owl House") 
+        if (other.tag == "Exit Owl House")
             exitOwlHouse = false;
 
-        if (other.tag == "Enter Tavern") 
+        if (other.tag == "Enter Tavern")
             enterTavern = false;
 
-        if (other.tag == "Exit Tavern") 
+        if (other.tag == "Exit Tavern")
             exitTavern = false;
     }
 }

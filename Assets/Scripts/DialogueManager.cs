@@ -25,6 +25,8 @@ public class DialogueManager : MonoBehaviour
     public GameObject yesChoiceButton;
     public GameObject noChoiceButton;
 
+    
+
     [Header("ActionSystem to record interactions")]
     public ActionSystem ASystem;
 
@@ -34,6 +36,8 @@ public class DialogueManager : MonoBehaviour
     private Queue<string> sentences;
 
     public float textSpeed = 0.01f; //0.5
+
+    private Dialogue dialogue; //store a local copy (gets overridden, could be buggy)
 
     private void Awake()
     {
@@ -52,8 +56,8 @@ public class DialogueManager : MonoBehaviour
     */
     public void StartDialogue(Dialogue dialogue)
     {
+        this.dialogue = dialogue;
         Debug.Log("Talking to " + dialogue.name);
-
         animator.SetBool("IsOpen", true);
 
         nameText.text = dialogue.name;
@@ -89,7 +93,7 @@ public class DialogueManager : MonoBehaviour
     * Used to load the next sentence
     * Dialogue object is only parsed incase a choiceID is present
     */
-    public void DisplayNextSentence(Dialogue dialogue)
+    public void DisplayNextSentence()
     {
         nextButton.SetActive(true);
 
@@ -105,7 +109,7 @@ public class DialogueManager : MonoBehaviour
             //Int datatype is set to 0 by default (and never null)
             //If it's anything other than null, we pass that to record choice
             if (dialogue.choiceID != 0)
-                RecordChoice(dialogue.choiceID);
+                PresentChoice(dialogue.choiceID);
 
         } else {
             StopAllCoroutines();
@@ -136,27 +140,43 @@ public class DialogueManager : MonoBehaviour
         nextButton.SetActive(false);
         yesButton.SetActive(true);
         noButton.SetActive(true);
-
     }
-
-    public string getCurrentDialoguePartner()
-    {
-        return nameText.text;
-    }
-
 
     /*
     * Used to record the input of the choice 
     */
-    public void RecordChoice(int choiceID) {
+    public void PresentChoice(int choiceID) {
         nextButton.SetActive(false);
         yesChoiceButton.SetActive(true);
         noChoiceButton.SetActive(true);
         //TODO freeze player in position whilst making choice (or in general whilst interacting?)
+        //TODO Handle player not being able to be presenting with the same choices TWICE!
         //wait for player to click a button..!
-        Debug.Log("recording choice " + choiceID);
-    
+        Debug.Log("presenting choices for " + choiceID);
     }
+
+    public void RecordYesChoice() {
+        Debug.Log("Player selected yes");
+        yesChoiceButton.SetActive(false);
+        noChoiceButton.SetActive(false);
+        EndDialogue();
+
+        //SEND THE CHOICE TO ACTION HANDLER!
+    }
+
+    public void RecordNoChoice() {
+        Debug.Log("Player selected no");
+        yesChoiceButton.SetActive(false);
+        noChoiceButton.SetActive(false);
+        EndDialogue();
+
+        //SEND THE CHOICE !
+    }
+
+     // public string getCurrentDialoguePartner()
+    // {
+    //     return nameText.text;
+    // }
 
 
 }

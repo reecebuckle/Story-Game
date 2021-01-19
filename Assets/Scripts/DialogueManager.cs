@@ -10,11 +10,9 @@ using UnityEngine;
 */
 public class DialogueManager : MonoBehaviour
 {
-    [Header("Dialogue and Name text mesh pro objects")]
+    [Header("Dialogue Canvas Objects")]
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI dialogueText;
-
-    [Header("Yes, No and Next buttons")]
     public GameObject nextButton;
     public GameObject yesButton;
     public GameObject noButton;
@@ -23,8 +21,9 @@ public class DialogueManager : MonoBehaviour
     public GameObject yesChoiceButton;
     public GameObject noChoiceButton;
 
-    [Header("Reference to Action System")]
+    [Header("References to other Systems")]
     public ActionSystem actionSystem;
+    public GameManager gameManager;
 
     [Header("Animator to close/open dialogue box")]
     public Animator animator;
@@ -201,6 +200,8 @@ public class DialogueManager : MonoBehaviour
         yesChoiceButton.SetActive(false);
         noChoiceButton.SetActive(false);
         EndDialogue();
+        //choiceID tells the game manager how to evulate the choice, true represents yes
+        gameManager.EvaluateChoice(dialogue.choiceID, false);
         //SEND THE CHOICE TO ACTION MANAGER
     }
 
@@ -211,7 +212,8 @@ public class DialogueManager : MonoBehaviour
     {
         yesChoiceButton.SetActive(false);
         noChoiceButton.SetActive(false);
+        //choiceID tells the game manager how to evulate the choice, true represents yes
+        gameManager.EvaluateChoice(dialogue.choiceID, true);
         EndDialogue();
-        //SEND THE CHOICE TO ACTION MANAGER
     }
 }

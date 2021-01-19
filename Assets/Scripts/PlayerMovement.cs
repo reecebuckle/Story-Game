@@ -10,7 +10,6 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
-
     public CharacterController2D controller;
     public Animator animator;
 
@@ -65,8 +64,15 @@ public class PlayerMovement : MonoBehaviour
             if (enterChurch)
                 StartCoroutine(gameManager.EnterChurch());
 
-            if (enterOwlHouse)
-                StartCoroutine(gameManager.EnterOwlHouse());
+            if (enterOwlHouse) {
+               
+                if (gameManager.CheckEntryCondition())
+                    StartCoroutine(gameManager.EnterOwlHouse());
+                else   
+                //TODO: display a message saying you don't have acess
+                    Debug.Log("TODO cannot enter house currently!");
+            }
+                
 
             if (exitOwlHouse)
                 StartCoroutine(gameManager.LeaveOwlHouse());

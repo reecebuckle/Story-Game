@@ -94,11 +94,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-  m_Name: Mmm
+  m_Name: Pixel Font
   m_EditorClassIdentifier: 
-  hashCode: 0
+  hashCode: -1149571237
   material: {fileID: -6874762813041088848}
-  materialHashCode: 0
+  materialHashCode: 1602324891
   m_Version: 1.1.0
   m_SourceFontFileGUID: e004a8b3dbb865b4abe119e0227ead2e
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: e004a8b3dbb865b4abe119e0227ead2e,

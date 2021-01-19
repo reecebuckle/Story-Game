@@ -1368,15 +1368,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    choiceID: 0
+    choiceID: 1
     name: Baker
     sentences:
     - "Ho! You lookin\u2019 for some bread?"
     - "The feud between the Owl and Grasshopper \u2018ouses are only growing more
       tense"
     - Tis a nightmare to sell my bread
-    - If only the two houses could become work together, it would be better business
-      for everyone
+    - Do you wanna come to my housee
+    - ask choice
   interaction: {fileID: 514528200522024220}
 --- !u!1 &328686017 stripped
 GameObject:
@@ -2980,13 +2980,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    choiceID: 0
+    choiceID: 1
     name: Scarlett
     sentences:
     - So you know Robin from the Grasshopper house? I'm pleased to announce that
       we are betrothed
     - Hopefully father can see reason and finally bury the hatchet
     - Too many have perished for such a small accident
+    - Do you wanna come to my house?
+    - ask choice
   interaction: {fileID: 1007437055}
 --- !u!114 &1007437055
 MonoBehaviour:
@@ -3221,7 +3223,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1115856779}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.6199999, y: -0.27999997, z: 10}
+  m_LocalPosition: {x: 0.67, y: -0.27999997, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1107163821}
@@ -5402,6 +5404,11 @@ PrefabInstance:
       propertyPath: actionSystem
       value: 
       objectReference: {fileID: 719861128}
+    - target: {fileID: 7980251694579690983, guid: 3c63eb440bd2fed479d211440dd8a5aa,
+        type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1211582955}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c63eb440bd2fed479d211440dd8a5aa, type: 3}
 --- !u!114 &1883250285 stripped

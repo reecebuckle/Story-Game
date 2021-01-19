@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     public GameObject day2NPCS;
     public GameObject day3NPCS;
     private int currentDay;
+    private bool canAccessOwlHouse;
 
 
     public void Awake()
@@ -32,8 +33,18 @@ public class GameManager : MonoBehaviour
         //initially spawn in house, so begin with playing house music
         soundManager.clip = houseMusic;
         soundManager.Play();
-        day0NPCS.SetActive(true); // in case accidentally set to false 
-        currentDay = 0;
+
+        // in case accidentally set wrong in unity 
+        day0NPCS.SetActive(true); 
+        day1NPCS.SetActive(false);
+        day2NPCS.SetActive(false);
+        day3NPCS.SetActive(false);
+       
+       //begin day counter
+        currentDay = 0; 
+
+        //no access initially 
+        canAccessOwlHouse = false; 
     }
 
 
@@ -154,5 +165,20 @@ public class GameManager : MonoBehaviour
             }
             //For any other future day, throw a not able to rest message/prevent user from resting!
         }
+    }
+
+    /*
+    * Method for handling player choices, the response is true if yes, false if no
+    */
+    public void EvaluateChoice(int choiceID, bool response) {
+        
+        //Choice 1 - can player access Scarlett's house?
+        if (choiceID == 1 && response == true) 
+            canAccessOwlHouse = true;
+    }
+
+    //Returns whether player can access owl house
+    public bool CheckEntryCondition() {
+        return canAccessOwlHouse;
     }
 }

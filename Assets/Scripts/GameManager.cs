@@ -128,11 +128,13 @@ public class GameManager : MonoBehaviour
     {
         //if not 0 prevent user from sleeping (for reasons of continuity..)
         if (actionSystem.getRemainingActions() != 0) {
+            Debug.Log("Please use your remaining actions!");
             //TODO: Add a message prompting user to finish their interactions first..
         } else {
-
             //short term fix preventing an overly cluttered journal
             actionSystem.ClearJournal();
+
+            actionSystem.ResetActionPoints();
 
             transition.SetTrigger("Start");
             yield return new WaitForSeconds(0.4f);

@@ -23,7 +23,7 @@ public class ActionSystem : MonoBehaviour
         journalText.gameObject.SetActive(false);
 
         //Display starting number of actions
-        DisplayActions.text = "Number of remaining actions: " + numberOfActions;
+        DisplayActions.text = "Remaining actions: " + numberOfActions;
     }
 
     /*
@@ -33,7 +33,7 @@ public class ActionSystem : MonoBehaviour
     {
         numberOfActions--;
         //update display
-        DisplayActions.text = "Number of actions: " + numberOfActions;
+        DisplayActions.text = "Remaining actions: " + numberOfActions;
         //append journal with interaction information
         journalText.text += interaction.getKeyInformation();
     }
@@ -45,7 +45,7 @@ public class ActionSystem : MonoBehaviour
     {
         numberOfActions = 4;
         //update display
-        DisplayActions.text = "Number of actions: " + numberOfActions;
+        DisplayActions.text = "Remaining actions: " + numberOfActions;
     }
 
     /*
@@ -75,6 +75,6 @@ public class ActionSystem : MonoBehaviour
     * Returns remaining number of actions
     */
     public int getRemainingActions() {
-        return this.numberOfActions;
+        return numberOfActions;
     }
 }

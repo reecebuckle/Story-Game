@@ -11,15 +11,24 @@ using UnityEngine;
 public class DialogueManager : MonoBehaviour
 {
 
+
+    [Header("Dialogue and Name text mesh pro objects")]
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI dialogueText;
 
+    [Header("Yes, No and Next buttons")]
     public GameObject nextButton;
     public GameObject yesButton;
     public GameObject noButton;
 
+    [Header("Special choice buttons")]
+    public GameObject yesChoiceButton;
+    public GameObject noChoiceButton;
+
+    [Header("ActionSystem to record interactions")]
     public ActionSystem ASystem;
 
+    [Header("Animator to close/open dialogue box")]
     public Animator animator;
 
     private Queue<string> sentences;
@@ -44,6 +53,7 @@ public class DialogueManager : MonoBehaviour
     public void StartDialogue(Dialogue dialogue)
     {
         Debug.Log("Talking to " + dialogue.name);
+
         animator.SetBool("IsOpen", true);
 
         nameText.text = dialogue.name;
@@ -75,12 +85,11 @@ public class DialogueManager : MonoBehaviour
         StartCoroutine(TypeSentence(sentence));
     }
 
-
-
     /*
-    * Used to load the next sentence 
+    * Used to load the next sentence
+    * Dialogue object is only parsed incase a choiceID is present
     */
-    public void DisplayNextSentence()
+    public void DisplayNextSentence(Dialogue dialogue)
     {
         nextButton.SetActive(true);
 
@@ -89,10 +98,19 @@ public class DialogueManager : MonoBehaviour
             EndDialogue();
             return;
         }
-
         string sentence = sentences.Dequeue();
-        StopAllCoroutines();
-        StartCoroutine(TypeSentence(sentence));
+
+        //if sentence is a special type (prompt choices option)
+        if (sentence == "ask choice") {
+            //Int datatype is set to 0 by default (and never null)
+            //If it's anything other than null, we pass that to record choice
+            if (dialogue.choiceID != 0)
+                RecordChoice(dialogue.choiceID);
+
+        } else {
+            StopAllCoroutines();
+            StartCoroutine(TypeSentence(sentence));
+        }
     }
 
     /*
@@ -124,6 +142,20 @@ public class DialogueManager : MonoBehaviour
     public string getCurrentDialoguePartner()
     {
         return nameText.text;
+    }
+
+
+    /*
+    * Used to record the input of the choice 
+    */
+    public void RecordChoice(int choiceID) {
+        nextButton.SetActive(false);
+        yesChoiceButton.SetActive(true);
+        noChoiceButton.SetActive(true);
+        //TODO freeze player in position whilst making choice (or in general whilst interacting?)
+        //wait for player to click a button..!
+        Debug.Log("recording choice " + choiceID);
+    
     }
 
 

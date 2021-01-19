@@ -10,8 +10,9 @@ public class DialogueTrigger : MonoBehaviour
     //checks whether player has hit 2d collider of NPC to prompt dialogue
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player")) {
             FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
+        }
 
     }
 

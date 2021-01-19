@@ -4,48 +4,27 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [Header("Important Game Objects")]
+    [Header("Reference to Player")]
     public GameObject player;
+
+    [Header("Reference to Action System")]
+    public ActionSystem actionSystem;
 
     [Header("Integrated Audio Manager")]
     public AudioClip sceneMusic;
     public AudioClip churchMusic;
     public AudioClip houseMusic;
-
     public AudioSource soundManager;
 
     [Header("Add Crossfade Transitioner")]
     public Animator transition;
-    
-    [Header("Day 0 NPCs")]
-    public GameObject robinDay0;
-    public GameObject scarlettDay0;
-    public GameObject bakerDay0;
-    public GameObject oldManDay0;
 
-    [Header("Day 1 NPCs")]
-    public GameObject robinDay1;
-    public GameObject scarlettDay1;
-    public GameObject bakerDay1;
-    public GameObject ibisDay1;
-
-    [Header("Day 2 NPCs")]
-    public GameObject robinDay2;
-    public GameObject scarlettDay2;
-    public GameObject oldManDay2;
-    public GameObject ibisDay2;
-    public GameObject adventurerDay2;
-
-    [Header("Day 3 NPCs")]
-    public GameObject bakerDay3;
-    public GameObject ibisDay3;
-    public GameObject adventurerDay3;
-
-    private GameObject[] day0NPCS;
-    private GameObject[] day1NPCS;
-    private GameObject[] day2NPCS;
-    private GameObject[] day3NPCS;
-
+    [Header("NPCs for Different Days")]
+    public GameObject day0NPCS;
+    public GameObject day1NPCS;
+    public GameObject day2NPCS;
+    public GameObject day3NPCS;
+    private int currentDay;
 
 
     public void Awake()
@@ -53,16 +32,8 @@ public class GameManager : MonoBehaviour
         //initially spawn in house, so begin with playing house music
         soundManager.clip = houseMusic;
         soundManager.Play();
-
-        GameObject[] day0NPCS = {robinDay0, scarlettDay0, bakerDay0, oldManDay0 };
-        GameObject[] day1NPCS = {robinDay1, scarlettDay1, bakerDay1, ibisDay1 };
-        GameObject[] day2NPCS = {robinDay2, scarlettDay2, oldManDay2, ibisDay2, adventurerDay2 };
-        GameObject[] day3NPCS = {bakerDay3, ibisDay3, adventurerDay3};
-
-        setDay0NPCS(day0NPCS);
-        setDay1NPCS(day1NPCS);
-        setDay2NPCS(day2NPCS);
-        setDay3NPCS(day3NPCS);
+        day0NPCS.SetActive(true); // in case accidentally set to false 
+        currentDay = 0;
     }
 
 
@@ -77,7 +48,7 @@ public class GameManager : MonoBehaviour
 
         //Wait for 0.2 seconds
         yield return new WaitForSeconds(0.3f);
-        
+
         //Update player position
         player.transform.position = new Vector3(-20, 20, 0);
 
@@ -115,16 +86,6 @@ public class GameManager : MonoBehaviour
         soundManager.Stop();
         soundManager.clip = sceneMusic;
         soundManager.Play();
-
-        //TESTING PURPOSES
-        deleteDayNPC(day0NPCS);
-        deleteDayNPC(day1NPCS);
-        deleteDayNPC(day2NPCS);
-        deleteDayNPC(day3NPCS);
-
-        //TESTING PURPOSES
-        loadDayNPC(day2NPCS);
-        loadDayNPC(day3NPCS);
     }
 
     public IEnumerator EnterOwlHouse()
@@ -160,62 +121,36 @@ public class GameManager : MonoBehaviour
         //TODO: Add new Music
     }
 
-    public void loadDayNPC(GameObject[] npcs)
+    /*
+    * Used to simulate resting for one day
+    */
+    public IEnumerator RestForDay()
     {
-        foreach (GameObject npc in npcs)
-        {
-            npc.gameObject.SetActive(true);
+        //if not 0 prevent user from sleeping (for reasons of continuity..)
+        if (actionSystem.getRemainingActions() != 0) {
+            //TODO: Add a message prompting user to finish their interactions first..
+        } else {
+
+            //short term fix preventing an overly cluttered journal
+            actionSystem.ClearJournal();
+
+            transition.SetTrigger("Start");
+            yield return new WaitForSeconds(0.4f);
+            //TODO check to see interactions for day is 0 before allowing you to move on!
+
+            //increment day count
+            currentDay++;
+            if(currentDay == 1) {
+                day0NPCS.SetActive(false);
+                day1NPCS.SetActive(true);
+            } else if (currentDay == 2) {
+                day1NPCS.SetActive(false);
+                day2NPCS.SetActive(true);
+            } else if (currentDay == 3) {
+                day2NPCS.SetActive(false);
+                day3NPCS.SetActive(true);
+            }
+            //For any other future day, throw a not able to rest message/prevent user from resting!
         }
     }
-
-    public void deleteDayNPC(GameObject[] npcs)
-    {
-        foreach (GameObject npc in npcs)
-        {
-            npc.gameObject.SetActive(false);
-        }
-    }
-
-    public void setDay0NPCS(GameObject[] npcs)
-    {
-        day0NPCS = npcs;
-    }
-
-    public void setDay1NPCS(GameObject[] npcs)
-    {
-        day1NPCS = npcs;
-    }
-
-    public void setDay2NPCS(GameObject[] npcs)
-    {
-        day2NPCS = npcs;
-    }
-
-    public void setDay3NPCS(GameObject[] npcs)
-    {
-        day3NPCS = npcs;
-    }
-
-    public GameObject[] getDay0NPCS()
-    {
-        return day0NPCS;
-    }
-
-    public GameObject[] getDay1NPCS()
-    {
-        return day1NPCS;
-    }
-
-    public GameObject[] getDay2NPCS()
-    {
-        return day2NPCS;
-    }
-
-    public GameObject[] getDay3NPCS()
-    {
-        return day3NPCS;
-    }
-
-
-
 }

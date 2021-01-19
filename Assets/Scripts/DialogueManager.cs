@@ -10,8 +10,6 @@ using UnityEngine;
 */
 public class DialogueManager : MonoBehaviour
 {
-
-
     [Header("Dialogue and Name text mesh pro objects")]
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI dialogueText;
@@ -25,24 +23,27 @@ public class DialogueManager : MonoBehaviour
     public GameObject yesChoiceButton;
     public GameObject noChoiceButton;
 
-    
-
-    [Header("ActionSystem to record interactions")]
-    public ActionSystem ASystem;
+    [Header("Reference to Action System")]
+    public ActionSystem actionSystem;
 
     [Header("Animator to close/open dialogue box")]
     public Animator animator;
 
     private Queue<string> sentences;
 
-    public float textSpeed = 0.01f; //0.5
+    public float textSpeed = 0.01f; 
 
     private Dialogue dialogue; //store a local copy (gets overridden, could be buggy)
+    private Interaction interaction; //store a local copy (gets overridden, could be buggy)
 
     private void Awake()
     {
-        //Doesn't need to be shown initially
+        //Just in case they were switched on in the unity editor
         nextButton.SetActive(false);
+        yesButton.SetActive(false);
+        noButton.SetActive(false);
+        yesChoiceButton.SetActive(false);
+        noChoiceButton.SetActive(false);
     }
 
     // Use this for initialization
@@ -52,20 +53,31 @@ public class DialogueManager : MonoBehaviour
     }
 
     /*
+    * Used to begin an interaction
+    */
+
+    public void BeginInteraction(Dialogue dialogue, Interaction interaction){
+        this.dialogue = dialogue; //this could be buggy
+        this.interaction = interaction; //this could be buggy
+       
+        StartDialogue(dialogue);
+    }
+
+    /*
     *  Used to initiate dialogue if user presses yes and decides to talk to NPC
     */
     public void StartDialogue(Dialogue dialogue)
     {
-        this.dialogue = dialogue;
-        Debug.Log("Talking to " + dialogue.name);
         animator.SetBool("IsOpen", true);
+        yesButton.SetActive(true);
+        noButton.SetActive(true);
 
+        //Ask player if they wish to interact
         nameText.text = dialogue.name;
         string spendActionPointMsg = "Spend one action point talking to " + dialogue.name + " ?";
-
         sentences.Clear();
-        //spend point text displays regardless of whom you talk to
         sentences.Enqueue(spendActionPointMsg);
+        Debug.Log("Talking to " + dialogue.name);
 
         foreach (string sentence in dialogue.sentences)
             sentences.Enqueue(sentence);
@@ -105,13 +117,16 @@ public class DialogueManager : MonoBehaviour
         string sentence = sentences.Dequeue();
 
         //if sentence is a special type (prompt choices option)
-        if (sentence == "ask choice") {
+        if (sentence == "ask choice")
+        {
             //Int datatype is set to 0 by default (and never null)
             //If it's anything other than null, we pass that to record choice
             if (dialogue.choiceID != 0)
                 PresentChoice(dialogue.choiceID);
 
-        } else {
+        }
+        else
+        {
             StopAllCoroutines();
             StartCoroutine(TypeSentence(sentence));
         }
@@ -138,45 +153,65 @@ public class DialogueManager : MonoBehaviour
     {
         animator.SetBool("IsOpen", false);
         nextButton.SetActive(false);
-        yesButton.SetActive(true);
-        noButton.SetActive(true);
+        yesButton.SetActive(false);
+        noButton.SetActive(false);
+        yesChoiceButton.SetActive(false);
+        noChoiceButton.SetActive(false);
+    }
+
+    /*
+    * This is shown instead of StartDialogue if the player has already interacted with the NPC
+    */
+    public void ShowInteractedMessage()
+    {
+        animator.SetBool("IsOpen", true);
+        sentences.Clear();
+        string alreadyInteracted = "(I've already interacted with them today...)";
+        sentences.Enqueue(alreadyInteracted);
+        DisplayFirstSentence();
     }
 
     /*
     * Used to record the input of the choice 
     */
-    public void PresentChoice(int choiceID) {
+    public void PresentChoice(int choiceID)
+    {
         nextButton.SetActive(false);
         yesChoiceButton.SetActive(true);
         noChoiceButton.SetActive(true);
         //TODO freeze player in position whilst making choice (or in general whilst interacting?)
         //TODO Handle player not being able to be presenting with the same choices TWICE!
         //wait for player to click a button..!
-        Debug.Log("presenting choices for " + choiceID);
     }
 
-    public void RecordYesChoice() {
-        Debug.Log("Player selected yes");
+    /*
+    * Record that this interaction has occured
+    */
+    public void RecordInteraction()
+    {
+        interaction.setInteractionToTrue();
+        actionSystem.ConsumeAction(interaction);
+    }
+
+    /*
+    * When player chooses no during the inteaction
+    */
+    public void RecordNoChoice()
+    {
         yesChoiceButton.SetActive(false);
         noChoiceButton.SetActive(false);
         EndDialogue();
-
-        //SEND THE CHOICE TO ACTION HANDLER!
+        //SEND THE CHOICE TO ACTION MANAGER
     }
 
-    public void RecordNoChoice() {
-        Debug.Log("Player selected no");
+    /*
+    * When player chooses yes during the inteaction
+    */
+    public void RecordYesChoice()
+    {
         yesChoiceButton.SetActive(false);
         noChoiceButton.SetActive(false);
         EndDialogue();
-
-        //SEND THE CHOICE !
+        //SEND THE CHOICE TO ACTION MANAGER
     }
-
-     // public string getCurrentDialoguePartner()
-    // {
-    //     return nameText.text;
-    // }
-
-
 }

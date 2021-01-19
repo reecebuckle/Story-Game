@@ -18,11 +18,11 @@ public class PlayerMovement : MonoBehaviour
     public float runSpeed = 40f;
     float horizontalMove = 0f;
     private bool jump = false;
-    private GameObject currentlyInteractingTo;
 
+    [Header("Reference to Game Manager")]
+    public GameManager gameManager;
 
     //Collision detection bools
-    private bool inInteractionZone = false;
     private bool touchingChair = false;
     private bool exitHouse = false;
     private bool enterHouse = false;
@@ -44,49 +44,40 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
         {
             jump = true;
-            Debug.Log("jumping");
             animator.SetBool("IsJumping", true);
         }
 
         //these control player options when touching a collider
         if (Input.GetKeyDown(KeyCode.E))
         {
-
             if (touchingChair)
-            {
-                Debug.Log("Touching bed and pressed E, time to go sleep");
-                //TODO: Implement loading next scene/day etc
-                //probably wise to start new coroutine with a cool down here to prevent spammage of E
-            }
-
+                StartCoroutine(gameManager.RestForDay());
+        
             if (exitHouse)
-                StartCoroutine(FindObjectOfType<GameManager>().LeaveHouse());
+                StartCoroutine(gameManager.LeaveHouse());
 
             if (enterHouse)
-                StartCoroutine(FindObjectOfType<GameManager>().EnterHouse());
+                StartCoroutine(gameManager.EnterHouse());
 
             if (exitChurch)
-                StartCoroutine(FindObjectOfType<GameManager>().LeaveChurch());
+                StartCoroutine(gameManager.LeaveChurch());
 
             if (enterChurch)
-                StartCoroutine(FindObjectOfType<GameManager>().EnterChurch());
+                StartCoroutine(gameManager.EnterChurch());
 
             if (enterOwlHouse)
-                StartCoroutine(FindObjectOfType<GameManager>().EnterOwlHouse());
+                StartCoroutine(gameManager.EnterOwlHouse());
 
             if (exitOwlHouse)
-                StartCoroutine(FindObjectOfType<GameManager>().LeaveOwlHouse());
+                StartCoroutine(gameManager.LeaveOwlHouse());
 
             if (enterTavern)
-                StartCoroutine(FindObjectOfType<GameManager>().EnterTavern());
+                StartCoroutine(gameManager.EnterTavern());
 
             if (exitTavern)
-                StartCoroutine(FindObjectOfType<GameManager>().LeaveTavern());
-
+                StartCoroutine(gameManager.LeaveTavern());
         }
     }
-
-
 
     /*
     * Handles player movement 
@@ -111,12 +102,6 @@ public class PlayerMovement : MonoBehaviour
     */
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("NPC"))
-        {
-            inInteractionZone = true;
-            currentlyInteractingTo = other.gameObject;
-        }
-
         if (other.tag == "Sleep Chair")
             touchingChair = true;
 
@@ -143,8 +128,6 @@ public class PlayerMovement : MonoBehaviour
 
         if (other.tag == "Exit Tavern") 
             exitTavern = true;
-
-
     }
 
     /*
@@ -152,12 +135,6 @@ public class PlayerMovement : MonoBehaviour
     */
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("NPC"))
-        {
-            inInteractionZone = false;
-            currentlyInteractingTo = null;
-        }
-
         if (other.tag == "Sleep Chair")
             touchingChair = false;
 
@@ -184,14 +161,5 @@ public class PlayerMovement : MonoBehaviour
 
         if (other.tag == "Exit Tavern") 
             exitTavern = false;
-    }
-
-    public void interactionHasOccured()
-    {
-        if (inInteractionZone)
-        {
-            currentlyInteractingTo.GetComponent<Interacted>().interactionOccured();
-            Debug.Log("interacting with " + currentlyInteractingTo.GetComponent<DialogueTrigger>().dialogue.name);
-        }
     }
 }

@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class DialogueTrigger : MonoBehaviour
 {
-
     public Dialogue dialogue; //requires dialogue information
+    public Interaction interaction; //requires interaction information
 
     //checks whether player has hit 2d collider of NPC to prompt dialogue
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player")) {
-            FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
+            if (interaction.interactionHasOccured()) 
+                FindObjectOfType<DialogueManager>().ShowInteractedMessage();
+            else 
+                FindObjectOfType<DialogueManager>().BeginInteraction(dialogue, interaction);
         }
 
     }

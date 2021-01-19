@@ -24,6 +24,8 @@ public class DialogueManager : MonoBehaviour
     [Header("References to other Systems")]
     public ActionSystem actionSystem;
     public GameManager gameManager;
+    public PlayerMovement player;
+    private Rigidbody2D playerRB;
 
     [Header("Animator to close/open dialogue box")]
     public Animator animator;
@@ -49,6 +51,7 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         sentences = new Queue<string>();
+        playerRB = player.GetComponent<Rigidbody2D>();
     }
 
     /*
@@ -106,7 +109,10 @@ public class DialogueManager : MonoBehaviour
     */
     public void DisplayNextSentence()
     {
+        //prevent player from moving until sequence is finished
+        FreezePlayerPosition();
         nextButton.SetActive(true);
+        
 
         if (sentences.Count == 0)
         {
@@ -156,6 +162,8 @@ public class DialogueManager : MonoBehaviour
         noButton.SetActive(false);
         yesChoiceButton.SetActive(false);
         noChoiceButton.SetActive(false);
+        //incase player is frozen. unfreeze
+        playerRB.constraints = RigidbodyConstraints2D.None;
     }
 
     /*
@@ -178,6 +186,7 @@ public class DialogueManager : MonoBehaviour
         nextButton.SetActive(false);
         yesChoiceButton.SetActive(true);
         noChoiceButton.SetActive(true);
+        
         //TODO freeze player in position whilst making choice (or in general whilst interacting?)
         //TODO Handle player not being able to be presenting with the same choices TWICE!
         //wait for player to click a button..!
@@ -202,7 +211,6 @@ public class DialogueManager : MonoBehaviour
         EndDialogue();
         //choiceID tells the game manager how to evulate the choice, true represents yes
         gameManager.EvaluateChoice(dialogue.choiceID, false);
-        //SEND THE CHOICE TO ACTION MANAGER
     }
 
     /*
@@ -212,8 +220,15 @@ public class DialogueManager : MonoBehaviour
     {
         yesChoiceButton.SetActive(false);
         noChoiceButton.SetActive(false);
-        //choiceID tells the game manager how to evulate the choice, true represents yes
-        gameManager.EvaluateChoice(dialogue.choiceID, true);
         EndDialogue();
+         //choiceID tells the game manager how to evulate the choice, true represents yes
+        gameManager.EvaluateChoice(dialogue.choiceID, true);
+    }
+
+    /*
+    *Invoke this when you wish to freeze player position
+    */
+    public void FreezePlayerPosition() {
+        playerRB.constraints = RigidbodyConstraints2D.FreezePosition;
     }
 }

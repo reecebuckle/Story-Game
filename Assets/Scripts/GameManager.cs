@@ -181,4 +181,9 @@ public class GameManager : MonoBehaviour
     public bool CheckEntryCondition() {
         return canAccessOwlHouse;
     }
+
+    //returns current day
+    public int getCurrentDay() {
+        return currentDay;
+    }
 }

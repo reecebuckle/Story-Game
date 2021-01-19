@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DialogueTrigger : MonoBehaviour
 {
+    [Header("Requires a Dialogue / Interaction object")]
     public Dialogue dialogue; //requires dialogue information
     public Interaction interaction; //requires interaction information
 
@@ -24,6 +25,5 @@ public class DialogueTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
             FindObjectOfType<DialogueManager>().EndDialogue();
-
     }
 }

@@ -27,7 +27,8 @@ public class GameManager : MonoBehaviour
     private int currentDay;
     private bool canAccessOwlHouse; //can the player access this house
     private bool canAccessTavern; // can player access tavern?
-    private bool foundLetter;// did player find conspiracy letter?
+    private bool letterAvailable;// has the player unlocked the letter?
+    private bool foundLetter; // did player find conspiracy letter?
     private bool foundContract;// did player find contract?
 
     public void Awake()
@@ -48,6 +49,7 @@ public class GameManager : MonoBehaviour
         canAccessOwlHouse = false;
         canAccessTavern = false;
         foundContract = false;
+        letterAvailable = false;
         foundLetter = false;
     }
 
@@ -184,11 +186,13 @@ public class GameManager : MonoBehaviour
         if (choiceID == 2)
             canAccessTavern = true;
 
-        if (choiceID == 3)
+        if (choiceID == 3) {
             foundContract = true;
-
+            actionSystem.SpecialAppend("You picked up the sellswords contact");
+        }
+            
         if (choiceID == 4)
-            foundLetter = true;
+            letterAvailable = true;
     }
 
     /*
@@ -196,6 +200,13 @@ public class GameManager : MonoBehaviour
     */
     public void EvaluateChoice(int choiceID, bool response)
     {
+    }
+
+    // Removes letter from game and updates bool
+    public void TakeLetter()    { 
+        foundLetter = true;
+        letterAvailable = false;
+        actionSystem.SpecialAppend("You found a letter conspiring to end House Grasshopper");
     }
 
     //Returns whether player can access owl house
@@ -208,6 +219,11 @@ public class GameManager : MonoBehaviour
     public bool CheckTavernEntryCondition()
     {
         return canAccessTavern;
+    }
+
+    //Reeturns whether player can see bookshelf
+    public bool BookshelfUnlocked() {
+        return letterAvailable;
     }
 
     //returns current day

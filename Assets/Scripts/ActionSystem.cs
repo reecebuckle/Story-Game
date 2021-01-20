@@ -26,8 +26,9 @@ public class ActionSystem : MonoBehaviour
     public GameManager gameManager;
     private int currentPageNo; //current page number being shown
     private int numberOfActions; //Current number of interactions!
+    private string newLine = " \n";
 
-    
+
 
     // Start is called before the first frame update
     private void Start()
@@ -52,24 +53,43 @@ public class ActionSystem : MonoBehaviour
         //append journal with interaction information on correct day
         int currentDay = gameManager.getCurrentDay();
         if (currentDay == 0)
+        {
             day0.text += interaction.getKeyInformation();
+            day0.text += "\n";
+        }
         else if (currentDay == 1)
+        {
             day1.text += interaction.getKeyInformation();
+            day1.text += "\n";
+        }
         else if (currentDay == 2)
+        {
             day2.text += interaction.getKeyInformation();
+            day2.text += "\n";
+        }
     }
 
     /*
     * Method used to append a special keypoint (not in interaction object)
     */
-    public void SpecialAppend(string achievement) {
+    public void SpecialAppend(string achievement)
+    {
         int currentDay = gameManager.getCurrentDay();
         if (currentDay == 0)
+        {
             day0.text += achievement;
+            day0.text += "\n";
+        }
         else if (currentDay == 1)
+        {
             day1.text += achievement;
+            day1.text += "\n";
+        }
         else if (currentDay == 2)
+        {
             day2.text += achievement;
+            day2.text += "\n";
+        }
     }
 
     /*
@@ -89,38 +109,65 @@ public class ActionSystem : MonoBehaviour
     {
         journalPanel.gameObject.SetActive(true);
         //can easily add if else statements to show current day on opening
-        day0.gameObject.SetActive(true); //show day 0 initially
-        previousPage.SetActive(false);
-        nextPage.SetActive(true);
+        int currentDay = gameManager.getCurrentDay();
+
+        if (currentDay == 0)
+        {
+            day0.gameObject.SetActive(true);
+            previousPage.SetActive(false);
+            nextPage.SetActive(true);
+            currentPageNo = 1;
+        }
+        else if (currentDay == 1)
+        {
+            day1.gameObject.SetActive(true);
+            previousPage.SetActive(true);
+            nextPage.SetActive(true);
+            currentPageNo = 2;
+        }
+        else if (currentDay == 2)
+        {
+            day2.gameObject.SetActive(true);
+            previousPage.SetActive(true);
+            nextPage.SetActive(false);
+            currentPageNo = 3;
+        }
     }
 
     /*
-    * Used to close journmal
+    * Used to close journmal, make sure all pages are closed
     */
     public void CloseJournal()
     {
         journalPanel.gameObject.SetActive(false);
+        day0.gameObject.SetActive(false);
+        day1.gameObject.SetActive(false);
+        day2.gameObject.SetActive(false);
     }
 
     /*
     * Display Next page
     */
-    public void ShowNextPage() {
+    public void ShowNextPage()
+    {
 
         // If turning from page 1 -> 2
-        if (currentPageNo == 1) {
+        if (currentPageNo == 1)
+        {
             day0.gameObject.SetActive(false);
             day1.gameObject.SetActive(true);
             nextPage.SetActive(true);
-            previousPage.SetActive(true); 
-        
-        // If turning from page 2 -> 3
-        } else if (currentPageNo == 2) {
+            previousPage.SetActive(true);
+
+            // If turning from page 2 -> 3
+        }
+        else if (currentPageNo == 2)
+        {
             day1.gameObject.SetActive(false);
             day2.gameObject.SetActive(true);
-            nextPage.SetActive(false); 
-            previousPage.SetActive(true); 
-        } 
+            nextPage.SetActive(false);
+            previousPage.SetActive(true);
+        }
         //increment page count
         currentPageNo++;
     }
@@ -128,33 +175,30 @@ public class ActionSystem : MonoBehaviour
     /*
     * Display previous page
     */
-    public void ShowPreviousPage() {
+    public void ShowPreviousPage()
+    {
         // If turning from Page 2 -> 1
-        if (currentPageNo == 2) {
+        if (currentPageNo == 2)
+        {
             day0.gameObject.SetActive(true);
             day1.gameObject.SetActive(false);
             nextPage.SetActive(true);
-            previousPage.SetActive(false); 
+            previousPage.SetActive(false);
 
-        //If turning from page 3 -> 2    
-        } else if (currentPageNo == 3) {
+            //If turning from page 3 -> 2    
+        }
+        else if (currentPageNo == 3)
+        {
             day1.gameObject.SetActive(true);
             day2.gameObject.SetActive(false);
             previousPage.SetActive(true);
-            nextPage.SetActive(true); 
+            nextPage.SetActive(true);
         }
 
         //decrement page count
         currentPageNo--;
     }
 
-    /*
-    * Returns remaining number of actions
-    */
-    public int getRemainingActions()
-    {
-        return numberOfActions;
-    }
 
     /*
      * Opens the panel that contains text for object interactions
@@ -171,6 +215,14 @@ public class ActionSystem : MonoBehaviour
     public void CloseObjectInteractionPanel()
     {
         ObjectInteractionPanel.gameObject.SetActive(false);
+    }
+
+    /*
+    * Returns remaining number of actions
+    */
+    public int getRemainingActions()
+    {
+        return numberOfActions;
     }
 
 }

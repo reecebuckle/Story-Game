@@ -22,6 +22,11 @@ public class PlayerMovement : MonoBehaviour
     public GameManager gameManager;
     public ActionSystem actionSystem;
 
+    [Header("References to the Bookshelf and letter")]
+    public GameObject letter;
+    public GameObject bookshelf;
+    public Sprite highlightedSprite;
+
     //Collision detection bools
     private bool touchingChair = false;
     private bool exitHouse = false;
@@ -32,6 +37,12 @@ public class PlayerMovement : MonoBehaviour
     private bool exitTavern = false;
     private bool enterOwlHouse = false;
     private bool exitOwlHouse = false;
+    private bool byBookshelf = false;
+
+    private void Start()
+    {
+        bookshelf.GetComponent<SpriteRenderer>().sprite = null;
+    }
 
     // Update is called once per frame
     void Update()
@@ -74,11 +85,18 @@ public class PlayerMovement : MonoBehaviour
             if (enterTavern && gameManager.CheckTavernEntryCondition())
                 StartCoroutine(gameManager.EnterTavern());
             
-
             if (exitTavern)
                 StartCoroutine(gameManager.LeaveTavern());
+            
+            if (byBookshelf && gameManager.BookshelfUnlocked()) {
+                letter.gameObject.SetActive(false);
+                gameManager.TakeLetter();
+            }
+               
         }
     }
+
+
 
     /*
     * Handles player movement 
@@ -156,13 +174,11 @@ public class PlayerMovement : MonoBehaviour
 
         }
 
-
         if (other.tag == "Exit Owl House")
         {
             exitOwlHouse = true;
             actionSystem.OpenObjectInteractionPanel(msg);
         }
-
 
         if (other.tag == "Enter Tavern")
         {
@@ -177,13 +193,19 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-
         if (other.tag == "Exit Tavern")
         {
             exitTavern = true;
             actionSystem.OpenObjectInteractionPanel(msg);
         }
 
+        if (other.tag == "Bookshelf" && gameManager.BookshelfUnlocked())
+        {
+            byBookshelf = true;
+            string altMsg = "Press E to take letter";
+            actionSystem.OpenObjectInteractionPanel(altMsg);
+            bookshelf.GetComponent<SpriteRenderer>().sprite = highlightedSprite;
+        }
     }
 
     /*
@@ -251,6 +273,13 @@ public class PlayerMovement : MonoBehaviour
         {
             exitTavern = false;
             actionSystem.CloseObjectInteractionPanel();
+        }
+
+        if (other.tag == "Bookshelf")
+        {
+            byBookshelf = false;
+            actionSystem.CloseObjectInteractionPanel();
+            bookshelf.GetComponent<SpriteRenderer>().sprite = null;
         }
 
     }

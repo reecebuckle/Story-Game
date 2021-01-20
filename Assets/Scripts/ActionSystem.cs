@@ -32,7 +32,7 @@ public class ActionSystem : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        numberOfActions = 4;
+        numberOfActions = 3;
         currentPageNo = 0;
         journalPanel.gameObject.SetActive(false);
         ObjectInteractionPanel.gameObject.SetActive(false);
@@ -81,7 +81,7 @@ public class ActionSystem : MonoBehaviour
     */
     public void ResetActionPoints()
     {
-        numberOfActions = 4;
+        numberOfActions = 3;
         //update display
         DisplayActions.text = "Remaining actions: " + numberOfActions;
     }

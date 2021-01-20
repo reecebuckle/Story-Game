@@ -32,7 +32,7 @@ public class DialogueManager : MonoBehaviour
 
     private Queue<string> sentences;
 
-    public float textSpeed = 0.01f; 
+    public float textSpeed = 0.01f;
 
     private Dialogue dialogue; //store a local copy (gets overridden, could be buggy)
     private Interaction interaction; //store a local copy (gets overridden, could be buggy)
@@ -58,10 +58,11 @@ public class DialogueManager : MonoBehaviour
     * Used to begin an interaction
     */
 
-    public void BeginInteraction(Dialogue dialogue, Interaction interaction){
+    public void BeginInteraction(Dialogue dialogue, Interaction interaction)
+    {
         this.dialogue = dialogue; //this could be buggy
         this.interaction = interaction; //this could be buggy
-       
+
         StartDialogue(dialogue);
     }
 
@@ -112,29 +113,21 @@ public class DialogueManager : MonoBehaviour
         //prevent player from moving until sequence is finished
         FreezePlayerPosition();
         nextButton.SetActive(true);
-        
+
 
         if (sentences.Count == 0)
         {
+            //if end of sentences reached and was a unique interaction, inform game manager
+            if (dialogue.choiceID != 0)
+                NotifyAction(dialogue.choiceID);
+
             EndDialogue();
             return;
         }
         string sentence = sentences.Dequeue();
+        StopAllCoroutines();
+        StartCoroutine(TypeSentence(sentence));
 
-        //if sentence is a special type (prompt choices option)
-        if (sentence == "ask choice")
-        {
-            //Int datatype is set to 0 by default (and never null)
-            //If it's anything other than null, we pass that to record choice
-            if (dialogue.choiceID != 0)
-                PresentChoice(dialogue.choiceID);
-
-        }
-        else
-        {
-            StopAllCoroutines();
-            StartCoroutine(TypeSentence(sentence));
-        }
     }
 
     /*
@@ -179,6 +172,15 @@ public class DialogueManager : MonoBehaviour
     }
 
     /*
+    * Used to update game world without asking player a choice
+    */
+    public void NotifyAction(int choiceID)
+    {
+        gameManager.UpdateGameWorld(choiceID);
+    }
+
+
+    /*
     * Used to record the input of the choice 
     */
     public void PresentChoice(int choiceID)
@@ -186,10 +188,6 @@ public class DialogueManager : MonoBehaviour
         nextButton.SetActive(false);
         yesChoiceButton.SetActive(true);
         noChoiceButton.SetActive(true);
-        
-        //TODO freeze player in position whilst making choice (or in general whilst interacting?)
-        //TODO Handle player not being able to be presenting with the same choices TWICE!
-        //wait for player to click a button..!
     }
 
     /*
@@ -221,14 +219,15 @@ public class DialogueManager : MonoBehaviour
         yesChoiceButton.SetActive(false);
         noChoiceButton.SetActive(false);
         EndDialogue();
-         //choiceID tells the game manager how to evulate the choice, true represents yes
+        //choiceID tells the game manager how to evulate the choice, true represents yes
         gameManager.EvaluateChoice(dialogue.choiceID, true);
     }
 
     /*
     *Invoke this when you wish to freeze player position
     */
-    public void FreezePlayerPosition() {
+    public void FreezePlayerPosition()
+    {
         playerRB.constraints = RigidbodyConstraints2D.FreezePosition;
     }
 }

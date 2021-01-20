@@ -158,8 +158,8 @@ public class GameManager : MonoBehaviour
     */
     public IEnumerator RestForDay()
     {
-        actionSystem.ResetActionPoints();
         currentDay++;
+        actionSystem.ResetActionPoints();
 
         if (currentDay == 1)
         {

@@ -873,7 +873,7 @@ PlayableDirector:
   m_GameObject: {fileID: 1085926670}
   m_Enabled: 1
   serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: f60c9d9ba1cc05b44bd151bd2a00c76d, type: 2}
+  m_PlayableAsset: {fileID: 11400000, guid: 853c3635c77db8f45a1fb020f86ffd3d, type: 2}
   m_InitialState: 1
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
@@ -899,6 +899,50 @@ PlayableDirector:
     value: {fileID: 508410078}
   - key: {fileID: 8605994113913841587, guid: f60c9d9ba1cc05b44bd151bd2a00c76d, type: 2}
     value: {fileID: 280167518}
+  - key: {fileID: 8011421607908866425, guid: f60c9d9ba1cc05b44bd151bd2a00c76d, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 8509653822788027730, guid: f60c9d9ba1cc05b44bd151bd2a00c76d, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -3292359568137980196, guid: f60c9d9ba1cc05b44bd151bd2a00c76d, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 3330645856219828062, guid: f60c9d9ba1cc05b44bd151bd2a00c76d, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 7303988595021573229, guid: f60c9d9ba1cc05b44bd151bd2a00c76d, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -3824493668444972868, guid: f60c9d9ba1cc05b44bd151bd2a00c76d, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 6092357434872305111, guid: f60c9d9ba1cc05b44bd151bd2a00c76d, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 1957768422668303739, guid: f60c9d9ba1cc05b44bd151bd2a00c76d, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 1019944803983543751, guid: f60c9d9ba1cc05b44bd151bd2a00c76d, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -8498714521545189772, guid: 853c3635c77db8f45a1fb020f86ffd3d, type: 2}
+    value: {fileID: 776546184}
+  - key: {fileID: 5401140527104333631, guid: 853c3635c77db8f45a1fb020f86ffd3d, type: 2}
+    value: {fileID: 259909204}
+  - key: {fileID: 3531086404002037243, guid: 853c3635c77db8f45a1fb020f86ffd3d, type: 2}
+    value: {fileID: 1117880429}
+  - key: {fileID: 4403725663976444639, guid: 853c3635c77db8f45a1fb020f86ffd3d, type: 2}
+    value: {fileID: 1111570398}
+  - key: {fileID: 8509653822788027730, guid: 853c3635c77db8f45a1fb020f86ffd3d, type: 2}
+    value: {fileID: 508410078}
+  - key: {fileID: 8605994113913841587, guid: 853c3635c77db8f45a1fb020f86ffd3d, type: 2}
+    value: {fileID: 280167518}
+  - key: {fileID: 3330645856219828062, guid: 853c3635c77db8f45a1fb020f86ffd3d, type: 2}
+    value: {fileID: 1341516509}
+  - key: {fileID: 0}
+    value: {fileID: 0}
+  - key: {fileID: 0}
+    value: {fileID: 0}
+  - key: {fileID: 0}
+    value: {fileID: 0}
+  - key: {fileID: 0}
+    value: {fileID: 0}
+  - key: {fileID: 976019890948970181, guid: 853c3635c77db8f45a1fb020f86ffd3d, type: 2}
+    value: {fileID: 1341516509}
+  - key: {fileID: -1113683192511426280, guid: 853c3635c77db8f45a1fb020f86ffd3d, type: 2}
+    value: {fileID: 776546184}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &1085926672
@@ -1582,6 +1626,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6994485053461583089, guid: eda52c2db0d4cda41a5469e82c98a18c,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6994485053461583090, guid: eda52c2db0d4cda41a5469e82c98a18c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1911,7 +1960,7 @@ PrefabInstance:
     - target: {fileID: 7330078670467698769, guid: 1e349976b2a91014e940d0faa576dc5c,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7330078670467698771, guid: 1e349976b2a91014e940d0faa576dc5c,
         type: 3}
@@ -1926,12 +1975,12 @@ PrefabInstance:
     - target: {fileID: 7330078670467698782, guid: 1e349976b2a91014e940d0faa576dc5c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.44
+      value: -5.81
       objectReference: {fileID: 0}
     - target: {fileID: 7330078670467698782, guid: 1e349976b2a91014e940d0faa576dc5c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.03
+      value: 9.22
       objectReference: {fileID: 0}
     - target: {fileID: 7330078670467698782, guid: 1e349976b2a91014e940d0faa576dc5c,
         type: 3}

@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    choiceID: 0
+    choiceID: 3
     name: Robin
     sentences:
     - "Oh my dear brother, for I am in love with Scarlett of house Owl!\r"
@@ -179,7 +179,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdf0ba70a419860448e2038864b73dfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyInformation: You learn that Robin plans to marry Juliet 3 days from now
+  keyInformation: Plans to marry Scarlett 3 days from now
+  npcName: Robin
 --- !u!1 &43994602
 GameObject:
   m_ObjectHideFlags: 0
@@ -1368,15 +1369,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    choiceID: 1
+    choiceID: 0
     name: Baker
     sentences:
     - "Ho! You lookin\u2019 for some bread?"
     - "The feud between the Owl and Grasshopper \u2018ouses are only growing more
       tense"
     - Tis a nightmare to sell my bread
-    - Do you wanna come to my housee
-    - ask choice
+    - If only the two houses could work together, twould mean business for everyone
   interaction: {fileID: 514528200522024220}
 --- !u!1 &328686017 stripped
 GameObject:
@@ -1550,7 +1550,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdf0ba70a419860448e2038864b73dfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyInformation: You learn that things were more peaceful in the past
+  keyInformation: Things were more peaceful in the past
+  npcName: Old Man
 --- !u!114 &403250672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1565,6 +1566,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyInformation: You learn that someone from the grasshopper house has been injured
     and, You can access to the tavern tomorrow
+  npcName: 
 --- !u!114 &403250679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2700,6 +2702,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyInformation: You learn that Scarlett has told their father and, you gain access
     to the Owl household for the next day
+  npcName: 
 --- !u!1001 &707817147
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3148,14 +3151,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    choiceID: 1
+    choiceID: 2
     name: Scarlett
     sentences:
     - So you know Robin from the Grasshopper house? I'm pleased to announce that
       we are betrothed
     - Hopefully father can see reason and finally bury the hatchet
     - Too many have perished for such a small accident
-    - Do you wanna come to my house?
+    - Would you like to pop round for tea sometime?
     - ask choice
   interaction: {fileID: 1007437055}
 --- !u!114 &1007437055
@@ -3170,7 +3173,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdf0ba70a419860448e2038864b73dfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyInformation: You learn that many people have lost their lives to the feud
+  keyInformation: Many people have lost their lives to the feud
+  npcName: Scarlett
 --- !u!114 &1034205316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3204,6 +3208,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyInformation: You learn that there is still remnant hatred between the houses
+  npcName: 
 --- !u!4 &1053452539 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1568684584971291211, guid: 28c2056e79c6690449eafcc0a185f3cb,
@@ -11179,7 +11184,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdf0ba70a419860448e2038864b73dfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyInformation: Bakers key info
+  keyInformation: Tensions are growing between the two houses
+  npcName: Baker
 --- !u!4 &514528200522024222
 Transform:
   m_ObjectHideFlags: 0
@@ -11401,6 +11407,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyInformation: FILL ME IN
+  npcName: 
 --- !u!4 &514528201146506998
 Transform:
   m_ObjectHideFlags: 0
@@ -11519,6 +11526,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyInformation: FILL ME IN
+  npcName: 
 --- !u!4 &649037852929078799
 Transform:
   m_ObjectHideFlags: 0
@@ -11861,6 +11869,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyInformation: FILL ME IN
+  npcName: 
 --- !u!4 &1169495899017631904
 Transform:
   m_ObjectHideFlags: 0
@@ -12243,6 +12252,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyInformation: You learn that Ibis is glad that the conflict has ended and, You
     gain access to the Owl household for the next day
+  npcName: 
 --- !u!114 &5345610111281410177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12256,6 +12266,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyInformation: You learn that Ibis is excited about the marriage too
+  npcName: 
 --- !u!212 &5400314085207547276
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12477,6 +12488,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyInformation: "You learn that Owl\u2019s household are a bunch of drunkards"
+  npcName: 
 --- !u!61 &6199006900508880956
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12724,6 +12736,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyInformation: FILL ME IN
+  npcName: 
 --- !u!1 &6994485054677457344
 GameObject:
   m_ObjectHideFlags: 0
@@ -12736,8 +12749,8 @@ GameObject:
   - component: {fileID: 6994485054677457374}
   - component: {fileID: 6994485054677457375}
   - component: {fileID: 26}
-  - component: {fileID: 30}
   - component: {fileID: 29}
+  - component: {fileID: 30}
   m_Layer: 0
   m_Name: Robin Day 0
   m_TagString: NPC
@@ -12862,6 +12875,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyInformation: FILL ME IN
+  npcName: 
 --- !u!95 &6994485055378023956
 Animator:
   serializedVersion: 3
@@ -13025,8 +13039,8 @@ GameObject:
   - component: {fileID: 7330078669625151370}
   - component: {fileID: 7330078669625151365}
   - component: {fileID: 7330078669625151364}
-  - component: {fileID: 1007437055}
   - component: {fileID: 1007437048}
+  - component: {fileID: 1007437055}
   - component: {fileID: 1495192453493206183}
   m_Layer: 0
   m_Name: Scarlett Day 0
@@ -13201,6 +13215,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyInformation: FILL ME IN
+  npcName: 
 --- !u!212 &7330078670360519626
 SpriteRenderer:
   m_ObjectHideFlags: 0

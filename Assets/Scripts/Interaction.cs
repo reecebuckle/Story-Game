@@ -5,6 +5,7 @@ using UnityEngine;
 public class Interaction : MonoBehaviour
 {
     public string keyInformation;
+    public string npcName;
     private bool hasInteracted;
 
     void Start()
@@ -23,6 +24,6 @@ public class Interaction : MonoBehaviour
 
     public string getKeyInformation()
     {
-        return name + ": " + keyInformation + "\n";
+        return npcName + ": " + keyInformation + "\n";
     }
 }

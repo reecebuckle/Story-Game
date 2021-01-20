@@ -55,6 +55,21 @@ public class ActionSystem : MonoBehaviour
     }
 
     /*
+    * Method used to append a special keypoint (not in interaction object)
+    */
+    public void SpecialAppend(string achievement) {
+        int currentDay = gameManager.getCurrentDay();
+        if (currentDay == 0)
+            day0.text += achievement;
+        else if (currentDay == 1)
+            day1.text += achievement;
+        else if (currentDay == 2)
+            day2.text += achievement;
+        else if (currentDay == 3)
+            day3.text += achievement;
+    }
+
+    /*
     * Invoked when a day is reset 
     */
     public void ResetActionPoints()

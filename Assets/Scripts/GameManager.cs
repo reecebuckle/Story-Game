@@ -201,8 +201,10 @@ public class GameManager : MonoBehaviour
         {
             weddingInformation = true;
             // AND player chooses to access house
-            if (response == true)
+            if (response == true) {
                 canAccessOwlHouse = true;
+                actionSystem.SpecialAppend("Scarlett: You can now visit House Owl");
+            }
         }
 
         //player finds information from robin
@@ -210,26 +212,26 @@ public class GameManager : MonoBehaviour
             weddingInformation = true;
 
         //player finds out suspicious info on owl, this allows them to lookout
-        if (choiceID == 4) 
+        if (choiceID == 4)
             suspiciousInfo = true;
-        
+
         //player is able to access the tavern
-         if (choiceID == 5) 
+        if (choiceID == 5)
             canAccessTavern = true;
 
         //player picked up emblem
-         if (choiceID == 6)
+        if (choiceID == 6)
             pickedUpEmblem = true;
 
-         //player decides to accuse owl
-         if (choiceID == 7)  
+        //player decides to accuse owl
+        if (choiceID == 7)
             owlAccused = true;
 
-         //player decides to warn couple   
-         if (choiceID == 8) 
-            coupleWarned = true;    
+        //player decides to warn couple   
+        if (choiceID == 8)
+            coupleWarned = true;
 
-         
+
     }
 
     //Returns whether player can access owl house
@@ -238,7 +240,7 @@ public class GameManager : MonoBehaviour
         return canAccessOwlHouse;
     }
 
-     //Returns whether player can access owl house
+    //Returns whether player can access owl house
     public bool CheckTavernEntryCondition()
     {
         return canAccessTavern;

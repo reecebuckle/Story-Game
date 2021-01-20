@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -32,6 +33,9 @@ public class GameManager : MonoBehaviour
     public GameObject day0NPCS;
     public GameObject day1NPCS;
     public GameObject day2NPCS;
+
+    [Header("Endings Unlocked")]
+ 
 
     private int currentDay;
     private bool canAccessOwlHouse; //can the player access this house
@@ -139,7 +143,6 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(0.4f);
         player.transform.position = new Vector3(-21, -47, 0);
         //TODO: Add new music? 
-
     }
 
     public IEnumerator LeaveTavern()
@@ -250,6 +253,8 @@ public class GameManager : MonoBehaviour
     public void LoadEnding3()
     {
         Debug.Log("Loading Ending Three");
+        EndingsUnlocked.Ending3 = true;
+        SceneManager.LoadScene("Ending 3");
 
     }
 
@@ -259,6 +264,9 @@ public class GameManager : MonoBehaviour
     public void LoadEnding2()
     {
         Debug.Log("Loading Ending Two");
+        EndingsUnlocked.Ending2 = true;
+        SceneManager.LoadScene("Ending 2");
+
 
     }
 
@@ -268,6 +276,8 @@ public class GameManager : MonoBehaviour
     public void LoadEnding1()
     {
         Debug.Log("Loading Ending One");
+        EndingsUnlocked.Ending1 = true;
+        SceneManager.LoadScene("Ending 1");
     }
 
 

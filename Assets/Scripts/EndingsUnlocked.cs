@@ -1,9 +1,13 @@
-﻿
-public static class PlayerStats
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+
+public static class EndingsUnlocked
 {
-    private static bool ending1;
-    private static bool ending2;
-    private static bool ending3;
+    private static bool ending1 = false;
+    private static bool ending2 = false;
+    private static bool ending3 = false;
 
     public static bool Ending1
     {

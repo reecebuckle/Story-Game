@@ -7,7 +7,8 @@ using UnityEngine.SceneManagement;
 public class ActionSystem : MonoBehaviour
 {
     [Header("References to Journal Canvas")]
-    public TextMeshProUGUI DisplayActions;
+    public TextMeshProUGUI actionsText;
+    public TextMeshProUGUI dayText;
     public GameObject journalPanel;
     public GameObject nextPage;
     public GameObject previousPage;
@@ -26,9 +27,6 @@ public class ActionSystem : MonoBehaviour
     public GameManager gameManager;
     private int currentPageNo; //current page number being shown
     private int numberOfActions; //Current number of interactions!
-    private string newLine = " \n";
-
-
 
     // Start is called before the first frame update
     private void Start()
@@ -38,7 +36,8 @@ public class ActionSystem : MonoBehaviour
         journalPanel.gameObject.SetActive(false);
         ObjectInteractionPanel.gameObject.SetActive(false);
         //Display starting number of actions
-        DisplayActions.text = "Remaining actions: " + numberOfActions;
+        actionsText.text = "Remaining actions: " + numberOfActions;
+        dayText.text = "Day: " + (gameManager.getCurrentDay() + 1);
     }
 
     /*
@@ -48,7 +47,7 @@ public class ActionSystem : MonoBehaviour
     {
         numberOfActions--;
         //update display
-        DisplayActions.text = "Remaining actions: " + numberOfActions;
+        actionsText.text = "Remaining actions: " + numberOfActions;
 
         //append journal with interaction information on correct day
         int currentDay = gameManager.getCurrentDay();
@@ -99,7 +98,8 @@ public class ActionSystem : MonoBehaviour
     {
         numberOfActions = 3;
         //update display
-        DisplayActions.text = "Remaining actions: " + numberOfActions;
+        actionsText.text = "Remaining actions: " + numberOfActions;
+        dayText.text = "Day: " + (gameManager.getCurrentDay() + 1);
     }
 
     /*

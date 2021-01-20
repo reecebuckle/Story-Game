@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 1568684584971291222}
   - component: {fileID: 1053452533}
   m_Layer: 8
-  m_Name: Player Alternative
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -216,6 +216,11 @@ MonoBehaviour:
   controller: {fileID: 1568684584971291208}
   animator: {fileID: 1053452533}
   runSpeed: 30
+  gameManager: {fileID: 0}
+  actionSystem: {fileID: 0}
+  letter: {fileID: 0}
+  bookshelf: {fileID: 0}
+  highlightedSprite: {fileID: 21300000, guid: 8925a07eef048fd45a10154f7c94ecf9, type: 3}
 --- !u!95 &1053452533
 Animator:
   serializedVersion: 3

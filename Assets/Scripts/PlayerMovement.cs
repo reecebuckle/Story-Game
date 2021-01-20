@@ -101,7 +101,7 @@ public class PlayerMovement : MonoBehaviour
     /*
     * After pressing E, wait for 1 second before being able to press E again
     */
-     public IEnumerator  WaitForCooldown() {
+     public IEnumerator WaitForCooldown() {
         cooldown = true;
         yield return new WaitForSeconds(1f);
         cooldown = false;

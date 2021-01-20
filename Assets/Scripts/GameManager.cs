@@ -212,7 +212,7 @@ public class GameManager : MonoBehaviour
         if (choiceID == 3)
         {
             foundContract = true;
-            actionSystem.SpecialAppend("You picked up the sellswords contact");
+            actionSystem.SpecialAppend("You picked up the sellswords contract");
         }
 
         if (choiceID == 4)

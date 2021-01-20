@@ -986,13 +986,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    choiceID: 0
+    choiceID: 2
     name: Robin
     sentences:
-    - Can the day not come any sooner?
-    - My heart cannot take it anymore
-    - "I wonder if my eyes can even comprehend the beauty of Scarlet\u2019s wedding
-      gown"
+    - Great news cousin!
+    - "Scarlett has received her Father\u2019s blessing"
+    - We should celebrate with drinks at the Tavern tomorrow
   interaction: {fileID: 6994485054592287795}
 --- !u!61 &118791669
 BoxCollider2D:
@@ -1435,10 +1434,9 @@ MonoBehaviour:
     choiceID: 0
     name: Baker
     sentences:
-    - "Ho! You lookin\u2019 for some bread?"
     - The rivalry between the two houses is worsening of late
     - Tis a nightmare to sell my bread
-    - If they could only reconcile, twould mean better business for everyone
+    - If they'd reconcile, twould mean better business for everyone
   interaction: {fileID: 514528200522024220}
 --- !u!1 &328686017 stripped
 GameObject:
@@ -1580,6 +1578,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 344872633}
   m_CullTransparentMesh: 0
+--- !u!4 &388594900 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3020507368624759691, guid: dfb3e99be96973041adf75476ca6d1f2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1379453437}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &398640882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1625,9 +1629,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdf0ba70a419860448e2038864b73dfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyInformation: You learn that someone from the grasshopper house has been injured
-    and, You can access to the tavern tomorrow
-  npcName: 
+  keyInformation: Ibis is making preparations in his studyIbis is making preparations
+    in his study
+  npcName: Old Man
 --- !u!114 &403250679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1641,14 +1645,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    choiceID: 0
+    choiceID: 4
     name: Old Man
     sentences:
-    - 'You shoulda seen the scuffle yesterday lad
-
-'
-    - One of the Grasshopper lads got knocked clean out
-    - "Just when ya think there\u2019s peace in our time 'ey?"
+    - Lord Ibis has been awfully busy in his study of late
+    - I wonder what preparations he has in store for the feast tomorrow!
   interaction: {fileID: 403250672}
 --- !u!1 &420257118
 GameObject:
@@ -2118,7 +2119,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &487633412
 Transform:
   m_ObjectHideFlags: 0
@@ -2770,7 +2771,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 672329608}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6, y: 1.31, z: -10}
+  m_LocalPosition: {x: 59.25, y: -21.02, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 462351851}
@@ -2824,12 +2825,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    choiceID: 0
+    choiceID: 1
     name: Scarlett
     sentences:
-    - I am on cloud 9, father has accepted the wedding
-    - You should come visit tomorrow!
-    - I need someone objective to judge my wedding dress
+    - Did you hear?
+    - Father has given us his blessings!
+    - 'He wishes to throw a feast for all the day before the wedding
+
+'
+    - 'You should come!
+
+'
   interaction: {fileID: 678120381}
 --- !u!114 &678120381
 MonoBehaviour:
@@ -2843,9 +2849,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdf0ba70a419860448e2038864b73dfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyInformation: You learn that Scarlett has told their father and, you gain access
-    to the Owl household for the next day
-  npcName: 
+  keyInformation: 'Ibis wishes to throw a wedding feast Ibis wishes to throw a wedding
+    feast '
+  npcName: Scarlett
 --- !u!1001 &707817147
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3255,127 +3261,6 @@ Transform:
   m_Father: {fileID: 1903972962}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &910294993
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6994485055378023947}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.21875, y: 1.625}
-    newSize: {x: 1.21875, y: 1.625}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.21875, y: 1.625}
-  m_EdgeRadius: 0
---- !u!114 &910294998
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6994485055378023947}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27a83b32925e34240b5b28c5430f53d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogue:
-    choiceID: 0
-    name: Robin
-    sentences:
-    - Terrible news!
-    - A fellow comrade of mine has been struck down in the dark of night!
-    - "Whatever you do, do not visit that tavern! I can\u2019t afford to lose you
-      too."
-  interaction: {fileID: 6994485055378023948}
---- !u!114 &1007437048
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7330078669625151367}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27a83b32925e34240b5b28c5430f53d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogue:
-    choiceID: 0
-    name: Scarlett
-    sentences:
-    - "Oh, aren\u2019t you Robin\u2019s cousin?"
-    - I'm so nervous to publicly announce our betrothal
-    - Hopefully father can see reason
-  interaction: {fileID: 1007437055}
---- !u!114 &1007437055
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7330078669625151367}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdf0ba70a419860448e2038864b73dfe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyInformation: "Plans to ask for her Father\u2019s permission"
-  npcName: Scarlett
---- !u!114 &1034205316
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 514528200996612561}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27a83b32925e34240b5b28c5430f53d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogue:
-    choiceID: 0
-    name: Baker
-    sentences:
-    - "As you\u2019ve probably \u2018eard from yesterday"
-    - There are still some hatred left between the two houses
-    - I guess peace was never an option between this lot
-  interaction: {fileID: 1034205319}
---- !u!114 &1034205319
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 514528200996612561}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdf0ba70a419860448e2038864b73dfe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyInformation: You learn that there is still remnant hatred between the houses
-  npcName: 
---- !u!4 &1053452539 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3020507368624759691, guid: dfb3e99be96973041adf75476ca6d1f2,
-    type: 3}
-  m_PrefabInstance: {fileID: 1379453437}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &800177214
 GameObject:
   m_ObjectHideFlags: 0
@@ -3674,10 +3559,9 @@ MonoBehaviour:
     choiceID: 0
     name: Robin
     sentences:
-    - Terrible news!
-    - A fellow comrade of mine has been struck down in the dark of night!
-    - "Whatever you do, do not visit that tavern! I can\u2019t afford to lose you
-      too."
+    - '*Hick* Cousin, you made it *Hick*'
+    - "*Slosh* I\u2019 er am so excited for the feast *Slosh*"
+    - '*Hick* You better make it! *Hick*'
   interaction: {fileID: 6994485055378023948}
 --- !u!4 &981552074 stripped
 Transform:
@@ -3698,15 +3582,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    choiceID: 2
+    choiceID: 0
     name: Scarlett
     sentences:
-    - So you know Robin from the Grasshopper house? I'm pleased to announce that
-      we are betrothed
-    - Hopefully father can see reason and finally bury the hatchet
-    - Too many have perished for such a small accident
-    - Would you like to pop round for tea sometime?
-    - ask choice
+    - "Oh, aren\u2019t you Robin\u2019s cousin?"
+    - 'I''m so nervous to publicly announce our betrothal '
+    - Hopefully father can see reason
   interaction: {fileID: 1007437055}
 --- !u!114 &1007437055
 MonoBehaviour:
@@ -3720,7 +3601,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdf0ba70a419860448e2038864b73dfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyInformation: Many people have lost their lives to the feud
+  keyInformation: "Plans to ask for her Father\u2019s permission"
   npcName: Scarlett
 --- !u!114 &1034205316
 MonoBehaviour:
@@ -4702,9 +4583,9 @@ MonoBehaviour:
     choiceID: 0
     name: Scarlett
     sentences:
-    - Have you heard?
-    - "One of Robins\u2019s brethren has recently been injured at the tavern"
-    - Who ever could have done something so cowardly?
+    - Oh dear, Robin has gotten quite drunk
+    - I pray he will not be hung tomorrow
+    - Will you be joining us for the feast tomorrow?
   interaction: {fileID: 7330078670360519625}
 --- !u!1 &1211582954
 GameObject:
@@ -4746,7 +4627,6 @@ MonoBehaviour:
   day0NPCS: {fileID: 1323437378}
   day1NPCS: {fileID: 1474112744}
   day2NPCS: {fileID: 487633411}
-  day3NPCS: {fileID: 466180494}
 --- !u!4 &1211582956
 Transform:
   m_ObjectHideFlags: 0
@@ -4952,13 +4832,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    choiceID: 0
+    choiceID: 2
     name: Baker
     sentences:
-    - Oi, you!
     - "Have yer \u2018eard the news yet?"
-    - "I didn\u2019t bulieve in miracles until now"
-    - They bloody stopped the whole conflict with a marriage proposal
+    - "The Owl and \u2018Asshopper are to be joined in a wedding"
+    - Townsfolk will be celebrating at the Tavern tomorrow
   interaction: {fileID: 514528201146506996}
 --- !u!1 &1256501520
 GameObject:
@@ -5868,7 +5747,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1474112745
 Transform:
   m_ObjectHideFlags: 0
@@ -6037,12 +5916,12 @@ PrefabInstance:
     - target: {fileID: 1568684584971291211, guid: 28c2056e79c6690449eafcc0a185f3cb,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6
+      value: 59.25
       objectReference: {fileID: 0}
     - target: {fileID: 1568684584971291211, guid: 28c2056e79c6690449eafcc0a185f3cb,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.69
+      value: -24.02
       objectReference: {fileID: 0}
     - target: {fileID: 1568684584971291211, guid: 28c2056e79c6690449eafcc0a185f3cb,
         type: 3}
@@ -6104,6 +5983,11 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 1211582955}
+    - target: {fileID: 1568684584971291222, guid: 28c2056e79c6690449eafcc0a185f3cb,
+        type: 3}
+      propertyPath: actionSystem
+      value: 
+      objectReference: {fileID: 719861128}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28c2056e79c6690449eafcc0a185f3cb, type: 3}
 --- !u!4 &1566159356 stripped
@@ -10011,7 +9895,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 769544425}
-  - {fileID: 771765784}
+  - {fileID: 388594900}
   m_Father: {fileID: 1178158545}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12287,8 +12171,8 @@ GameObject:
   - component: {fileID: 514528201146506993}
   - component: {fileID: 514528201146506992}
   - component: {fileID: 1253330854}
-  - component: {fileID: 4093475757398910010}
   - component: {fileID: 514528201146506996}
+  - component: {fileID: 4093475757398910010}
   m_Layer: 0
   m_Name: Baker Day 1
   m_TagString: NPC
@@ -12308,8 +12192,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdf0ba70a419860448e2038864b73dfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyInformation: FILL ME IN
-  npcName: 
+  keyInformation: The news about the wedding is now public
+  npcName: Baker
 --- !u!4 &514528201146506998
 Transform:
   m_ObjectHideFlags: 0
@@ -12360,9 +12244,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -213950239
-  m_SortingLayer: 3
-  m_SortingOrder: 0
+  m_SortingLayerID: 273335407
+  m_SortingLayer: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 4723107735738678597, guid: 77ba605bbd83f4448bc8683510c3155e,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -12409,7 +12293,7 @@ GameObject:
   - component: {fileID: 6240465883318628705}
   - component: {fileID: 649037852929078787}
   m_Layer: 0
-  m_Name: Guard Day 2
+  m_Name: Sellsword Day 2
   m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12427,8 +12311,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdf0ba70a419860448e2038864b73dfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyInformation: FILL ME IN
-  npcName: 
+  keyInformation: Ibis is hiring sellswords
+  npcName: Sellsword
 --- !u!4 &649037852929078799
 Transform:
   m_ObjectHideFlags: 0
@@ -12437,7 +12321,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 649037852929078786}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -21.21, y: -23.3, z: 0}
+  m_LocalPosition: {x: -6.22, y: -46.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 487633412}
@@ -12559,8 +12443,8 @@ GameObject:
   - component: {fileID: 1169495898220276356}
   - component: {fileID: 1169495898220276355}
   - component: {fileID: 1169495898220276354}
-  - component: {fileID: 5345610110467097253}
   - component: {fileID: 1389362399621477995}
+  - component: {fileID: 5345610110467097253}
   - component: {fileID: 6199006900508880956}
   m_Layer: 0
   m_Name: Ibis Day 1
@@ -12624,8 +12508,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 273335407
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 4723107735738678597, guid: 0bd97e23f8b532a4f8969605a3b00a4e,
     type: 3}
@@ -12661,7 +12545,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1169495898239590765}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.36, y: -2.98, z: 39.380405}
+  m_LocalPosition: {x: 5, y: -2.98, z: 39.380405}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 487633412}
@@ -12743,8 +12627,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 273335407
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 4723107735738678597, guid: 0bd97e23f8b532a4f8969605a3b00a4e,
     type: 3}
@@ -12770,8 +12654,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdf0ba70a419860448e2038864b73dfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyInformation: FILL ME IN
-  npcName: 
+  keyInformation: Is making preparations
+  npcName: Ibis
 --- !u!4 &1169495899017631904
 Transform:
   m_ObjectHideFlags: 0
@@ -12982,15 +12866,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    choiceID: 1
+    choiceID: 0
     name: Ibis
     sentences:
-    - Tranquility. Forgotten what it feels like
-    - 'To experience moments of peace is soothing for the soul
-
-'
-    - "Wouldn\u2019t you agree? We have you to thank for that"
-    - ask choice
+    - "Ah, I see you\u2019ve been well"
+    - 'I see the Townsfolk are partying at the Tavern '
+    - I sadly cannot partake for I have important preparations to make tomorrow
   interaction: {fileID: 1169495898239590768}
 --- !u!114 &1389362399621477995
 MonoBehaviour:
@@ -13005,13 +12886,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    choiceID: 0
+    choiceID: 1
     name: Ibis
     sentences:
-    - I am glad to see this conflict end within my lifetime
-    - The pain, anguish and sorrow has finally subsided
-    - You should come to our household and celebrate this momentous occasion
-    - "You\u2019ve done so much to help Scarlett, we are indebted to you"
+    - I am glad to see this conflict end
+    - "You\u2019ve done well to support Robin and my Scarlett"
+    - You should come to our household to celebrate this momentous occasion
   interaction: {fileID: 5345610110467097253}
 --- !u!61 &1495192452622172392
 BoxCollider2D:
@@ -13104,13 +12984,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    choiceID: 0
-    name: Guard
+    choiceID: 3
+    name: Sellsword
     sentences:
-    - "Ever since the marriage was announced, it\u2019s been pretty quiet round these
-      parts"
-    - Although ya do get the odd person leaving the household during the night
-    - "Don\u2019t blame them, the night breeze is always refreshin\u2019"
+    - '*Hick* I wonder what Ibis is up to *Hick*'
+    - "*Hick* He\u2019s been contracting lotsa sellswords of late *Hick*\r\n"
+    - "( ... The sellsword drops a contract agreement \u2026 )"
   interaction: {fileID: 649037852929078787}
 --- !u!114 &2644365001427525669
 MonoBehaviour:
@@ -13359,9 +13238,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdf0ba70a419860448e2038864b73dfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyInformation: You learn that Ibis is glad that the conflict has ended and, You
-    gain access to the Owl household for the next day
-  npcName: 
+  keyInformation: Has invited you to his household
+  npcName: Ibis
 --- !u!114 &5345610111281410177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13434,7 +13312,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5400314085207547278}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -15.884, y: -2.868, z: 78.76081}
+  m_LocalPosition: {x: 0.96, y: -23.71, z: 78.76081}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 487633412}
@@ -13913,8 +13791,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdf0ba70a419860448e2038864b73dfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyInformation: FILL ME IN
-  npcName: 
+  keyInformation: Robin
+  npcName: Plans to celebrate at the Tavern tomorrow
 --- !u!1 &6994485054677457344
 GameObject:
   m_ObjectHideFlags: 0
@@ -14052,8 +13930,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdf0ba70a419860448e2038864b73dfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyInformation: FILL ME IN
-  npcName: 
+  keyInformation: Intends to go the feast tomorrow
+  npcName: Robin
 --- !u!95 &6994485055378023956
 Animator:
   serializedVersion: 3
@@ -14131,7 +14009,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6994485055378023947}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -32.45, y: -2.7467623, z: 39.380405}
+  m_LocalPosition: {x: -15.49, y: -46.35, z: 39.380405}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 487633412}
@@ -14252,8 +14130,8 @@ GameObject:
   - component: {fileID: 7330078669828505800}
   - component: {fileID: 7330078669828505799}
   - component: {fileID: 7330078669828505798}
-  - component: {fileID: 678120381}
   - component: {fileID: 678120378}
+  - component: {fileID: 678120381}
   - component: {fileID: 1495192453155234789}
   m_Layer: 0
   m_Name: Scarlett Day 1
@@ -14353,7 +14231,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7330078670360519624}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -28.25, y: -2.8727622, z: 39.380405}
+  m_LocalPosition: {x: -12.66, y: -46.46, z: 39.380405}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 487633412}
@@ -14392,8 +14270,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdf0ba70a419860448e2038864b73dfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyInformation: FILL ME IN
-  npcName: 
+  keyInformation: Has invited you to the feast
+  npcName: Scarlett
 --- !u!212 &7330078670360519626
 SpriteRenderer:
   m_ObjectHideFlags: 0

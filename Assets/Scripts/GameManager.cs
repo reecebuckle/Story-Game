@@ -23,17 +23,12 @@ public class GameManager : MonoBehaviour
     public GameObject day0NPCS;
     public GameObject day1NPCS;
     public GameObject day2NPCS;
-    public GameObject day3NPCS;
+
     private int currentDay;
     private bool canAccessOwlHouse; //can the player access this house
     private bool canAccessTavern; // can player access tavern?
-    private bool weddingInformation;// does player have info on wedding?
-    private bool suspiciousInfo;// does player have suspicious info on the owl?
-
-    private bool owlAccused; // has the player accussed the owl?
-    private bool coupleWarned; // has the player warned the couple?
-    private bool pickedUpEmblem; // has player picked up emblem?
-
+    private bool foundLetter;// did player find conspiracy letter?
+    private bool foundContract;// did player find contract?
 
     public void Awake()
     {
@@ -45,20 +40,15 @@ public class GameManager : MonoBehaviour
         day0NPCS.SetActive(true);
         day1NPCS.SetActive(false);
         day2NPCS.SetActive(false);
-        day3NPCS.SetActive(false);
 
         //begin day counter
         currentDay = 0;
 
-        //no access initially 
+        //all false initially
         canAccessOwlHouse = false;
         canAccessTavern = false;
-        weddingInformation = false;
-        suspiciousInfo = false;
-        owlAccused = false;
-        coupleWarned = false;
-        pickedUpEmblem = false;
-
+        foundContract = false;
+        foundLetter = false;
     }
 
 
@@ -151,40 +141,54 @@ public class GameManager : MonoBehaviour
     */
     public IEnumerator RestForDay()
     {
-        //if not 0 prevent user from sleeping (for reasons of continuity..)
-        if (actionSystem.getRemainingActions() != 0)
-        {
-            Debug.Log("Please use your remaining actions!");
-            //TODO: Add a message prompting user to finish their interactions first..
-        }
-        else
-        {
-            //short term fix preventing an overly cluttered journal
-            actionSystem.ResetActionPoints();
+        //short term fix preventing an overly cluttered journal
+        actionSystem.ResetActionPoints();
 
-            transition.SetTrigger("Start");
-            yield return new WaitForSeconds(0.4f);
-            //TODO check to see interactions for day is 0 before allowing you to move on!
+        transition.SetTrigger("Start");
+        yield return new WaitForSeconds(0.4f);
+        //TODO check to see interactions for day is 0 before allowing you to move on!
 
-            //increment day count
-            currentDay++;
-            if (currentDay == 1)
-            {
-                day0NPCS.SetActive(false);
-                day1NPCS.SetActive(true);
-            }
-            else if (currentDay == 2)
-            {
-                day1NPCS.SetActive(false);
-                day2NPCS.SetActive(true);
-            }
-            else if (currentDay == 3)
-            {
-                day2NPCS.SetActive(false);
-                day3NPCS.SetActive(true);
-            }
-            //For any other future day, throw a not able to rest message/prevent user from resting!
+        //increment day count
+        currentDay++;
+        if (currentDay == 1)
+        {
+            day0NPCS.SetActive(false);
+            day1NPCS.SetActive(true);
         }
+        else if (currentDay == 2)
+        {
+            day1NPCS.SetActive(false);
+            day2NPCS.SetActive(true);
+        }
+        else if (currentDay == 3)
+        {
+            day2NPCS.SetActive(false);
+            //TODO PRESENT PLAYER CHOICE HERE THAT THEN LEADS ONTO NEXT THING
+
+            // current day 4 load pivotal thing, whcih will show the 3 button canvas options
+            // UI 
+            // For any other future day, throw a not able to rest message/prevent user from resting!
+            // then depending on option this leads into 1 of 3 cutscene animations
+
+        }
+    }
+
+    /*
+    * Method for updating game world following player interactions
+    */
+    public void UpdateGameWorld(int choiceID)
+    {
+        if (choiceID == 1)
+            canAccessOwlHouse = true;
+
+        if (choiceID == 2)
+            canAccessTavern = true;
+
+        if (choiceID == 3)
+            foundContract = true;
+
+        if (choiceID == 4)
+            foundLetter = true;
     }
 
     /*
@@ -192,46 +196,6 @@ public class GameManager : MonoBehaviour
     */
     public void EvaluateChoice(int choiceID, bool response)
     {
-        //can player access owl house via owl
-        if (choiceID == 1 && response == true)
-            canAccessOwlHouse = true;
-
-        //player finds out information from scarlett
-        if (choiceID == 2)
-        {
-            weddingInformation = true;
-            // AND player chooses to access house
-            if (response == true) {
-                canAccessOwlHouse = true;
-                actionSystem.SpecialAppend("Scarlett: You can now visit House Owl");
-            }
-        }
-
-        //player finds information from robin
-        if (choiceID == 3)
-            weddingInformation = true;
-
-        //player finds out suspicious info on owl, this allows them to lookout
-        if (choiceID == 4)
-            suspiciousInfo = true;
-
-        //player is able to access the tavern
-        if (choiceID == 5)
-            canAccessTavern = true;
-
-        //player picked up emblem
-        if (choiceID == 6)
-            pickedUpEmblem = true;
-
-        //player decides to accuse owl
-        if (choiceID == 7)
-            owlAccused = true;
-
-        //player decides to warn couple   
-        if (choiceID == 8)
-            coupleWarned = true;
-
-
     }
 
     //Returns whether player can access owl house

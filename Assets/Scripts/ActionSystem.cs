@@ -32,8 +32,8 @@ public class ActionSystem : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        numberOfActions = 4;
-        currentPageNo = 0;
+        numberOfActions = 3;
+        currentPageNo = 1;
         journalPanel.gameObject.SetActive(false);
         ObjectInteractionPanel.gameObject.SetActive(false);
         //Display starting number of actions
@@ -57,8 +57,6 @@ public class ActionSystem : MonoBehaviour
             day1.text += interaction.getKeyInformation();
         else if (currentDay == 2)
             day2.text += interaction.getKeyInformation();
-        else if (currentDay == 3)
-            day3.text += interaction.getKeyInformation();
     }
 
     /*
@@ -72,8 +70,6 @@ public class ActionSystem : MonoBehaviour
             day1.text += achievement;
         else if (currentDay == 2)
             day2.text += achievement;
-        else if (currentDay == 3)
-            day3.text += achievement;
     }
 
     /*
@@ -81,7 +77,7 @@ public class ActionSystem : MonoBehaviour
     */
     public void ResetActionPoints()
     {
-        numberOfActions = 4;
+        numberOfActions = 3;
         //update display
         DisplayActions.text = "Remaining actions: " + numberOfActions;
     }
@@ -110,22 +106,22 @@ public class ActionSystem : MonoBehaviour
     * Display Next page
     */
     public void ShowNextPage() {
-        if (currentPageNo == 0) {
+
+        // If turning from page 1 -> 2
+        if (currentPageNo == 1) {
             day0.gameObject.SetActive(false);
             day1.gameObject.SetActive(true);
-            previousPage.SetActive(true); //allow previous page when turning from 0 -> 1
-        } else if (currentPageNo == 1) {
+            nextPage.SetActive(true);
+            previousPage.SetActive(true); 
+        
+        // If turning from page 2 -> 3
+        } else if (currentPageNo == 2) {
             day1.gameObject.SetActive(false);
             day2.gameObject.SetActive(true);
-        } else if (currentPageNo == 2) {
-            day2.gameObject.SetActive(false);
-            day3.gameObject.SetActive(true);
-        } else if (currentPageNo == 3) {
-            day3.gameObject.SetActive(false);
-            day4.gameObject.SetActive(true);
-            nextPage.SetActive(false); //remove next button when turning from page 3 -> 4
-        }
-        //increment page count [0,1,2,3,4]
+            nextPage.SetActive(false); 
+            previousPage.SetActive(true); 
+        } 
+        //increment page count
         currentPageNo++;
     }
 
@@ -133,36 +129,23 @@ public class ActionSystem : MonoBehaviour
     * Display previous page
     */
     public void ShowPreviousPage() {
-        //not possible to see previous button when on page 0
-        if (currentPageNo == 1) {
+        // If turning from Page 2 -> 1
+        if (currentPageNo == 2) {
             day0.gameObject.SetActive(true);
             day1.gameObject.SetActive(false);
-            previousPage.SetActive(false); //disallow previous page when turning from 1 -> 0
-        } else if (currentPageNo == 2) {
+            nextPage.SetActive(true);
+            previousPage.SetActive(false); 
+
+        //If turning from page 3 -> 2    
+        } else if (currentPageNo == 3) {
             day1.gameObject.SetActive(true);
             day2.gameObject.SetActive(false);
-        } else if (currentPageNo == 3) {
-            day2.gameObject.SetActive(true);
-            day3.gameObject.SetActive(false);
-        } else if (currentPageNo == 4) {
-            day3.gameObject.SetActive(true);
-            day4.gameObject.SetActive(false);
-            nextPage.SetActive(true); //reset next button when turning from page 4 -> 3
-        } 
-        //increment page count
-        currentPageNo--;
-    }
+            previousPage.SetActive(true);
+            nextPage.SetActive(true); 
+        }
 
-    /*
-    * NOT USED CURRENTLY 
-    * Clear all pages in journal
-    */
-    public void ClearJournal()
-    {
-        day0.text = "";
-        day1.text = "";
-        day2.text = "";
-        day3.text = "";
+        //decrement page count
+        currentPageNo--;
     }
 
     /*
@@ -181,7 +164,6 @@ public class ActionSystem : MonoBehaviour
         ObjectInteractionText.text = msg;
         ObjectInteractionPanel.gameObject.SetActive(true);
     }
-
 
     /*
      * Closes the panel that contains text for object interactions 

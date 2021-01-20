@@ -63,7 +63,11 @@ public class DialogueManager : MonoBehaviour
         this.dialogue = dialogue; //this could be buggy
         this.interaction = interaction; //this could be buggy
 
-        StartDialogue(dialogue);
+        //only allow an interaction to begin if player has remaining actions
+        if (actionSystem.getRemainingActions() > 0) 
+            StartDialogue(dialogue);
+        else 
+            ShowOutOfActionsMessage();
     }
 
     /*
@@ -167,6 +171,17 @@ public class DialogueManager : MonoBehaviour
         animator.SetBool("IsOpen", true);
         sentences.Clear();
         string alreadyInteracted = "(I've already interacted with them today...)";
+        sentences.Enqueue(alreadyInteracted);
+        DisplayFirstSentence();
+    }
+
+    /*
+    * Used to show out of actions!
+    */
+    public void ShowOutOfActionsMessage() {
+        animator.SetBool("IsOpen", true);
+        sentences.Clear();
+        string alreadyInteracted = "(It's getting late, I should head back home...)";
         sentences.Enqueue(alreadyInteracted);
         DisplayFirstSentence();
     }

@@ -141,43 +141,35 @@ public class GameManager : MonoBehaviour
     */
     public IEnumerator RestForDay()
     {
-        //if not 0 prevent user from sleeping (for reasons of continuity..)
-        if (actionSystem.getRemainingActions() != 0)
+        //short term fix preventing an overly cluttered journal
+        actionSystem.ResetActionPoints();
+
+        transition.SetTrigger("Start");
+        yield return new WaitForSeconds(0.4f);
+        //TODO check to see interactions for day is 0 before allowing you to move on!
+
+        //increment day count
+        currentDay++;
+        if (currentDay == 1)
         {
-            Debug.Log("Please use your remaining actions!");
-            //TODO: Add a message prompting user to finish their interactions first..
+            day0NPCS.SetActive(false);
+            day1NPCS.SetActive(true);
         }
-        else
+        else if (currentDay == 2)
         {
-            //short term fix preventing an overly cluttered journal
-            actionSystem.ResetActionPoints();
+            day1NPCS.SetActive(false);
+            day2NPCS.SetActive(true);
+        }
+        else if (currentDay == 3)
+        {
+            day2NPCS.SetActive(false);
+            //TODO PRESENT PLAYER CHOICE HERE THAT THEN LEADS ONTO NEXT THING
 
-            transition.SetTrigger("Start");
-            yield return new WaitForSeconds(0.4f);
-            //TODO check to see interactions for day is 0 before allowing you to move on!
+            // current day 4 load pivotal thing, whcih will show the 3 button canvas options
+            // UI 
+            // For any other future day, throw a not able to rest message/prevent user from resting!
+            // then depending on option this leads into 1 of 3 cutscene animations
 
-            //increment day count
-            currentDay++;
-            if (currentDay == 1)
-            {
-                day0NPCS.SetActive(false);
-                day1NPCS.SetActive(true);
-            }
-            else if (currentDay == 2)
-            {
-                day1NPCS.SetActive(false);
-                day2NPCS.SetActive(true);
-            }
-            else if (currentDay == 3)
-            {
-                day2NPCS.SetActive(false);
-                //TODO PRESENT PLAYER CHOICE HERE THAT THEN LEADS ONTO NEXT THING
-
-                // current day 4 load pivotal thing, whcih will show the 3 button canvas options
-                // UI 
-                // For any other future day, throw a not able to rest message/prevent user from resting!
-                // then depending on option this leads into 1 of 3 cutscene animations
-            }
         }
     }
 

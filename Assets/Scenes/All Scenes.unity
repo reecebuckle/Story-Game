@@ -160,12 +160,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    choiceID: 3
+    choiceID: 0
     name: Robin
     sentences:
-    - "Oh my dear brother, for I am in love with Scarlett of house Owl!\r"
-    - Should things go well, we will be wed three days from now
-    - If only our relationship with house Owl could be fixed sometime soon...
+    - Dear cousin, I am in love with Scarlett of house Owl
+    - We have vowed to be wed three days from now
+    - "I do hope I can gain her Father\u2019s approval\u2026"
+    - "Our relationship to Ibis hasn\u2019t been great of late"
   interaction: {fileID: 30}
 --- !u!114 &30
 MonoBehaviour:
@@ -709,6 +710,36 @@ PrefabInstance:
       propertyPath: m_enableVertexGradient
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1182862351626303664, guid: 675c95b856371f8419dc23ae5cca62c5,
+        type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1182862351626303664, guid: 675c95b856371f8419dc23ae5cca62c5,
+        type: 3}
+      propertyPath: m_fontColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1182862351626303664, guid: 675c95b856371f8419dc23ae5cca62c5,
+        type: 3}
+      propertyPath: m_fontColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1182862351626303664, guid: 675c95b856371f8419dc23ae5cca62c5,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 1182862351626303664, guid: 675c95b856371f8419dc23ae5cca62c5,
+        type: 3}
+      propertyPath: m_characterSpacing
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1182862351626303664, guid: 675c95b856371f8419dc23ae5cca62c5,
+        type: 3}
+      propertyPath: m_wordSpacing
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1182862351626303665, guid: 675c95b856371f8419dc23ae5cca62c5,
         type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -847,6 +878,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_fontSizeBase
       value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 1182862352845160427, guid: 675c95b856371f8419dc23ae5cca62c5,
+        type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1182862352845160427, guid: 675c95b856371f8419dc23ae5cca62c5,
+        type: 3}
+      propertyPath: m_fontColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1182862352845160427, guid: 675c95b856371f8419dc23ae5cca62c5,
+        type: 3}
+      propertyPath: m_fontColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1182862352845160427, guid: 675c95b856371f8419dc23ae5cca62c5,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 1182862352845160428, guid: 675c95b856371f8419dc23ae5cca62c5,
         type: 3}
@@ -1373,10 +1424,9 @@ MonoBehaviour:
     name: Baker
     sentences:
     - "Ho! You lookin\u2019 for some bread?"
-    - "The feud between the Owl and Grasshopper \u2018ouses are only growing more
-      tense"
+    - The rivalry between the two houses is worsening of late
     - Tis a nightmare to sell my bread
-    - If only the two houses could work together, twould mean business for everyone
+    - If they could only reconcile, twould mean better business for everyone
   interaction: {fileID: 514528200522024220}
 --- !u!1 &328686017 stripped
 GameObject:
@@ -1534,9 +1584,8 @@ MonoBehaviour:
     choiceID: 0
     name: Old Man
     sentences:
-    - "In all my years in this town, I ain\u2019t seen nuthin\u2019 like this"
-    - People were more civilised in my time
-    - "Guess they don\u2019t make \u2018em like they used to"
+    - "In all my years in this town, I ain\u2019t seen nuthin\u2019 like this\r"
+    - Townsfolk were more civilised in my time
   interaction: {fileID: 398640885}
 --- !u!114 &398640885
 MonoBehaviour:
@@ -1550,7 +1599,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdf0ba70a419860448e2038864b73dfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyInformation: Things were more peaceful in the past
+  keyInformation: Things were peaceful in the past
   npcName: Old Man
 --- !u!114 &403250672
 MonoBehaviour:
@@ -3151,15 +3200,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    choiceID: 2
+    choiceID: 0
     name: Scarlett
     sentences:
-    - So you know Robin from the Grasshopper house? I'm pleased to announce that
-      we are betrothed
-    - Hopefully father can see reason and finally bury the hatchet
-    - Too many have perished for such a small accident
-    - Would you like to pop round for tea sometime?
-    - ask choice
+    - "Oh, aren\u2019t you Robin\u2019s cousin?"
+    - I'm so nervous to publicly announce our betrothal
+    - Hopefully father can see reason
   interaction: {fileID: 1007437055}
 --- !u!114 &1007437055
 MonoBehaviour:
@@ -3173,7 +3219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdf0ba70a419860448e2038864b73dfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyInformation: Many people have lost their lives to the feud
+  keyInformation: "Plans to ask for her Father\u2019s permission"
   npcName: Scarlett
 --- !u!114 &1034205316
 MonoBehaviour:
@@ -4561,7 +4607,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1323437379
 Transform:
   m_ObjectHideFlags: 0
@@ -4991,7 +5037,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1474112745
 Transform:
   m_ObjectHideFlags: 0

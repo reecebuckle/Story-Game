@@ -253,6 +253,7 @@ public class GameManager : MonoBehaviour
     public void LoadEnding3()
     {
         Debug.Log("Loading Ending Three");
+        //update static reference of ending unlocked
         EndingsUnlocked.Ending3 = true;
         SceneManager.LoadScene("Ending 3");
 
@@ -264,6 +265,7 @@ public class GameManager : MonoBehaviour
     public void LoadEnding2()
     {
         Debug.Log("Loading Ending Two");
+        //update static reference of ending unlocked
         EndingsUnlocked.Ending2 = true;
         SceneManager.LoadScene("Ending 2");
 
@@ -276,8 +278,9 @@ public class GameManager : MonoBehaviour
     public void LoadEnding1()
     {
         Debug.Log("Loading Ending One");
+        //update static reference of ending unlocked
         EndingsUnlocked.Ending1 = true;
-        SceneManager.LoadScene("Ending 1");
+        SceneManager.LoadScene("Menu");
     }
 
 

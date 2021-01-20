@@ -26,9 +26,6 @@ public class ActionSystem : MonoBehaviour
     public GameManager gameManager;
     private int currentPageNo; //current page number being shown
     private int numberOfActions; //Current number of interactions!
-    private string newLine = " \n";
-
-
 
     // Start is called before the first frame update
     private void Start()

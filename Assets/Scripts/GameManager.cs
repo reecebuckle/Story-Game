@@ -7,8 +7,17 @@ public class GameManager : MonoBehaviour
     [Header("Reference to Player")]
     public GameObject player;
 
-    [Header("Reference to Action System")]
+    [Header("References to other managers")]
     public ActionSystem actionSystem;
+    public DialogueManager dialogueManager;
+
+    [Header("References to other Canvas objects")]
+    public GameObject journalCanvas;
+    public GameObject objectCanvas;
+    public GameObject dialogueCanvas;
+    public GameObject canvasOutcome1;
+    public GameObject canvasOutcome2;
+    public GameObject canvasOutcome3;
 
     [Header("Integrated Audio Manager")]
     public AudioClip sceneMusic;
@@ -41,6 +50,9 @@ public class GameManager : MonoBehaviour
         day0NPCS.SetActive(true);
         day1NPCS.SetActive(false);
         day2NPCS.SetActive(false);
+        canvasOutcome1.SetActive(false);
+        canvasOutcome2.SetActive(false);
+        canvasOutcome3.SetActive(false);
 
         //begin day counter
         currentDay = 0;
@@ -143,35 +155,46 @@ public class GameManager : MonoBehaviour
     */
     public IEnumerator RestForDay()
     {
-        //short term fix preventing an overly cluttered journal
         actionSystem.ResetActionPoints();
-
-        transition.SetTrigger("Start");
-        yield return new WaitForSeconds(0.4f);
-        //TODO check to see interactions for day is 0 before allowing you to move on!
-
-        //increment day count
         currentDay++;
+
         if (currentDay == 1)
         {
+            transition.SetTrigger("Start");
+            yield return new WaitForSeconds(0.4f);
             day0NPCS.SetActive(false);
             day1NPCS.SetActive(true);
         }
         else if (currentDay == 2)
         {
+            transition.SetTrigger("Start");
+            yield return new WaitForSeconds(0.4f);
             day1NPCS.SetActive(false);
             day2NPCS.SetActive(true);
         }
         else if (currentDay == 3)
         {
             day2NPCS.SetActive(false);
-            //TODO PRESENT PLAYER CHOICE HERE THAT THEN LEADS ONTO NEXT THING
+            transition.SetTrigger("End"); //fade to black
+            yield return new WaitForSeconds(0.5f);
+            
+            //Remove player from game!
+            player.gameObject.SetActive(false);   
 
-            // current day 4 load pivotal thing, whcih will show the 3 button canvas options
-            // UI 
-            // For any other future day, throw a not able to rest message/prevent user from resting!
-            // then depending on option this leads into 1 of 3 cutscene animations
+            //Close all canvases
+            dialogueCanvas.gameObject.SetActive(false);
+            objectCanvas.gameObject.SetActive(false);
+            journalCanvas.gameObject.SetActive(false);
 
+            //If player found all the evidence, give them all 3 options
+            if (foundLetter && foundContract)
+                LoadCanvas3();
+            //If player found half the evidence, give them 2 options
+            else if (foundLetter || foundContract)
+                LoadCanvas2();
+            //If player found no evidence, give them 1 option
+            else
+                LoadCanvas1();
         }
     }
 
@@ -186,14 +209,67 @@ public class GameManager : MonoBehaviour
         if (choiceID == 2)
             canAccessTavern = true;
 
-        if (choiceID == 3) {
+        if (choiceID == 3)
+        {
             foundContract = true;
             actionSystem.SpecialAppend("You picked up the sellswords contact");
         }
-            
+
         if (choiceID == 4)
             letterAvailable = true;
     }
+
+
+    /*
+    * Loaded at end of the game if all options were available
+    */
+    public void LoadCanvas3()
+    {
+        canvasOutcome3.SetActive(true);
+    }
+
+    /*
+    * Loaded at end of the game if two options were available
+    */
+    public void LoadCanvas2()
+    {
+        canvasOutcome2.SetActive(true);
+    }
+
+    /*
+    * Loaded at end of the game if no options were available
+    */
+    public void LoadCanvas1()
+    {
+        canvasOutcome1.SetActive(true);
+    }
+
+    /*
+    * Selected by player from canvas
+    */
+    public void LoadEnding3()
+    {
+        Debug.Log("Loading Ending Three");
+
+    }
+
+    /*
+    * Selected by player from canvas
+    */
+    public void LoadEnding2()
+    {
+        Debug.Log("Loading Ending Two");
+
+    }
+
+    /*
+    * Selected by player from canvas
+    */
+    public void LoadEnding1()
+    {
+        Debug.Log("Loading Ending One");
+    }
+
 
     /*
     * Method for handling player choices, the response is true if yes, false if no
@@ -203,7 +279,8 @@ public class GameManager : MonoBehaviour
     }
 
     // Removes letter from game and updates bool
-    public void TakeLetter()    { 
+    public void TakeLetter()
+    {
         foundLetter = true;
         letterAvailable = false;
         actionSystem.SpecialAppend("You found a letter conspiring to end House Grasshopper");
@@ -222,7 +299,8 @@ public class GameManager : MonoBehaviour
     }
 
     //Reeturns whether player can see bookshelf
-    public bool BookshelfUnlocked() {
+    public bool BookshelfUnlocked()
+    {
         return letterAvailable;
     }
 

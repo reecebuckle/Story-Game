@@ -38,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
     private bool enterOwlHouse = false;
     private bool exitOwlHouse = false;
     private bool byBookshelf = false;
+    private bool cooldown = false;
 
     private void Start()
     {
@@ -59,7 +60,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //these control player options when touching a collider
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && !cooldown)
         {
             if (touchingChair)
                 StartCoroutine(gameManager.RestForDay());
@@ -91,12 +92,20 @@ public class PlayerMovement : MonoBehaviour
             if (byBookshelf && gameManager.BookshelfUnlocked()) {
                 letter.gameObject.SetActive(false);
                 gameManager.TakeLetter();
-            }
-               
+            } 
+
+            StartCoroutine(WaitForCooldown());
         }
     }
 
-
+    /*
+    * After pressing E, wait for 1 second before being able to press E again
+    */
+     public IEnumerator  WaitForCooldown() {
+        cooldown = true;
+        yield return new WaitForSeconds(1f);
+        cooldown = false;
+     }
 
     /*
     * Handles player movement 

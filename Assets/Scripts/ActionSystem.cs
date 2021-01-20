@@ -17,11 +17,17 @@ public class ActionSystem : MonoBehaviour
     public TextMeshProUGUI day3;
     public TextMeshProUGUI day4;
 
+    [Header("References to Object Interaction Panel")]
+    public GameObject ObjectInteractionPanel;
+    public TextMeshProUGUI ObjectInteractionText;
+
     [Header("References to Managers")]
     public DialogueManager dialogueManager;
     public GameManager gameManager;
     private int currentPageNo; //current page number being shown
     private int numberOfActions; //Current number of interactions!
+
+    
 
     // Start is called before the first frame update
     private void Start()
@@ -29,6 +35,7 @@ public class ActionSystem : MonoBehaviour
         numberOfActions = 4;
         currentPageNo = 0;
         journalPanel.gameObject.SetActive(false);
+        ObjectInteractionPanel.gameObject.SetActive(false);
         //Display starting number of actions
         DisplayActions.text = "Remaining actions: " + numberOfActions;
     }
@@ -165,5 +172,23 @@ public class ActionSystem : MonoBehaviour
     {
         return numberOfActions;
     }
-    
+
+    /*
+     * Opens the panel that contains text for object interactions
+     */
+    public void OpenObjectInteractionPanel(string msg)
+    {
+        ObjectInteractionText.text = msg;
+        ObjectInteractionPanel.gameObject.SetActive(true);
+    }
+
+
+    /*
+     * Closes the panel that contains text for object interactions 
+     */
+    public void CloseObjectInteractionPanel()
+    {
+        ObjectInteractionPanel.gameObject.SetActive(false);
+    }
+
 }

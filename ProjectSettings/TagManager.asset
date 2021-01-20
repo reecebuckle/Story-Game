@@ -14,6 +14,7 @@ TagManager:
   - Exit Owl House
   - Enter Tavern
   - Exit Tavern
+  - Bookshelf
   layers:
   - Default
   - TransparentFX

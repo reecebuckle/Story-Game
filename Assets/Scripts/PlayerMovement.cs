@@ -114,32 +114,64 @@ public class PlayerMovement : MonoBehaviour
     */
     void OnTriggerEnter2D(Collider2D other)
     {
+        string msg = "Press E to " + other.tag;
+
         if (other.tag == "Sleep Chair")
+        {
+            msg = "Press E to sleep, consumes all remaining actions";
             touchingChair = true;
+            gameManager.actionSystem.OpenObjectInteractionPanel(msg);
+        }
+           
 
         if (other.tag == "Enter House")
+        {
             enterHouse = true;
+            gameManager.actionSystem.OpenObjectInteractionPanel(msg);
+        }
+            
 
-        if (other.tag == "Exit House")
+        if (other.tag == "Exit House") {
             exitHouse = true;
+            gameManager.actionSystem.OpenObjectInteractionPanel(msg);
+        }
+            
 
-        if (other.tag == "Enter Church")
+        if (other.tag == "Enter Church") {
             enterChurch = true;
+            gameManager.actionSystem.OpenObjectInteractionPanel(msg);
+        }
+            
 
-        if (other.tag == "Exit Church")
+        if (other.tag == "Exit Church") {
             exitChurch = true;
+            gameManager.actionSystem.OpenObjectInteractionPanel(msg);
+        }
+            
 
-        if (other.tag == "Enter Owl House")
+        if (other.tag == "Enter Owl House") {
             enterOwlHouse = true;
+            gameManager.actionSystem.OpenObjectInteractionPanel(msg);
+        }
+            
 
-        if (other.tag == "Exit Owl House")
+        if (other.tag == "Exit Owl House") {
             exitOwlHouse = true;
+            gameManager.actionSystem.OpenObjectInteractionPanel(msg);
+        }
+            
 
-        if (other.tag == "Enter Tavern")
+        if (other.tag == "Enter Tavern") {
             enterTavern = true;
+            gameManager.actionSystem.OpenObjectInteractionPanel(msg);
+        }
+            
 
-        if (other.tag == "Exit Tavern")
+        if (other.tag == "Exit Tavern") {
             exitTavern = true;
+            gameManager.actionSystem.OpenObjectInteractionPanel(msg);
+        }
+            
     }
 
     /*
@@ -148,30 +180,66 @@ public class PlayerMovement : MonoBehaviour
     void OnTriggerExit2D(Collider2D other)
     {
         if (other.tag == "Sleep Chair")
+        {
             touchingChair = false;
+            gameManager.actionSystem.CloseObjectInteractionPanel();
+        }
+            
 
         if (other.tag == "Exit House")
+        {
             exitHouse = false;
+            gameManager.actionSystem.CloseObjectInteractionPanel();
+        }
+            
 
         if (other.tag == "Enter House")
+        {
             enterHouse = false;
+            gameManager.actionSystem.CloseObjectInteractionPanel();
+        }
+            
 
         if (other.tag == "Exit Church")
+        {
             exitChurch = false;
+            gameManager.actionSystem.CloseObjectInteractionPanel();
+        }
+            
 
         if (other.tag == "Enter Church")
+        {
             enterChurch = false;
+            gameManager.actionSystem.CloseObjectInteractionPanel();
+        }
+            
 
         if (other.tag == "Enter Owl House")
+        {
             enterOwlHouse = false;
+            gameManager.actionSystem.CloseObjectInteractionPanel();
+        }
+            
 
         if (other.tag == "Exit Owl House")
+        {
             exitOwlHouse = false;
+            gameManager.actionSystem.CloseObjectInteractionPanel();
+        }
+            
 
         if (other.tag == "Enter Tavern")
+        {
             enterTavern = false;
+            gameManager.actionSystem.CloseObjectInteractionPanel();
+        }
+            
 
         if (other.tag == "Exit Tavern")
+        {
             exitTavern = false;
+            gameManager.actionSystem.CloseObjectInteractionPanel();
+        }
+            
     }
 }

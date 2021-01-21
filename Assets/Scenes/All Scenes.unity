@@ -37561,8 +37561,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdf0ba70a419860448e2038864b73dfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyInformation: Robin
-  npcName: Plans to celebrate at the Tavern tomorrow
+  keyInformation: To celebrate at the Tavern tomorrow
+  npcName: Robin
 --- !u!1 &6994485054677457344
 GameObject:
   m_ObjectHideFlags: 0

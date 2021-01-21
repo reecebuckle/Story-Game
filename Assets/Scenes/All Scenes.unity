@@ -163,7 +163,7 @@ MonoBehaviour:
     choiceID: 0
     name: Robin
     sentences:
-    - Dear cousin, I am in love with Scarlett of house Owl
+    - Dear Cousin, I am in love with Scarlett of House Owl
     - We have vowed to be wed three days from now
     - "I do hope I can gain her Father\u2019s approval\u2026"
     - "Our relationship to Ibis hasn\u2019t been great of late"
@@ -30165,7 +30165,7 @@ MonoBehaviour:
     name: Ibis
     sentences:
     - "Ah, I see you\u2019ve been well"
-    - 'I see the Townsfolk are partying at the Tavern '
+    - 'I see the townsfolk are partying at the Tavern '
     - I sadly cannot partake for I have important preparations to make tomorrow
   interaction: {fileID: 1169495898239590768}
 --- !u!114 &1389362399621477995
@@ -36532,7 +36532,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdf0ba70a419860448e2038864b73dfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyInformation: Has invited you to his household
+  keyInformation: Has invited you to the feast
   npcName: Ibis
 --- !u!212 &5364931261781337454
 SpriteRenderer:

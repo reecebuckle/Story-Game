@@ -1536,7 +1536,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Scarlett: You mean the happiest day of "Our" life?'
+  m_text: 'Scarlett: You mean the happiest day of "our" life?'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 598fa8a2c7c705340b80d1763c07b79e, type: 2}
   m_sharedMaterial: {fileID: -6874762813041088848, guid: 598fa8a2c7c705340b80d1763c07b79e,

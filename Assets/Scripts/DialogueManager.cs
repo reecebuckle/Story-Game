@@ -68,7 +68,7 @@ public class DialogueManager : MonoBehaviour
         if (actionSystem.getRemainingActions() > 0) 
             StartDialogue(dialogue);
         else 
-            ShowOutOfActionsMessage();
+            ShowOutOfActionsMessage(dialogue);
     }
 
     /*
@@ -180,7 +180,8 @@ public class DialogueManager : MonoBehaviour
     /*
     * Used to show out of actions!
     */
-    public void ShowOutOfActionsMessage() {
+    public void ShowOutOfActionsMessage(Dialogue dialogueU) {
+        nameText.text = dialogueU.name;
         animator.SetBool("IsOpen", true);
         sentences.Clear();
         string alreadyInteracted = "(It's getting late, I should head back home...)";

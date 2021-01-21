@@ -292,7 +292,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("Loading Ending One");
         //update static reference of ending unlocked
         EndingsUnlocked.Ending1 = true;
-        SceneManager.LoadScene("Ending1 Proper");
+        SceneManager.LoadScene("Ending 1");
     }
 
 

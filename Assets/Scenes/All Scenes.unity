@@ -3722,8 +3722,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdf0ba70a419860448e2038864b73dfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyInformation: 'Ibis wishes to throw a wedding feast Ibis wishes to throw a wedding
-    feast '
+  keyInformation: Ibis wishes to throw a wedding feast
   npcName: Scarlett
 --- !u!4 &718397460 stripped
 Transform:
@@ -23321,7 +23320,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdf0ba70a419860448e2038864b73dfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyInformation: Ibis has been hiring sellswords
+  keyInformation: Has been hired by Ibis
   npcName: Sellsword
 --- !u!212 &649037852852917510
 SpriteRenderer:
@@ -23629,7 +23628,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdf0ba70a419860448e2038864b73dfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyInformation: Is making preparations
+  keyInformation: Is making wedding preparations
   npcName: Ibis
 --- !u!114 &1182862351054021108
 MonoBehaviour:
@@ -38098,7 +38097,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdf0ba70a419860448e2038864b73dfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyInformation: Has invited you to the feast
+  keyInformation: Has invited you to the feast tomorrow
   npcName: Scarlett
 --- !u!212 &7330078670360519626
 SpriteRenderer:

@@ -216,6 +216,7 @@ public class GameManager : MonoBehaviour
         {
             foundContract = true;
             actionSystem.SpecialAppend("You picked up the sellswords contract");
+            actionSystem.DisplayContract();
         }
 
         if (choiceID == 4)
@@ -297,6 +298,7 @@ public class GameManager : MonoBehaviour
         foundLetter = true;
         letterAvailable = false;
         actionSystem.SpecialAppend("You found a letter conspiring to end House Grasshopper");
+        actionSystem.DisplayLetter();
     }
 
     //Returns whether player can access owl house
@@ -321,5 +323,15 @@ public class GameManager : MonoBehaviour
     public int getCurrentDay()
     {
         return currentDay;
+    }
+
+    //returns if letter is picked up
+    public bool letterPickedUp() {
+        return foundLetter;
+    }
+
+    //returns if letter is picked u
+    public bool contractPickedUp() {
+        return foundContract;
     }
 }

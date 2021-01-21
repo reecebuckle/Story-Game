@@ -15,8 +15,8 @@ public class ActionSystem : MonoBehaviour
     public TextMeshProUGUI day0;
     public TextMeshProUGUI day1;
     public TextMeshProUGUI day2;
-    public TextMeshProUGUI day3;
-    public TextMeshProUGUI day4;
+    public TextMeshProUGUI letter;
+    public TextMeshProUGUI contract;
 
     [Header("References to Object Interaction Panel")]
     public GameObject ObjectInteractionPanel;
@@ -34,6 +34,7 @@ public class ActionSystem : MonoBehaviour
         numberOfActions = 3;
         currentPageNo = 1;
         journalPanel.gameObject.SetActive(false);
+        CloseJournal();
         ObjectInteractionPanel.gameObject.SetActive(false);
         //Display starting number of actions
         actionsText.text = "Remaining actions: " + numberOfActions;
@@ -129,7 +130,7 @@ public class ActionSystem : MonoBehaviour
         {
             day2.gameObject.SetActive(true);
             previousPage.SetActive(true);
-            nextPage.SetActive(false);
+            nextPage.SetActive(true);
             currentPageNo = 3;
         }
     }
@@ -143,6 +144,8 @@ public class ActionSystem : MonoBehaviour
         day0.gameObject.SetActive(false);
         day1.gameObject.SetActive(false);
         day2.gameObject.SetActive(false);
+        letter.gameObject.SetActive(false);
+        contract.gameObject.SetActive(false);
     }
 
     /*
@@ -158,13 +161,30 @@ public class ActionSystem : MonoBehaviour
             day1.gameObject.SetActive(true);
             nextPage.SetActive(true);
             previousPage.SetActive(true);
-
-            // If turning from page 2 -> 3
         }
+        // If turning from page 2 -> 3
         else if (currentPageNo == 2)
         {
             day1.gameObject.SetActive(false);
             day2.gameObject.SetActive(true);
+            //nextPage.SetActive(false);
+            //previousPage.SetActive(true);
+
+        }
+        // loading letter page (3)
+        else if (currentPageNo == 3)
+        {
+            day2.gameObject.SetActive(false);
+            if (gameManager.letterPickedUp())
+                letter.gameObject.SetActive(true);
+        }
+        // loading contract page (4)
+        else if (currentPageNo == 4)
+        {
+            letter.gameObject.SetActive(false);
+            if (gameManager.contractPickedUp())
+                contract.gameObject.SetActive(true);
+
             nextPage.SetActive(false);
             previousPage.SetActive(true);
         }
@@ -184,19 +204,60 @@ public class ActionSystem : MonoBehaviour
             day1.gameObject.SetActive(false);
             nextPage.SetActive(true);
             previousPage.SetActive(false);
-
-            //If turning from page 3 -> 2    
         }
+        //If turning from page 3 -> 2    
         else if (currentPageNo == 3)
         {
             day1.gameObject.SetActive(true);
             day2.gameObject.SetActive(false);
+        }
+        //If turning from page 4 (letter) -> 3
+        else if (currentPageNo == 4)
+        {
+            day2.gameObject.SetActive(true);
+            letter.gameObject.SetActive(false);
+
+        }
+        //If turning from page 5 (contract) -> 4
+        else if (currentPageNo == 5)
+        {
+            contract.gameObject.SetActive(false);
+
+            if (gameManager.letterPickedUp())
+                letter.gameObject.SetActive(true);
+           
             previousPage.SetActive(true);
             nextPage.SetActive(true);
         }
 
         //decrement page count
         currentPageNo--;
+    }
+
+    /*
+    * Used to display letter when picked up
+    */
+    public void DisplayLetter() {
+        journalPanel.gameObject.SetActive(true);
+        //can easily add if else statements to show current day on opening
+        int currentDay = gameManager.getCurrentDay();
+        letter.gameObject.SetActive(true);
+        previousPage.SetActive(true);
+        nextPage.SetActive(true);
+        currentPageNo = 4;
+    }
+
+    /*
+    * Used to display contract when picked up
+    */
+    public void DisplayContract(){
+        journalPanel.gameObject.SetActive(true);
+        //can easily add if else statements to show current day on opening
+        int currentDay = gameManager.getCurrentDay();
+        contract.gameObject.SetActive(true);
+        previousPage.SetActive(true);
+        nextPage.SetActive(false);
+        currentPageNo = 5;
     }
 
 

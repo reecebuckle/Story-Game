@@ -1,9 +1,4 @@
-﻿/**
-* The following character controller was adapted from Brackey's 2D Player Movement controller
-* https://www.youtube.com/watch?v=dwcT-Dch0bA&list=PLPV2KyIb3jR6TFcFuzI2bB7TMNIIBpKMQ&index=2&ab_channel=Brackeys
-* And is available as free to use
-*/
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;

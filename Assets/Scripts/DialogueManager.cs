@@ -4,9 +4,10 @@ using TMPro;
 using UnityEngine;
 
 /*
-*The following script (and Dialogue.cs / DialogueTriggrer.cs) was adapted and expanded upon 
+*The following scripts (and Dialogue.cs / DialogueTriggrer.cs) was adapted and expanded upon 
 *from a Brackey's dialogue tutorial for the purpose of this game
 *https://www.youtube.com/watch?v=_nRzoTzeyxU&t=5s&ab_channel=Brackeys
+*However this dialogue system has been expanded and modified on heavily!
 */
 public class DialogueManager : MonoBehaviour
 {

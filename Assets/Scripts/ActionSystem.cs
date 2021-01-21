@@ -17,6 +17,7 @@ public class ActionSystem : MonoBehaviour
     public TextMeshProUGUI day2;
     public TextMeshProUGUI letter;
     public TextMeshProUGUI contract;
+    public TextMeshProUGUI extra;
 
     [Header("References to Object Interaction Panel")]
     public GameObject ObjectInteractionPanel;
@@ -146,6 +147,7 @@ public class ActionSystem : MonoBehaviour
         day2.gameObject.SetActive(false);
         letter.gameObject.SetActive(false);
         contract.gameObject.SetActive(false);
+        extra.gameObject.SetActive(false);
     }
 
     /*
@@ -158,6 +160,7 @@ public class ActionSystem : MonoBehaviour
         if (currentPageNo == 1)
         {
             day0.gameObject.SetActive(false);
+            
             day1.gameObject.SetActive(true);
             nextPage.SetActive(true);
             previousPage.SetActive(true);
@@ -166,6 +169,7 @@ public class ActionSystem : MonoBehaviour
         else if (currentPageNo == 2)
         {
             day1.gameObject.SetActive(false);
+            extra.gameObject.SetActive(false);
             day2.gameObject.SetActive(true);
             //nextPage.SetActive(false);
             //previousPage.SetActive(true);
@@ -175,15 +179,21 @@ public class ActionSystem : MonoBehaviour
         else if (currentPageNo == 3)
         {
             day2.gameObject.SetActive(false);
+            extra.gameObject.SetActive(false);
             if (gameManager.letterPickedUp())
                 letter.gameObject.SetActive(true);
+            else
+                extra.gameObject.SetActive(true);
         }
         // loading contract page (4)
         else if (currentPageNo == 4)
         {
             letter.gameObject.SetActive(false);
+            extra.gameObject.SetActive(false);
             if (gameManager.contractPickedUp())
                 contract.gameObject.SetActive(true);
+            else
+                extra.gameObject.SetActive(true);
 
             nextPage.SetActive(false);
             previousPage.SetActive(true);
@@ -216,6 +226,7 @@ public class ActionSystem : MonoBehaviour
         {
             day2.gameObject.SetActive(true);
             letter.gameObject.SetActive(false);
+            extra.gameObject.SetActive(false);
 
         }
         //If turning from page 5 (contract) -> 4
@@ -225,6 +236,8 @@ public class ActionSystem : MonoBehaviour
 
             if (gameManager.letterPickedUp())
                 letter.gameObject.SetActive(true);
+            else
+                extra.gameObject.SetActive(true);
 
             previousPage.SetActive(true);
             nextPage.SetActive(true);
@@ -240,6 +253,7 @@ public class ActionSystem : MonoBehaviour
     public void DisplayLetter()
     {
         journalPanel.gameObject.SetActive(true);
+        extra.gameObject.SetActive(false);
         //can easily add if else statements to show current day on opening
         int currentDay = gameManager.getCurrentDay();
         letter.gameObject.SetActive(true);
@@ -254,6 +268,7 @@ public class ActionSystem : MonoBehaviour
     public void DisplayContract()
     {
         journalPanel.gameObject.SetActive(true);
+        extra.gameObject.SetActive(false);
         //can easily add if else statements to show current day on opening
         int currentDay = gameManager.getCurrentDay();
         contract.gameObject.SetActive(true);

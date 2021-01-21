@@ -29,7 +29,7 @@ public static class EndingsUnlocked
         }
         set 
         {
-            ending1 = value;
+            ending2 = value;
         }
     }
 
@@ -41,7 +41,7 @@ public static class EndingsUnlocked
         }
         set 
         {
-            ending1 = value;
+            ending3 = value;
         }
     }
 

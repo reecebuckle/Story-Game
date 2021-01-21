@@ -24,6 +24,9 @@ public class GameManager : MonoBehaviour
     public AudioClip sceneMusic;
     public AudioClip churchMusic;
     public AudioClip houseMusic;
+
+    public AudioClip tavernMusic;
+    
     public AudioSource soundManager;
 
     [Header("Add Crossfade Transitioner")]
@@ -35,7 +38,7 @@ public class GameManager : MonoBehaviour
     public GameObject day2NPCS;
 
     [Header("Endings Unlocked")]
- 
+
 
     private int currentDay;
     private bool canAccessOwlHouse; //can the player access this house
@@ -126,7 +129,9 @@ public class GameManager : MonoBehaviour
         transition.SetTrigger("Start");
         yield return new WaitForSeconds(0.4f);
         player.transform.position = new Vector3(-19, -24, 0);
-        //TODO: Add new music? 
+        soundManager.Stop();
+        soundManager.clip = houseMusic;
+        soundManager.Play();
     }
 
     public IEnumerator LeaveOwlHouse()
@@ -134,7 +139,9 @@ public class GameManager : MonoBehaviour
         transition.SetTrigger("Start");
         yield return new WaitForSeconds(0.4f);
         player.transform.position = new Vector3(12, -3, 0);
-        //TODO: Add new music? 
+        soundManager.Stop();
+        soundManager.clip = sceneMusic;
+        soundManager.Play();
     }
 
     public IEnumerator EnterTavern()
@@ -142,7 +149,9 @@ public class GameManager : MonoBehaviour
         transition.SetTrigger("Start");
         yield return new WaitForSeconds(0.4f);
         player.transform.position = new Vector3(-21, -47, 0);
-        //TODO: Add new music? 
+        soundManager.Stop();
+        soundManager.clip = tavernMusic;
+        soundManager.Play();
     }
 
     public IEnumerator LeaveTavern()
@@ -150,7 +159,9 @@ public class GameManager : MonoBehaviour
         transition.SetTrigger("Start");
         yield return new WaitForSeconds(0.4f);
         player.transform.position = new Vector3(6, -3, 0);
-        //TODO: Add new Music
+        soundManager.Stop();
+        soundManager.clip = sceneMusic;
+        soundManager.Play();
     }
 
     /*
@@ -180,9 +191,9 @@ public class GameManager : MonoBehaviour
             day2NPCS.SetActive(false);
             transition.SetTrigger("End"); //fade to black
             yield return new WaitForSeconds(0.5f);
-            
+
             //Remove player from game!
-            player.gameObject.SetActive(false);   
+            player.gameObject.SetActive(false);
 
             //Close all canvases
             dialogueCanvas.gameObject.SetActive(false);
@@ -326,12 +337,14 @@ public class GameManager : MonoBehaviour
     }
 
     //returns if letter is picked up
-    public bool letterPickedUp() {
+    public bool letterPickedUp()
+    {
         return foundLetter;
     }
 
     //returns if letter is picked u
-    public bool contractPickedUp() {
+    public bool contractPickedUp()
+    {
         return foundContract;
     }
 }

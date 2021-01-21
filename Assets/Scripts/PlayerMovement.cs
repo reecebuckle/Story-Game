@@ -79,20 +79,21 @@ public class PlayerMovement : MonoBehaviour
 
             if (enterOwlHouse && gameManager.CheckOwlEntryCondition())
                 StartCoroutine(gameManager.EnterOwlHouse());
-    
+
             if (exitOwlHouse)
                 StartCoroutine(gameManager.LeaveOwlHouse());
 
             if (enterTavern && gameManager.CheckTavernEntryCondition())
                 StartCoroutine(gameManager.EnterTavern());
-            
+
             if (exitTavern)
                 StartCoroutine(gameManager.LeaveTavern());
-            
-            if (byBookshelf && gameManager.BookshelfUnlocked()) {
+
+            if (byBookshelf && gameManager.BookshelfUnlocked())
+            {
                 letter.gameObject.SetActive(false);
                 gameManager.TakeLetter();
-            } 
+            }
 
             StartCoroutine(WaitForCooldown());
         }
@@ -101,11 +102,12 @@ public class PlayerMovement : MonoBehaviour
     /*
     * After pressing E, wait for 1 second before being able to press E again
     */
-     public IEnumerator WaitForCooldown() {
+    public IEnumerator WaitForCooldown()
+    {
         cooldown = true;
         yield return new WaitForSeconds(1f);
         cooldown = false;
-     }
+    }
 
     /*
     * Handles player movement 
@@ -134,9 +136,19 @@ public class PlayerMovement : MonoBehaviour
 
         if (other.tag == "Sleep Chair")
         {
-            msg = "Press E to sleep. Warning: consumes any remaining actions";
-            touchingChair = true;
-            actionSystem.OpenObjectInteractionPanel(msg);
+           
+            if (actionSystem.getRemainingActions() != 0)
+            {
+                string altMsg = "Press E to Sleep. WARNING: you have remaining actions";
+                touchingChair = true;
+                actionSystem.OpenObjectInteractionPanel(altMsg);
+            }
+            else
+            {
+                string altMsg = "Press E to Sleep";
+                touchingChair = true;
+                actionSystem.OpenObjectInteractionPanel(altMsg);
+            }
         }
 
 
@@ -170,15 +182,16 @@ public class PlayerMovement : MonoBehaviour
 
         if (other.tag == "Enter Owl House")
         {
-           
+
             if (gameManager.CheckOwlEntryCondition() == false)
             {
                 string altMsg = "You cannot enter the Owl House currently";
                 actionSystem.OpenObjectInteractionPanel(altMsg);
             }
-            else {
+            else
+            {
                 actionSystem.OpenObjectInteractionPanel(msg);
-                enterOwlHouse = true;                
+                enterOwlHouse = true;
             }
 
         }
@@ -191,12 +204,14 @@ public class PlayerMovement : MonoBehaviour
 
         if (other.tag == "Enter Tavern")
         {
-           
-            if (!gameManager.CheckTavernEntryCondition()) {
+
+            if (!gameManager.CheckTavernEntryCondition())
+            {
                 string altMsg = "You cannot enter the Tavern currently";
                 actionSystem.OpenObjectInteractionPanel(altMsg);
             }
-            else {
+            else
+            {
                 actionSystem.OpenObjectInteractionPanel(msg);
                 enterTavern = true;
             }

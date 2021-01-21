@@ -53,11 +53,11 @@ public class PlayerMovement : MonoBehaviour
 
         animator.SetFloat("Player Speed", Mathf.Abs(horizontalMove));
 
-        if (Input.GetButtonDown("Jump"))
-        {
-            jump = true;
-            animator.SetBool("IsJumping", true);
-        }
+        // if (Input.GetButtonDown("Jump"))
+        // {
+        //     jump = true;
+        //     animator.SetBool("IsJumping", true);
+        // }
 
         //these control player options when touching a collider
         if (Input.GetKeyDown(KeyCode.E) && !cooldown)

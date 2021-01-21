@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
     public GameObject day2NPCS;
 
     [Header("Endings Unlocked")]
- 
+
 
     private int currentDay;
     private bool canAccessOwlHouse; //can the player access this house
@@ -180,9 +180,9 @@ public class GameManager : MonoBehaviour
             day2NPCS.SetActive(false);
             transition.SetTrigger("End"); //fade to black
             yield return new WaitForSeconds(0.5f);
-            
+
             //Remove player from game!
-            player.gameObject.SetActive(false);   
+            player.gameObject.SetActive(false);
 
             //Close all canvases
             dialogueCanvas.gameObject.SetActive(false);
@@ -326,12 +326,14 @@ public class GameManager : MonoBehaviour
     }
 
     //returns if letter is picked up
-    public bool letterPickedUp() {
+    public bool letterPickedUp()
+    {
         return foundLetter;
     }
 
     //returns if letter is picked u
-    public bool contractPickedUp() {
+    public bool contractPickedUp()
+    {
         return foundContract;
     }
 }

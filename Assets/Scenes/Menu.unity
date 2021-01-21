@@ -1597,25 +1597,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Background, Characters and Animations - Gothic Vania Town and Gothic Vania
-    Church (both available on Unity assets store)
-
-
-    Supplementary background
-    assets for the home - Pixel2DCastleTileset (available on Unity assets store)
-
-
-    Main
-    Character - Medievil Warrior Pack 2 (available on Unity assets store)
-
-
-    Background
-    Soundtracks - Action RPG Music 1.3 and RPG Music Pack 1  (both available on Unity
-    assets store)
-
-
-    All Assets used in the making of this project were licensed
-    as free-use for small - commerical projects and royalty free'
+  m_text: "Background, Characters and Animations : Gothic Vania Town and Gothic Vania
+    Church (both available on Unity assets store) - by Ansimuz\r.\n\nSupplementary
+    background assets for the building interiors- Pixel2DCastleTileset (available
+    on Unity assets store) - by Szadi Art.\r\n\nSupplementary characters : \rLuiz
+    Melo's Character Pacls (available on Unity assets store).\n\nBackground Soundtracks
+    - Action RPG Music 1.3 and RPG Music Pack 1  (both available on Unity assets
+    store)\n\nAll Assets used in the making of this project were licensed as free-use "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

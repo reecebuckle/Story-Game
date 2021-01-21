@@ -225,7 +225,7 @@ public class ActionSystem : MonoBehaviour
 
             if (gameManager.letterPickedUp())
                 letter.gameObject.SetActive(true);
-           
+
             previousPage.SetActive(true);
             nextPage.SetActive(true);
         }
@@ -237,7 +237,8 @@ public class ActionSystem : MonoBehaviour
     /*
     * Used to display letter when picked up
     */
-    public void DisplayLetter() {
+    public void DisplayLetter()
+    {
         journalPanel.gameObject.SetActive(true);
         //can easily add if else statements to show current day on opening
         int currentDay = gameManager.getCurrentDay();
@@ -250,7 +251,8 @@ public class ActionSystem : MonoBehaviour
     /*
     * Used to display contract when picked up
     */
-    public void DisplayContract(){
+    public void DisplayContract()
+    {
         journalPanel.gameObject.SetActive(true);
         //can easily add if else statements to show current day on opening
         int currentDay = gameManager.getCurrentDay();

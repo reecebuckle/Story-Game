@@ -7999,6 +7999,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1347153586}
   - component: {fileID: 1347153587}
+  - component: {fileID: 1347153588}
   m_Layer: 0
   m_Name: 'indoor highlight '
   m_TagString: Untagged
@@ -8070,6 +8071,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1347153588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1347153585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67a1c3ee3ef69fa47b724ea4f3de8ff3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlightedSprite: {fileID: 21300000, guid: 81b8006ded6e6af46bab3cc67c273c8a, type: 3}
 --- !u!1 &1350858152
 GameObject:
   m_ObjectHideFlags: 0

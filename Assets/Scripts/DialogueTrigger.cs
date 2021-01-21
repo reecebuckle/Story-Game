@@ -13,7 +13,7 @@ public class DialogueTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player")) {
             if (interaction.interactionHasOccured()) 
-                FindObjectOfType<DialogueManager>().ShowInteractedMessage();
+                FindObjectOfType<DialogueManager>().ShowInteractedMessage(dialogue);
             else 
                 FindObjectOfType<DialogueManager>().BeginInteraction(dialogue, interaction);
         }

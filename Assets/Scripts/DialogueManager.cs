@@ -167,8 +167,9 @@ public class DialogueManager : MonoBehaviour
     /*
     * This is shown instead of StartDialogue if the player has already interacted with the NPC
     */
-    public void ShowInteractedMessage()
+    public void ShowInteractedMessage(Dialogue dialogueU)
     {
+        nameText.text = dialogueU.name;
         animator.SetBool("IsOpen", true);
         sentences.Clear();
         string alreadyInteracted = "(I've already interacted with them today...)";

@@ -1163,10 +1163,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Your actions representing House Grasshopper fell for Ibis's deception
-    and flattery.\n\nAs a result, Robin, the heir of House Grasshopper, was murdered.
-    \n\nThe Lord of House Grasshopper, with no other heirs, succumbed to heart break
-    which ultimately lead to the eventual collapse of House Grasshopper."
+  m_text: "You failed to warn Robin from Ibis's deceptive trap.\n\nAs a result, Robin,
+    the heir of House Grasshopper, was murdered. \n\nThe Lord of House Grasshopper,
+    with no other heirs, succumbed to heart break which ultimately lead to the eventual
+    collapse of House Grasshopper."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 598fa8a2c7c705340b80d1763c07b79e, type: 2}
   m_sharedMaterial: {fileID: -6874762813041088848, guid: 598fa8a2c7c705340b80d1763c07b79e,
